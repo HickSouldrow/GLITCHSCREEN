@@ -37,4 +37,4 @@ npx json-server --watch db.json --port 5000
 npm install tailwindcss @tailwindcss/vite
 
 # Run the development server
-npm run dev
+npm start
