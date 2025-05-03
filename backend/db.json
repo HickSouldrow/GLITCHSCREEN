@@ -1,9 +1,24 @@
 {
-    "posts": [
-      { "id": 1, "title": "Primeiro Post", "content": "Conteúdo do post" }
-    ],
-    "users": [
-      { "id": 1, "name": "João", "email": "joao@example.com" }
-    ]
-  }
-    
+  "users": [
+    {
+      "id": 1,
+      "username": "joao",
+      "password": "123",
+      "token": "abc123"
+    },
+    {
+      "id": "c97b",
+      "username": "eduardo",
+      "password": "sim",
+      "email": "eduardo@example.com",
+      "token": "newToken123"
+    },
+    {
+      "id": "c3a4",
+      "username": "Prior",
+      "password": "prior123",
+      "email": "prior@email.com",
+      "token": "newToken123"
+    }
+  ]
+}

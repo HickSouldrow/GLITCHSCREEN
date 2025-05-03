@@ -1,17 +1,24 @@
 {
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "json-server --watch db.json --port 5000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "react-router-dom": "^7.5.2",
+    "sqlite3": "^5.1.7"
+  },
   "devDependencies": {
     "json-server": "^1.0.0-beta.3"
-  },
-  "scripts": {
-    "dev": "json-server --watch db.json --port 5000"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.1.4",
-    "axios": "^1.9.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-router-dom": "^7.5.3",
-    "sweetalert2": "^11.19.1",
-    "tailwindcss": "^4.1.4"
   }
 }
