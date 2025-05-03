@@ -30,6 +30,9 @@ npm i
 # Install the main libraries
 npm install react react-dom react-router-dom axios sweetalert2 json-server
 
+# Use the database
+npx json-server --watch db.json --port 5000
+
 # Install TailwindCSS
 npm install tailwindcss @tailwindcss/vite
 
