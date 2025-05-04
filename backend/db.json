@@ -4,12 +4,21 @@
       "id": 1,
       "username": "joao",
       "password": "123",
+      "nickname": "João giga",
       "token": "abc123"
+    },
+    {
+      "id": 1,
+      "username": "Hick",
+      "password": "Stunnados",
+      "nickname": "Souldrow",
+      "token": "newToken123"
     },
     {
       "id": "c97b",
       "username": "eduardo",
       "password": "sim",
+      "nickname": "Eduardo",
       "email": "eduardo@example.com",
       "token": "newToken123"
     },
@@ -17,8 +26,638 @@
       "id": "c3a4",
       "username": "Prior",
       "password": "prior123",
+      "nickname": "Prior",
       "email": "prior@email.com",
       "token": "newToken123"
+    }
+  ],
+
+  "categorias": [
+    { "CodCategoria": 1, "CategoriaTipo": "Competitivo Online" },
+    { "CodCategoria": 2, "CategoriaTipo": "Cooperativo" },
+    { "CodCategoria": 3, "CategoriaTipo": "MMO" },
+    { "CodCategoria": 4, "CategoriaTipo": "Multijogador" },
+    { "CodCategoria": 5, "CategoriaTipo": "Multijogador local" },
+    { "CodCategoria": 6, "CategoriaTipo": "Rede Local(LAN)" },
+    { "CodCategoria": 7, "CategoriaTipo": "Um jogador" }
+  ],
+
+  "classificacoes": [
+    { "CodFaixaEtaria": 1, "ClassificacaoIndicativa": "Livre" },
+    { "CodFaixaEtaria": 2, "ClassificacaoIndicativa": "10 anos" },
+    { "CodFaixaEtaria": 3, "ClassificacaoIndicativa": "12 anos" },
+    { "CodFaixaEtaria": 4, "ClassificacaoIndicativa": "14 anos" },
+    { "CodFaixaEtaria": 5, "ClassificacaoIndicativa": "16 anos" },
+    { "CodFaixaEtaria": 6, "ClassificacaoIndicativa": "18 anos" }
+  ],
+
+  "desenvolvedoras": [
+    {
+      "id": 1,
+      "nome": "Team Cherry",
+      "cnpj": "69907994000120",
+      "email": "teamCherry@gmail.com",
+      "site": "https://www.teamcherry.com.au/"
+    },
+    {
+      "id": 2,
+      "nome": "Studio MDHR Entertainment Inc",
+      "cnpj": "04013024000136",
+      "email": "press@studiomdhr.com",
+      "site": "http://studiomdhr.com/"
+    },
+    {
+      "id": 3,
+      "nome": "Sabotage Studio",
+      "cnpj": "08242237000190",
+      "email": "philip@sabotagestudio.com",
+      "site": "https://sabotagestudio.com/"
+    },
+    {
+      "id": 4,
+      "nome": "ConcernedApe",
+      "cnpj": "98025037000179",
+      "email": "support@stardewvalley.net",
+      "site": "https://www.stardewvalley.net/author/concernedape/"
+    },
+    {
+      "id": 5,
+      "nome": "Bedtime Digital Games",
+      "cnpj": "06142151000160",
+      "email": "contact@bedtime.io",
+      "site": "Bedtime Digital Games"
+    },
+    {
+      "id": 6,
+      "nome": "Unfinished Pixel",
+      "cnpj": "64188722000102",
+      "email": "contact@unfinishedpixel.com",
+      "site": "https://www.unfinishedpixel.com/"
+    },
+    {
+      "id": 7,
+      "nome": "Extremely OK Games, Ltd",
+      "cnpj": "08186210000128",
+      "email": "contact@exok.com",
+      "site": "https://www.exok.com/index.html"
+    },
+    {
+      "id": 8,
+      "nome": "tobyfox",
+      "cnpj": "23176724000196",
+      "email": "undertalegame@gmail.com",
+      "site": "fangamer.com"
+    },
+    {
+      "id": 9,
+      "nome": "Playdead",
+      "cnpj": "49831152000125",
+      "email": "support@playdead.com",
+      "site": "https://playdead.com/"
+    },
+    {
+      "id": 10,
+      "nome": "LocalThunk",
+      "cnpj": "73088204000108",
+      "email": "balatro@playstack.com",
+      "site": "https://x.com/LocalThunk"
+    },
+    {
+      "id": 11,
+      "nome": "MINTROCKET",
+      "cnpj": "61193266000192",
+      "email": "press@mintrocketgames.com",
+      "site": "https://mintrock.et/en/about"
+    },
+    {
+      "id": 12,
+      "nome": "niceplay games",
+      "cnpj": "90804050000114",
+      "email": "contact@niceplay-games.com",
+      "site": "https://niceplay-games.com/"
+    },
+    {
+      "id": 13,
+      "nome": "MassHive Media",
+      "cnpj": "74215697000154",
+      "email": "contact@masshive-media.com",
+      "site": "https://www.masshive-media.com/"
+    },
+    {
+      "id": 14,
+      "nome": "Billy Basso",
+      "cnpj": "80416656000129",
+      "email": "billybasso1@gmail.com",
+      "site": "https://www.animalwell.net/"
+    },
+    {
+      "id": 15,
+      "nome": "Polychroma Games",
+      "cnpj": "68602793000152",
+      "email": "first@polychromagames.com",
+      "site": "https://polychromagames.com/"
+    },
+    {
+      "id": 16,
+      "nome": "Orube Game Studio",
+      "cnpj": "90848836000133",
+      "email": "contato@orubegamestudio.com",
+      "site": "https://www.orubegamestudio.com/"
+    },
+    {
+      "id": 17,
+      "nome": "Tour De Pizza",
+      "cnpj": "23984062000180",
+      "email": "pizzatowergame@gmail.com",
+      "site": "https://x.com/pizzatowergame"
+    },
+    {
+      "id": 18,
+      "nome": "Dani",
+      "cnpj": "12213303000171",
+      "email": "danidevbusiness@gmail.com",
+      "site": "https://www.youtube.com/@Danidev"
+    },
+    {
+      "id": 19,
+      "nome": "Askiisoft",
+      "cnpj": "16566473000190",
+      "email": "contact@askiisoft.com",
+      "site": "https://x.com/askiisoft"
+    },
+    {
+      "id": 20,
+      "nome": "Magic Design Studios",
+      "cnpj": "53263392000148",
+      "email": "hello@magicdesignstudios.com",
+      "site": "https://www.magicdesignstudios.com/contact"
+    },
+    {
+      "id": 21,
+      "nome": "Sewer Cat",
+      "cnpj": "60491630000138",
+      "email": "buggychickenjumper@gmail.com",
+      "site": "https://www.industriadejogos.com.br/estudio/sewer-cat/"
+    },
+    {
+      "id": 22,
+      "nome": "HAMMER95",
+      "cnpj": "14998154000129",
+      "email": "hammer95studios@gmail.com",
+      "site": "https://www.hammer95.com/"
+    },
+    {
+      "id": 23,
+      "nome": "Mobius Digital",
+      "cnpj": "83645936000105",
+      "email": "fanmail@mobiusdigitalgames.com",
+      "site": "https://www.mobiusdigitalgames.com/"
+    },
+    {
+      "id": 24,
+      "nome": "vanripperart",
+      "cnpj": "48429558000113",
+      "email": "@vanripperart",
+      "site": "https://x.com/vanripperart"
+    },
+    {
+      "id": 25,
+      "nome": "HopFrog",
+      "cnpj": "08899521000134",
+      "email": "mariano@hopfrogsa.com",
+      "site": "https://hopfrogsa.net/"
+    },
+    {
+      "id": 26,
+      "nome": "Polytron Corporation",
+      "cnpj": "",
+      "email": "https://x.com/polytron",
+      "site": "https://x.com/polytron"
+    },
+    {
+      "id": 27,
+      "nome": "Team Meat",
+      "cnpj": "54884955000188",
+      "email": "support@supermeatboy.com",
+      "site": "http://www.supermeatboy.com/"
+    },
+    {
+      "id": 28,
+      "nome": "Freebird Games",
+      "cnpj": "87383779000150",
+      "email": "orders@Freebirdstores.com",
+      "site": "https://freebirdgames.com/about/"
+    }
+  ],
+
+  "jogos": [
+    {
+      "CodJogo": 1,
+      "Nome": "Hollow Knight",
+      "DtLancamento": "2018-02-24",
+      "Avaliacao": 5,
+      "CodFaixaEtaria": 1,
+      "ReqMinId": 2,
+      "Preco": 45,
+      "Descricao": "Hollow Knight é um jogo de ação e aventura em estilo metroidvania 2D que se passa em Hallownest, antigo reino fictício.",
+      "Sinopse": "Forje seu caminho em Hollow Knight! Uma aventura de ação épica em um vasto reino arruinado de insetos e heróis. Explore cavernas serpenteantes, lute contra criaturas malignas e alie-se a insetos bizarros num estilo clássico 2D desenhado à mão.",
+      "Desconto": 5
+    },
+    {
+      "CodJogo": 2,
+      "Nome": "Cuphead",
+      "DtLancamento": "2017-09-29",
+      "Avaliacao": 5,
+      "CodFaixaEtaria": 2,
+      "ReqMinId": 2,
+      "Preco": 35,
+      "Descricao": "Cuphead apresenta dois jogadores que controlam o personagem-título e seu irmão Mugman, em uma aventura através da fictícia Inkwell Isle para derrotar uma série de chefes para pagar uma dívida adquirida com o diabo.",
+      "Sinopse": "Cuphead é um jogo de ação e tiros clássico, com enorme ênfase nas batalhas de chefes. Inspirado nas animações infantis da década de 1930, os visuais e efeitos sonoros foram minuciosamente recriados com as mesmíssimas técnicas dessa era, com destaque para desenhos feitos à mão",
+      "Desconto": 10
+    },
+    {
+      "CodJogo": 3,
+      "Nome": "Sea of Stars",
+      "DtLancamento": "2023-09-29",
+      "Avaliacao": 4.5,
+      "CodFaixaEtaria": 2,
+      "ReqMinId": 2,
+      "Preco": 90,
+      "Descricao": "Sea of Stars é um RPG com batalhas por turnos inspirado pelos clássicos.",
+      "Sinopse": "Sea of Stars é um RPG por turnos inspirado nos clássicos. Conta a história de dois Filhos do Solstício que combinarão os poderes do sol e da lua para realizar a Magia do Eclipse, a única força capaz de deter as criações monstruosas do malvado alquimista conhecido como The Fleshmancer",
+      "Desconto": 20
+    },
+    {
+      "CodJogo": 4,
+      "Nome": "Stardew Valley",
+      "DtLancamento": "2016-02-26",
+      "Avaliacao": 5,
+      "CodFaixaEtaria": 3,
+      "ReqMinId": 1,
+      "Preco": 25,
+      "Descricao": "Stardew Valley é um jogo de simulação agrícola inspirado principalmente em Story of Seasons, uma série da Marvelous e anteriormente conhecida como Harvest Moon.",
+      "Sinopse": "Você herdou a antiga fazenda do seu avô, em Stardew Valley. Com ferramentas de segunda-mão e algumas moedas, você parte para dar início a sua nova vida. Será que você vai aprender a viver da terra, a transformar esse matagal em um próspero lar?",
+      "Desconto": 20
+    },
+    {
+      "CodJogo": 5,
+      "Nome": "Back to Bed",
+      "DtLancamento": "2014-08-06",
+      "Avaliacao": 3.5,
+      "CodFaixaEtaria": 1,
+      "ReqMinId": 1,
+      "Preco": 10,
+      "Descricao": "De Volta pra Cama é um jogo 3D ambientado um mundo de fantasia único e artístico onde você guiará o sonâmbulo Bob até sua cama com segurança. Para conseguir isso, você deve ter o controle do guardião do subconsciente de Bob chamado Subob.",
+      "Sinopse": "Back to Bed é um jogo artístico de quebra-cabeça em 3D com um toque surreal. Bob é um narcoléptico azarado que tem tendência a adormecer em seu escritório chato e depois se aventurar como um sonâmbulo diante dos perigos da cidade grande. Felizmente, Bob tem um guardião subconsciente chamado Subob, que protege o sonâmbulo e o guia de volta para a segurança de sua cama.",
+      "Desconto": 80
+    },
+    {
+      "CodJogo": 6,
+      "Nome": "Super Sports Blast",
+      "DtLancamento": "2021-01-29",
+      "Avaliacao": 4,
+      "CodFaixaEtaria": 1,
+      "ReqMinId": 2,
+      "Preco": 45,
+      "Descricao": "Vôlei, Tênis ou Futebol - escolha seu esporte favorito, vá para o campo e prepare-se para se divertir !!",
+      "Sinopse": "Entre em campo e prepare-se para se divertir muito! Crie o seu próprio personagem e jogue para ser o campeão em três dos esportes mais populares do mundo. Prepare-se para o pontapé inicial e jogue futebol, domine a quadra de tênis e acerte o seu oponente na quadra de vôlei. Cada esporte apresenta os seus próprios modos repletos de vários torneios para conquistar!",
+      "Desconto": 10
+    },
+    {
+      "CodJogo": 7,
+      "Nome": "Celeste",
+      "DtLancamento": "2018-01-25",
+      "Avaliacao": 5,
+      "CodFaixaEtaria": 1,
+      "ReqMinId": 2,
+      "Preco": 57,
+      "Descricao": "Ajude Madeline a enfrentar seus demônios internos em sua jornada até o topo da Montanha Celeste, nesse jogo de plataforma super afiado dos criadores de TowerFall. Desbrave centenas de desafios meticulosos, descubra segredos complicados e desvende o mistério da montanha.",
+      "Sinopse": "Os controles são simples e acessíveis - salte, faça dash aéreo e escale -, mas com camadas de profundidade para dominar, onde cada morte é uma lição. Renascimentos incrivelmente rápidos permitem que você continue escalando enquanto descobre os mistérios da montanha e desbrava seus perigos.",
+      "Desconto": 20
+    },
+    {
+      "CodJogo": 8,
+      "Nome": "Undertale",
+      "DtLancamento": "2015-09-15",
+      "Avaliacao": 4.5,
+      "CodFaixaEtaria": 1,
+      "ReqMinId": 1,
+      "Preco": 18,
+      "Descricao": "UNDERTALE! O jogo RPG onde você não tem que matar ninguém",
+      "Sinopse": "Bem-vindo à UNDERTALE. Neste RPG, você controla um humano que cai no subsolo em um mundo de monstros. Agora você deve encontrar a saída... ou ficará preso para sempre.",
+      "Desconto": 5
+    },
+    {
+      "CodJogo": 9,
+      "Nome": "Limbo",
+      "DtLancamento": "2011-08-02",
+      "Avaliacao": 4.5,
+      "CodFaixaEtaria": 4,
+      "ReqMinId": 1,
+      "Preco": 35,
+      "Descricao": "Sem certezas acerca do destino da irmã, um rapaz entra no LIMBO",
+      "Sinopse": "Limbo é um sidescroller 2D, incorporando um sistema de física que administra os objetos ambientais e o personagem do jogador. O jogador guia um menino anônimo através de ambientes e armadilhas perigosas enquanto procura por sua irmã mais velha.",
+      "Desconto": 0
+    },
+    {
+      "CodJogo": 10,
+      "Nome": "Inside",
+      "DtLancamento": "0000-00-00",
+      "Avaliacao": 4,
+      "CodFaixaEtaria": 4,
+      "ReqMinId": 2,
+      "Preco": 70,
+      "Descricao": "Perseguido e sozinho, um rapaz é atraído para o centro de um projeto sombrio.",
+      "Sinopse": "Inside conta a história de um menino enquanto ele luta para sobreviver contra as forças do mal que estão tentando dominar o mundo através de experimentos em corpos humanos de uma forma totalmente questionável. O menino começa a sua jornada em uma floresta onde estranhas sombras o perseguem.",
+      "Desconto": 10
+    },
+    {
+      "CodJogo": 11,
+      "Nome": "Balatro",
+      "DtLancamento": "2024-02-20",
+      "Avaliacao": 4.5,
+      "CodFaixaEtaria": 1,
+      "ReqMinId": 2,
+      "Preco": 42,
+      "Descricao": "O roguelike de póquer.",
+      "Sinopse": "Balatro é um jogo de construção de baralhos de cartas hipnoticamente satisfatório onde vais jogar mãos de póquer ilegais, descobrir jóqueres que vão mudar o rumo do jogo e fazer combinações empolgantes.",
+      "Desconto": 5
+    },
+    {
+      "CodJogo": 12,
+      "Nome": "Dave the diver",
+      "DtLancamento": "2023-06-28",
+      "Avaliacao": 5,
+      "CodFaixaEtaria": 1,
+      "ReqMinId": 2,
+      "Preco": 55,
+      "Descricao": "Junte-se a Dave e seus amigos peculiares enquanto eles tentam desvendar os segredos do misterioso Blue Hole.",
+      "Sinopse": "DAVE THE DIVER is a casual, singleplayer adventure RPG featuring deep-sea exploration and fishing during the day and sushi restaurant management at night.",
+      "Desconto": 5
+    },
+    {
+      "CodJogo": 13,
+      "Nome": "Potion craft",
+      "DtLancamento": "2022-12-13",
+      "Avaliacao": 4,
+      "CodFaixaEtaria": 1,
+      "ReqMinId": 2,
+      "Preco": 55,
+      "Descricao": "Lembre-se: a cidade inteira conta com você.",
+      "Sinopse": "Potion Craft é um simulador de alquimista onde você interage fisicamente com suas ferramentas e ingredientes para preparar poções. Você tem controle total de toda a loja: invente novas receitas, atraia clientes e experimente o quanto quiser.",
+      "Desconto": 10
+    },
+    {
+      "CodJogo": 14,
+      "Nome": "Potion permit",
+      "DtLancamento": "2022-09-22",
+      "Avaliacao": 3.5,
+      "CodFaixaEtaria": 2,
+      "ReqMinId": 3,
+      "Preco": 55,
+      "Descricao": "Os habitantes de Moonbury precisam de curativos e tu és o melhor químico disponível!",
+      "Sinopse": "Com as tuas ferramentas de confiança, um caldeirão e um companheiro canino, terás de diagnosticar sintomas, recolher ingredientes, preparar poções e curar doenças nesta simulação RPG cheia de desafios",
+      "Desconto": 15
+    },
+    {
+      "CodJogo": 16,
+      "Nome": "Raji: An Ancient Epic",
+      "DtLancamento": "2020-10-15",
+      "Avaliacao": 3.5,
+      "CodFaixaEtaria": 3,
+      "ReqMinId": 3,
+      "Preco": 50,
+      "Descricao": "Uma jovem escolhida pelos deuses para lutar contra a invasão demoníaca.",
+      "Sinopse": "Raji: An Ancient Epic é um jogo de ação e aventura ambientado na antiga Índia. Uma jovem chamada Raji foi escolhida pelos deuses para enfrentar a invasão demoníaca do reino humano. A sua missão: resgatar seu irmão mais novo e enfrentar o senhor dos demônios, Mahabalasura.",
+      "Desconto": 15
+    },
+    {
+      "CodJogo": 17,
+      "Nome": "Ori and the Blind Forest",
+      "DtLancamento": "2015-03-11",
+      "Avaliacao": 5,
+      "CodFaixaEtaria": 1,
+      "ReqMinId": 2,
+      "Preco": 75,
+      "Descricao": "Um jogo de plataforma visualmente deslumbrante com uma história profunda e emocionante.",
+      "Sinopse": "Ori and the Blind Forest conta a história de um jovem órfão destinado a feitos heróicos. Em um jogo de ação e plataforma com elementos de RPG, Ori explora uma floresta misteriosa enfrentando desafios e revelando segredos com jogabilidade fluida e visuais encantadores.",
+      "Desconto": 10
+    },
+    {
+      "CodJogo": 18,
+      "Nome": "Little Nightmares",
+      "DtLancamento": "2017-04-28",
+      "Avaliacao": 4,
+      "CodFaixaEtaria": 4,
+      "ReqMinId": 3,
+      "Preco": 60,
+      "Descricao": "Enfrente os seus medos de infância nesta aventura sombria e caprichada.",
+      "Sinopse": "Little Nightmares é um jogo de aventura e quebra-cabeça em estilo de plataforma com elementos de terror. Acompanhe a jornada de Six, uma menina presa em um misterioso navio cheio de criaturas grotescas, e ajude-a a escapar dos horrores que espreitam em cada canto.",
+      "Desconto": 15
+    },
+    {
+      "CodJogo": 19,
+      "Nome": "Spiritfarer",
+      "DtLancamento": "2020-08-18",
+      "Avaliacao": 4.5,
+      "CodFaixaEtaria": 2,
+      "ReqMinId": 3,
+      "Preco": 80,
+      "Descricao": "Spiritfarer é um jogo de gerenciamento acolhedor sobre morrer.",
+      "Sinopse": "Jogue como Stella, uma barqueira dos mortos, construa um barco para explorar o mundo, cuide dos espíritos e liberte-os para a vida após a morte. Cultive, mine, pesque, colha, cozinhe e crie enquanto compartilha momentos especiais com seus passageiros espirituais.",
+      "Desconto": 20
+    },
+    {
+      "CodJogo": 20,
+      "Nome": "The Red Strings Club",
+      "DtLancamento": "2018-01-22",
+      "Avaliacao": 4,
+      "CodFaixaEtaria": 4,
+      "ReqMinId": 3,
+      "Preco": 45,
+      "Descricao": "Um thriller cibernético sobre destino e felicidade.",
+      "Sinopse": "The Red Strings Club é uma experiência narrativa cibernética sobre uma conspiração corporativa para eliminar a depressão e o medo da sociedade. Assuma o papel de um barman e um hacker e manipule pessoas para descobrir a verdade.",
+      "Desconto": 10
+    },
+    {
+      "CodJogo": 21,
+      "Nome": "A Short Hike",
+      "DtLancamento": "2019-07-30",
+      "Avaliacao": 5,
+      "CodFaixaEtaria": 1,
+      "ReqMinId": 1,
+      "Preco": 25,
+      "Descricao": "Caminhe, escale e plane por uma montanha pacífica e charmosa.",
+      "Sinopse": "A Short Hike é um jogo de aventura relaxante onde você explora uma ilha montanhosa no ritmo que quiser. Conheça outros viajantes, descubra segredos e aproveite a natureza com uma trilha sonora suave e encantadora.",
+      "Desconto": 0
+    },
+    {
+      "CodJogo": 22,
+      "Nome": "Unpacking",
+      "DtLancamento": "2021-11-02",
+      "Avaliacao": 4,
+      "CodFaixaEtaria": 1,
+      "ReqMinId": 1,
+      "Preco": 30,
+      "Descricao": "Um jogo zen sobre tirar coisas de caixas e colocá-las em casa.",
+      "Sinopse": "Unpacking é uma mistura de quebra-cabeça com decoração de interiores. Viva uma história contada não por palavras, mas pelos objetos que você organiza em cada novo lar. Descubra fragmentos de vida em cada mudança.",
+      "Desconto": 5
+    },
+    {
+      "CodJogo": 23,
+      "Nome": "Slay the Spire",
+      "DtLancamento": "2019-01-23",
+      "Avaliacao": 4.5,
+      "CodFaixaEtaria": 2,
+      "ReqMinId": 2,
+      "Preco": 70,
+      "Descricao": "Escolha cartas sabiamente! Construa o baralho definitivo e derrote a torre.",
+      "Sinopse": "Slay the Spire combina jogos de cartas e roguelikes em uma aventura dinâmica. Monte seu baralho, enfrente inimigos únicos e descubra relíquias poderosas enquanto sobe por uma torre sempre diferente.",
+      "Desconto": 15
+    },
+    {
+      "CodJogo": 24,
+      "Nome": "Oxenfree",
+      "DtLancamento": "2016-01-15",
+      "Avaliacao": 4,
+      "CodFaixaEtaria": 3,
+      "ReqMinId": 2,
+      "Preco": 45,
+      "Descricao": "Um jogo de aventura sobrenatural sobre um grupo de amigos em uma ilha misteriosa.",
+      "Sinopse": "Oxenfree é um thriller sobrenatural sobre um grupo de adolescentes que sem querer abrem um portal fantasmagórico. Viva diálogos dinâmicos e escolhas que moldam a história com atmosfera envolvente e visual estilizado.",
+      "Desconto": 10
+    },
+    {
+      "CodJogo": 25,
+      "Nome": "GRIS",
+      "DtLancamento": "2018-12-13",
+      "Avaliacao": 4.5,
+      "CodFaixaEtaria": 2,
+      "ReqMinId": 2,
+      "Preco": 40,
+      "Descricao": "GRIS é uma experiência serena e evocativa, livre de perigo e frustração.",
+      "Sinopse": "GRIS é um jogo de plataforma narrativo onde você vive a jornada emocional de uma jovem perdida em seu próprio mundo. Através da dor e da esperança, descubra um universo artístico com jogabilidade fluida e poética.",
+      "Desconto": 10
+    },
+    {
+      "CodJogo": 26,
+      "Nome": "Fez",
+      "DtLancamento": "2013-05-01",
+      "Avaliacao": 4.5,
+      "CodFaixaEtaria": 1,
+      "ReqMinId": 1,
+      "Preco": 35,
+      "Descricao": "Gomez é uma criatura bidimensional que descobre um mundo tridimensional.",
+      "Sinopse": "Fez é um jogo de quebra-cabeça e plataforma onde você muda a perspectiva do mundo para resolver desafios. Explore um vasto universo em 2D e 3D e desvende seus segredos em uma jornada cheia de charme.",
+      "Desconto": 5
+    },
+    {
+      "CodJogo": 27,
+      "Nome": "Journey",
+      "DtLancamento": "2012-03-13",
+      "Avaliacao": 5,
+      "CodFaixaEtaria": 1,
+      "ReqMinId": 2,
+      "Preco": 60,
+      "Descricao": "Viaje por um vasto deserto em busca de significado.",
+      "Sinopse": "Journey é uma aventura artística onde você explora paisagens deslumbrantes com trilha sonora premiada. Sozinho ou acompanhado por outro jogador anônimo, descubra um mundo simbólico e emocional.",
+      "Desconto": 15
+    },
+    {
+      "CodJogo": 28,
+      "Nome": "Firewatch",
+      "DtLancamento": "2016-02-09",
+      "Avaliacao": 4,
+      "CodFaixaEtaria": 4,
+      "ReqMinId": 3,
+      "Preco": 50,
+      "Descricao": "Um mistério em primeira pessoa ambientado em uma floresta isolada.",
+      "Sinopse": "Firewatch é um jogo narrativo em que você assume o papel de Henry, um vigia de incêndios florestais. Com uma única conexão por rádio com sua supervisora Delilah, você explora o deserto do Wyoming e descobre segredos sombrios.",
+      "Desconto": 10
+    },
+    {
+      "CodJogo": 29,
+      "Nome": "Night in the Woods",
+      "DtLancamento": "2017-02-21",
+      "Avaliacao": 4,
+      "CodFaixaEtaria": 3,
+      "ReqMinId": 2,
+      "Preco": 55,
+      "Descricao": "Explore a cidade natal de Mae, cheia de histórias e mistérios.",
+      "Sinopse": "Night in the Woods é uma aventura narrativa sobre juventude, amizade e mudança. Jogue como Mae Borowski, que retorna à sua cidade natal Possum Springs, e mergulhe em conversas, segredos e um estranho mistério.",
+      "Desconto": 10
+    },
+    {
+      "CodJogo": 30,
+      "Nome": "The Witness",
+      "DtLancamento": "2016-01-26",
+      "Avaliacao": 4.5,
+      "CodFaixaEtaria": 1,
+      "ReqMinId": 3,
+      "Preco": 75,
+      "Descricao": "Um mundo aberto repleto de quebra-cabeças inteligentes e surpreendentes.",
+      "Sinopse": "The Witness é um jogo de exploração em primeira pessoa com mais de 500 quebra-cabeças. Aventure-se em uma ilha misteriosa cheia de desafios mentais e descubra pistas sobre sua identidade e propósito.",
+      "Desconto": 20
+    }
+  ],
+  "meiopagamento": [
+    { "CodMeioPagamento": 1, "OpcoesPagamento": "Débito" },
+    { "CodMeioPagamento": 2, "OpcoesPagamento": "Crédito" },
+    { "CodMeioPagamento": 3, "OpcoesPagamento": "PicPay" },
+    { "CodMeioPagamento": 4, "OpcoesPagamento": "Pix" },
+    { "CodMeioPagamento": 5, "OpcoesPagamento": "Boleto" },
+    { "CodMeioPagamento": 6, "OpcoesPagamento": "PayPal" }
+  ],
+  "reqminimos": [
+    {
+      "ReqMinId": 1,
+      "SOMin": "Windows 7",
+      "GPUMin": "Integrada (ex: Intel HD Graphics 3000)",
+      "CPUMin": "Dual-Core (ex: Intel Core 2 Duo, AMD Athlon 64 X2)",
+      "DirectXMin": "DirectX 9",
+      "Armazenamento": "2 GB",
+      "RAMmin": "2 GB",
+      "OBS": "PC de nível baixo"
+    },
+    {
+      "ReqMinId": 2,
+      "SOMin": "Windows 8.1",
+      "GPUMin": "Integrada (ex: Intel HD Graphics 4000, AMD Radeon",
+      "CPUMin": "Dual-Core (ex: Intel Core i3 4ª geração, AMD Ryzen",
+      "DirectXMin": "DirectX 10",
+      "Armazenamento": "5 GB",
+      "RAMmin": "4 GB",
+      "OBS": "PC de potência moderadamente baixa"
+    },
+    {
+      "ReqMinId": 3,
+      "SOMin": "Windows 10",
+      "GPUMin": "Dedicada de entrada (ex: NVIDIA GTX 750 Ti, AMD R7",
+      "CPUMin": "Quad-Core (ex: Intel Core i5 4ª geração, AMD Ryzen",
+      "DirectXMin": "DirectX 11",
+      "Armazenamento": "10 GB",
+      "RAMmin": "6 GB",
+      "OBS": "PC de potência média"
+    },
+    {
+      "ReqMinId": 4,
+      "SOMin": "Windows 10",
+      "GPUMin": "Dedicada intermediária (ex: NVIDIA GTX 1050 Ti, AM",
+      "CPUMin": "Quad-Core (ex: Intel Core i5 8ª geração, AMD Ryzen",
+      "DirectXMin": "DirectX 11",
+      "Armazenamento": "20 GB",
+      "RAMmin": "8 GB",
+      "OBS": "PC de potência moderadamente alta"
+    },
+    {
+      "ReqMinId": 5,
+      "SOMin": "Windows 10",
+      "GPUMin": "Dedicada de nível médio (ex: NVIDIA GTX 1660, AMD ",
+      "CPUMin": "Hexa-Core (ex: Intel Core i5 10ª geração, AMD Ryze",
+      "DirectXMin": "DirectX 12",
+      "Armazenamento": "30 GB",
+      "RAMmin": "12 GB",
+      "OBS": "PC de potência alta"
     }
   ]
 }
