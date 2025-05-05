@@ -2,10 +2,14 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
+
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "json-server --watch db.json --port 5000"
-  },
+  "start": "concurrently \"npm run server\" \"npm run vite\"",
+  "server": "npx json-server --watch db.json --port 5000",
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "vite": "npm run dev --prefix ../vite-project"
+},
+
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -19,6 +23,7 @@
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
+    "concurrently": "^9.1.2",
     "json-server": "^1.0.0-beta.3"
   }
 }
