@@ -8,6 +8,13 @@
       "token": "abc123"
     },
     {
+      "id": 1,
+      "username": "Hick",
+      "password": "Stunnados",
+      "nickname": "Souldrow",
+      "token": "newToken123"
+    },
+    {
       "id": "c97b",
       "username": "eduardo",
       "password": "sim",
