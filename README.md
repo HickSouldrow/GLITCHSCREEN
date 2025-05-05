@@ -21,17 +21,14 @@ Built with **React**, **Vite**, and **TailwindCSS**, featuring routing, API requ
 # Clone the repository
 git clone https://github.com/HickSouldrow/GLITCHSCREEN.git
 
-# Enter the project folder
-cd GlitchScreen
-
-# Use the database
-npx json-server --watch db.json --port 5000
-
-# Enter vite-project
-cd vite-project
+# Enter the server folder
+cd GlitchScreen/backend
 
 # Install all dependencies
 npm i
+
+# Install concurrently
+npm install --save-dev concurrently
 
 # Install the main libraries
 npm install react react-dom react-router-dom axios sweetalert2 json-server
@@ -40,4 +37,4 @@ npm install react react-dom react-router-dom axios sweetalert2 json-server
 npm install tailwindcss @tailwindcss/vite
 
 # Run the development server
-npm start
+npm run start
