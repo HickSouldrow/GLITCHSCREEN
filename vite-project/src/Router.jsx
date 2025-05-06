@@ -17,8 +17,8 @@ const Router = () => {
         <Route path="/Login" element={<Login />} />
         <Route path="/Cadastro" element={<Cadastro />} />
         <Route path="/Perfil" element={<Perfil />} />
-        <Route path="/Template_jogo" element={<Template_jogo />} />
-      </Route>
+        <Route path="/jogo/:CodJogo" element={<Template_jogo />} />
+        </Route>
     </Routes>
   );
 };
