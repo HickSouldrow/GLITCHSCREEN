@@ -261,7 +261,11 @@
       "Preco": 45,
       "Descricao": "Hollow Knight é um jogo de ação e aventura em estilo metroidvania 2D que se passa em Hallownest, antigo reino fictício.",
       "Sinopse": "Forje seu caminho em Hollow Knight! Uma aventura de ação épica em um vasto reino arruinado de insetos e heróis. Explore cavernas serpenteantes, lute contra criaturas malignas e alie-se a insetos bizarros num estilo clássico 2D desenhado à mão.",
-      "Desconto": 5
+      "Desconto": 5,
+      "ImageUrl":"https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000003208/4643fb058642335c523910f3a7910575f56372f612f7c0c9a497aaae978d3e51",
+      "ImageUrl2":"https://store-images.s-microsoft.com/image/apps.24270.13847644057609868.a4a91f76-8d1c-4e19-aa78-f4d27d2818fb.d96146d7-d00a-4db9-ad68-197b2f962a17?h=862&format=jpg",
+      "ImageUrl3":"https://static0.gamerantimages.com/wordpress/wp-content/uploads/wm/2024/07/hollow-knight-abyss-hornet-and-knight.jpg",
+      "ImageUrl4":"https://media.gq.com/photos/5b4f85bf80d4544fbe01ecc9/16:9/w_2560%2Cc_limit/hollow-night-review-gq-1.jpg"
     },
     {
       "CodJogo": 2,
@@ -273,7 +277,11 @@
       "Preco": 35,
       "Descricao": "Cuphead apresenta dois jogadores que controlam o personagem-título e seu irmão Mugman, em uma aventura através da fictícia Inkwell Isle para derrotar uma série de chefes para pagar uma dívida adquirida com o diabo.",
       "Sinopse": "Cuphead é um jogo de ação e tiros clássico, com enorme ênfase nas batalhas de chefes. Inspirado nas animações infantis da década de 1930, os visuais e efeitos sonoros foram minuciosamente recriados com as mesmíssimas técnicas dessa era, com destaque para desenhos feitos à mão",
-      "Desconto": 10
+      "Desconto": 10,
+      "ImageUrl":"https://upload.wikimedia.org/wikipedia/pt/c/c1/Cuphead_capa.png",
+      "ImageUrl2":"https://s2-techtudo.glbimg.com/ywUmd6jisZBFWfU3KZu9KbgBrCo=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2022/O/x/RpFqFQSrqBCUWZ6MBU9A/cuphead-dlc-1.png",
+      "ImageUrl3":"https://uploads.jovemnerd.com.br/wp-content/uploads/2019/07/cuphead-netflix-sdcc-2019.png",
+      "ImageUrl4":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp3FpwZK_6kV_v629QbTJntBmo9cACcvWm5w&s"
     },
     {
       "CodJogo": 3,
@@ -285,7 +293,11 @@
       "Preco": 90,
       "Descricao": "Sea of Stars é um RPG com batalhas por turnos inspirado pelos clássicos.",
       "Sinopse": "Sea of Stars é um RPG por turnos inspirado nos clássicos. Conta a história de dois Filhos do Solstício que combinarão os poderes do sol e da lua para realizar a Magia do Eclipse, a única força capaz de deter as criações monstruosas do malvado alquimista conhecido como The Fleshmancer",
-      "Desconto": 100
+      "Desconto": 50,
+      "ImageUrl":"https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000046189/f06f8dc22b97bcbe125aaa458c99330de4c0a173ec6dc0c2dc5eaab2deb041c2",
+      "ImageUrl2":"https://tm.ibxk.com.br/2023/08/29/29081833452010.jpg",
+      "ImageUrl3":"https://i.guim.co.uk/img/media/d619049335125b6fe843d911c8c6711381b44acf/380_0_1204_722/master/1204.jpg?width=1200&quality=85&auto=format&fit=max&s=735c293c60014758f0d81b54f03220a9",
+      "ImageUrl4":"https://sm.ign.com/ign_br/screenshot/default/sea-of-stars-mundo_6evd.jpg"
     },
     {
       "CodJogo": 4,
@@ -297,7 +309,11 @@
       "Preco": 25,
       "Descricao": "Stardew Valley é um jogo de simulação agrícola inspirado principalmente em Story of Seasons, uma série da Marvelous e anteriormente conhecida como Harvest Moon.",
       "Sinopse": "Você herdou a antiga fazenda do seu avô, em Stardew Valley. Com ferramentas de segunda-mão e algumas moedas, você parte para dar início a sua nova vida. Será que você vai aprender a viver da terra, a transformar esse matagal em um próspero lar?",
-      "Desconto": 100
+      "Desconto": 90,
+      "ImageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6zaBNyftsIQokTYniflXXo9XDlR4_WcPh3w&s",
+      "ImageUrl2":"https://sm.ign.com/ign_br/gallery/s/stardew-va/stardew-valley-gameplay-screenshots-16-update_811c.jpg",
+      "ImageUrl3":"https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/413150/ss_f79d2066dfaf32bbe87868d36db4845f771eddbd.1920x1080.jpg?t=1711128146",
+      "ImageUrl4":"https://uploads.jovemnerd.com.br/wp-content/uploads/2022/05/stardew_valley_20_milhoes_vendidos__0o0r0jz0i.jpg"
     },
     {
       "CodJogo": 5,
@@ -309,7 +325,11 @@
       "Preco": 10,
       "Descricao": "De Volta pra Cama é um jogo 3D ambientado um mundo de fantasia único e artístico onde você guiará o sonâmbulo Bob até sua cama com segurança. Para conseguir isso, você deve ter o controle do guardião do subconsciente de Bob chamado Subob.",
       "Sinopse": "Back to Bed é um jogo artístico de quebra-cabeça em 3D com um toque surreal. Bob é um narcoléptico azarado que tem tendência a adormecer em seu escritório chato e depois se aventurar como um sonâmbulo diante dos perigos da cidade grande. Felizmente, Bob tem um guardião subconsciente chamado Subob, que protege o sonâmbulo e o guia de volta para a segurança de sua cama.",
-      "Desconto": 80
+      "Desconto": 80,
+      "ImageUrl":"https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/308040/capsule_616x353.jpg?t=1729500405",
+      "ImageUrl2":"https://m.media-amazon.com/images/I/B1j-MgRcygS.png",
+      "ImageUrl3":"https://cdn4.idcgames.com/storage/image/1070/game_home_bg_section_2/default.png",
+      "ImageUrl4":"https://www.macgamestore.com/images_screenshots/back-to-bed-68779.jpg"
     },
     {
       "CodJogo": 6,
@@ -321,7 +341,11 @@
       "Preco": 45,
       "Descricao": "Vôlei, Tênis ou Futebol - escolha seu esporte favorito, vá para o campo e prepare-se para se divertir !!",
       "Sinopse": "Entre em campo e prepare-se para se divertir muito! Crie o seu próprio personagem e jogue para ser o campeão em três dos esportes mais populares do mundo. Prepare-se para o pontapé inicial e jogue futebol, domine a quadra de tênis e acerte o seu oponente na quadra de vôlei. Cada esporte apresenta os seus próprios modos repletos de vários torneios para conquistar!",
-      "Desconto": 10
+      "Desconto": 10,
+      "ImageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTZpzvACTrIRIK2cCvxvNI9mPo_NcVD3euFQ&s",
+      "ImageUrl2":"https://image.api.playstation.com/vulcan/ap/rnd/202011/1609/ukUPvyphKVZQwQNXViLRRL2D.jpg",
+      "ImageUrl3":"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1253680/ss_ce42c62db8d874f4d39ee0c77f30a6b3772e4a7d.1920x1080.jpg?t=1623428873",
+      "ImageUrl4":"https://www.operationsports.com/wp-content/uploads/2020/12/Super-Sports-Blast_20201229190553-scaled.jpg?fit=1200%2C675"
     },
     {
       "CodJogo": 7,
@@ -333,7 +357,11 @@
       "Preco": 57,
       "Descricao": "Ajude Madeline a enfrentar seus demônios internos em sua jornada até o topo da Montanha Celeste, nesse jogo de plataforma super afiado dos criadores de TowerFall. Desbrave centenas de desafios meticulosos, descubra segredos complicados e desvende o mistério da montanha.",
       "Sinopse": "Os controles são simples e acessíveis - salte, faça dash aéreo e escale -, mas com camadas de profundidade para dominar, onde cada morte é uma lição. Renascimentos incrivelmente rápidos permitem que você continue escalando enquanto descobre os mistérios da montanha e desbrava seus perigos.",
-      "Desconto": 20
+      "Desconto": 20,
+      "ImageUrl":"https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000006442/691ba3e0801180a9864cc8a7694b6f98097f9d9799bc7e3dc6db92f086759252",
+      "ImageUrl2":"https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fceleste%2Fhome%2F00-1920x1080-656978e07c631e4fb1dc5d2f435c536edaafd8d5.jpg",
+      "ImageUrl3":"https://image.api.playstation.com/cdn/UP2120/CUSA11302_00/FREE_CONTENT8dLigN91u10590gFwsBX/PREVIEW_SCREENSHOT2_161659.png",
+      "ImageUrl4":"https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1092840/ss_a110fe2f50c5828af4b1ff4e7c1ca773a1a7e5aa.1920x1080.jpg?t=1607394540"
     },
     {
       "CodJogo": 8,
@@ -345,8 +373,12 @@
       "Preco": 18,
       "Descricao": "UNDERTALE! O jogo RPG onde você não tem que matar ninguém",
       "Sinopse": "Bem-vindo à UNDERTALE. Neste RPG, você controla um humano que cai no subsolo em um mundo de monstros. Agora você deve encontrar a saída... ou ficará preso para sempre.",
-      "Desconto": 5
-    },
+      "Desconto": 5,
+      "ImageUrl":"https://cdn.awsli.com.br/2500x2500/229/229111/produto/56691874/1-avd224akxr.png",
+      "ImageUrl2":"https://assetsio.gnwcdn.com/undertale-endings-and-how-to-access-hard-mode-1502376001860.jpg?width=1200&height=600&fit=crop&enable=upscale&auto=webp",
+      "ImageUrl3":"https://criticalhits.com.br/wp-content/uploads/2016/03/undertale-05.png",
+      "ImageUrl4":"https://img.redbull.com/images/c_crop,w_1920,h_960,x_0,y_120/c_auto,w_1200,h_600/f_auto,q_auto/redbullcom/2018/09/07/3846aef4-2c63-4977-b334-20492f761835/undertale-landscape"}
+    ,
     {
       "CodJogo": 9,
       "Nome": "Limbo",
@@ -357,7 +389,11 @@
       "Preco": 35,
       "Descricao": "Sem certezas acerca do destino da irmã, um rapaz entra no LIMBO",
       "Sinopse": "Limbo é um sidescroller 2D, incorporando um sistema de física que administra os objetos ambientais e o personagem do jogador. O jogador guia um menino anônimo através de ambientes e armadilhas perigosas enquanto procura por sua irmã mais velha.",
-      "Desconto": 100
+      "Desconto": 100,
+      "ImageUrl":"https://image.api.playstation.com/cdn/UP2054/CUSA01664_00/OjfS773qw3ho5t9EXnVtdlcxVltVXBRb.png?w=440",
+      "ImageUrl2":"https://www.gamerpoint.com.br/wp-content/uploads/2020/12/limbo-enforcado.jpg",
+      "ImageUrl3":"https://i.ytimg.com/vi/Y4HSyVXKYz8/maxresdefault.jpg",
+      "ImageUrl4":"https://cdn2.unrealengine.com/Diesel%2Funtitled-page%2FEGS_PLAYDEAD_LIMBO_GALLERY_2-1920x1080-fa07f7fe68eca645cf5cdacdb281af8296450ed4.jpg"
     },
     {
       "CodJogo": 10,
@@ -369,7 +405,11 @@
       "Preco": 70,
       "Descricao": "Perseguido e sozinho, um rapaz é atraído para o centro de um projeto sombrio.",
       "Sinopse": "Inside conta a história de um menino enquanto ele luta para sobreviver contra as forças do mal que estão tentando dominar o mundo através de experimentos em corpos humanos de uma forma totalmente questionável. O menino começa a sua jornada em uma floresta onde estranhas sombras o perseguem.",
-      "Desconto": 10
+      "Desconto": 10,
+      "ImageUrl":"https://cdn1.epicgames.com/offer/13bb5776b9e1424d84ce42d9ba61c0ca/EGS_INSIDE_Playdead_S2_1200x1600-2753b8f312f8e0ac33f7a3d37c1eb242",
+      "ImageUrl2":"https://image.api.playstation.com/vulcan/img/rnd/202010/0810/auNTa3kASBnpCXKUsakn3xHx.jpg",
+      "ImageUrl3":"https://sm.ign.com/t/ign_br/news/i/inside-is-/inside-is-coming-to-nintendo-switch_4nvm.1200.jpg",
+      "ImageUrl4":"https://lavrapalavra.com/wp-content/uploads/2021/01/inside.jpg"
     },
     {
       "CodJogo": 11,
@@ -381,8 +421,12 @@
       "Preco": 42,
       "Descricao": "O roguelike de póquer.",
       "Sinopse": "Balatro é um jogo de construção de baralhos de cartas hipnoticamente satisfatório onde vais jogar mãos de póquer ilegais, descobrir jóqueres que vão mudar o rumo do jogo e fazer combinações empolgantes.",
-      "Desconto": 5
-    },
+      "Desconto": 5,
+      "ImageUrl":"https://store-images.s-microsoft.com/image/apps.51959.14272217582130616.02bf9982-d980-42d9-93e6-372b4b7e36d8.31c1e585-05c9-4f32-b695-4b900c913466",
+      "ImageUrl2":"https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2379780/ss_d17a3adc6176c7f99e0dc31c49f4764f137e6374.1920x1080.jpg?t=1745331508",
+      "ImageUrl3":"https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2379780/ss_e32ac94d7d1d6be7dd015d78f2b52aeb4cc282ed.1920x1080.jpg?t=1745331508",
+      "ImageUrl4":"https://cdn.mos.cms.futurecdn.net/bZA9i7KrBKbMo3pJ2ykpAF-1200-80.png"}
+    ,
     {
       "CodJogo": 12,
       "Nome": "Dave the diver",
@@ -393,8 +437,12 @@
       "Preco": 55,
       "Descricao": "Junte-se a Dave e seus amigos peculiares enquanto eles tentam desvendar os segredos do misterioso Blue Hole.",
       "Sinopse": "DAVE THE DIVER is a casual, singleplayer adventure RPG featuring deep-sea exploration and fishing during the day and sushi restaurant management at night.",
-      "Desconto": 5
-    },
+      "Desconto": 5,
+      "ImageUrl":"https://image.api.playstation.com/vulcan/ap/rnd/202401/2508/f194dc023adef481689d90db93f343b73f5b4c5741925556.png",
+      "ImageUrl2":"https://projectn.com.br/wp-content/uploads/2025/03/image-68.png",
+      "ImageUrl3":"https://image.api.playstation.com/vulcan/ap/rnd/202403/2806/024e0017899b4430a553226ff93f8054b7d04dd2fbc9bdc9.jpg",
+      "ImageUrl4":"https://i.guim.co.uk/img/media/45fdd2e61e8a63d4f78397f9ef96e5795db01f80/80_0_2400_1440/master/2400.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=388db4085b35003305a16e7733e7b084"}
+    ,
     {
       "CodJogo": 13,
       "Nome": "Potion craft",
@@ -405,7 +453,11 @@
       "Preco": 55,
       "Descricao": "Lembre-se: a cidade inteira conta com você.",
       "Sinopse": "Potion Craft é um simulador de alquimista onde você interage fisicamente com suas ferramentas e ingredientes para preparar poções. Você tem controle total de toda a loja: invente novas receitas, atraia clientes e experimente o quanto quiser.",
-      "Desconto": 10
+      "Desconto": 10,
+      "ImageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNhRfYA-ibSItaHByWg8L-Z1pwnEijNDR4BQ&s",
+      "ImageUrl2":"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1210320/ss_76d4a5ca38e4a9543a7106346c5c9c162474c689.1920x1080.jpg?t=1742477199",
+      "ImageUrl3":"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1210320/ss_a0c1d496af8071557b72dae3dc3f7c01aa9d9c0a.1920x1080.jpg?t=1742477199",
+      "ImageUrl4":"https://live.staticflickr.com/65535/52552478327_97c8335a44_h.jpg"
     },
     {
       "CodJogo": 14,
@@ -417,7 +469,11 @@
       "Preco": 55,
       "Descricao": "Os habitantes de Moonbury precisam de curativos e tu és o melhor químico disponível!",
       "Sinopse": "Com as tuas ferramentas de confiança, um caldeirão e um companheiro canino, terás de diagnosticar sintomas, recolher ingredientes, preparar poções e curar doenças nesta simulação RPG cheia de desafios",
-      "Desconto": 15
+      "Desconto": 15,
+      "ImageUrl":"https://image.api.playstation.com/vulcan/ap/rnd/202205/3115/FS9OyTnbApSLRK8erPUQln71.jpg",
+      "ImageUrl2":"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1337760/ss_cdbab8c3e61d887eef35d2583edcf491d1add04a.1920x1080.jpg?t=1741787991",
+      "ImageUrl3":"https://www.gematsu.com/wp-content/uploads/2022/06/Potion-Permit_06-22-22.jpg",
+      "ImageUrl4":"https://www.digitallydownloaded.net/wp-content/uploads/2022/09/wqfdZdKmVw3Crc8xSeKMdBBp-scaled.webp"
     },
     {
       "CodJogo": 16,
@@ -429,7 +485,11 @@
       "Preco": 50,
       "Descricao": "Uma jovem escolhida pelos deuses para lutar contra a invasão demoníaca.",
       "Sinopse": "Raji: An Ancient Epic é um jogo de ação e aventura ambientado na antiga Índia. Uma jovem chamada Raji foi escolhida pelos deuses para enfrentar a invasão demoníaca do reino humano. A sua missão: resgatar seu irmão mais novo e enfrentar o senhor dos demônios, Mahabalasura.",
-      "Desconto": 15
+      "Desconto": 15,
+      "ImageUrl":"https://image.api.playstation.com/vulcan/ap/rnd/202403/2811/44592d9494079904903a460d1912eb202066e408c1e738d5.png",
+      "ImageUrl2":"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730390/ss_fe1620c69435bd878884e4d9d04982a14807a962.1920x1080.jpg?t=1744995676",
+      "ImageUrl3":"https://theeliteinstitute.net/wp-content/uploads/2021/03/raji-hero500.jpg",
+      "ImageUrl4":"https://guarientoportal.com/wp-content/uploads/2021/07/Raji-An-Ancient-Epic-Mahabalasura.jpg"
     },
     {
       "CodJogo": 17,
@@ -441,7 +501,11 @@
       "Preco": 75,
       "Descricao": "Um jogo de plataforma visualmente deslumbrante com uma história profunda e emocionante.",
       "Sinopse": "Ori and the Blind Forest conta a história de um jovem órfão destinado a feitos heróicos. Em um jogo de ação e plataforma com elementos de RPG, Ori explora uma floresta misteriosa enfrentando desafios e revelando segredos com jogabilidade fluida e visuais encantadores.",
-      "Desconto": 10
+      "Desconto": 10,
+      "ImageUrl":"https://assets.nintendo.com/image/upload/q_auto/f_auto/ncom/software/switch/70010000018710/89e1f45e5012962fcdbc47b297dbb99472d04fdae7c60213bce6fb44713d2068",
+      "ImageUrl2":"https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/261570/ss_bcc055d95261e3c1450b031c02d92bbd32f0ecf6.1920x1080.jpg?t=1667504148",
+      "ImageUrl3":"https://sm.ign.com/ign_br/screenshot/default/2626013-timeline-scene03_zm1r.jpg",
+      "ImageUrl4":"https://criticalhits.com.br/wp-content/uploads/2016/01/0bcOEmP1ETd5k8Oc.jpg"
     },
     {
       "CodJogo": 18,
@@ -453,7 +517,11 @@
       "Preco": 60,
       "Descricao": "Enfrente os seus medos de infância nesta aventura sombria e caprichada.",
       "Sinopse": "Little Nightmares é um jogo de aventura e quebra-cabeça em estilo de plataforma com elementos de terror. Acompanhe a jornada de Six, uma menina presa em um misterioso navio cheio de criaturas grotescas, e ajude-a a escapar dos horrores que espreitam em cada canto.",
-      "Desconto": 15
+      "Desconto": 15,
+      "ImageUrl":"https://image.api.playstation.com/cdn/UP0700/CUSA05929_00/BCXhBnr9X5jjilzuc5tyv7GOcBukog6V.png",
+      "ImageUrl2":"https://cdn.awsli.com.br/2500x2500/2693/2693981/produto/247592940/little-nightmares-ps4-midia-digital-c307f35b-bbjz3uz8lk.jpg",
+      "ImageUrl3":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi4W6d9WVIFjUOTN15dX2Eu_t0gI7W2jRmzQ&s",
+      "ImageUrl4":"https://rggames.com.br/wp-content/uploads/2022/03/Little-Nightmares-Screenshot-2022.03.21-23.43.30.18.jpg"
     },
     {
       "CodJogo": 19,
@@ -465,7 +533,11 @@
       "Preco": 80,
       "Descricao": "Spiritfarer é um jogo de gerenciamento acolhedor sobre morrer.",
       "Sinopse": "Jogue como Stella, uma barqueira dos mortos, construa um barco para explorar o mundo, cuide dos espíritos e liberte-os para a vida após a morte. Cultive, mine, pesque, colha, cozinhe e crie enquanto compartilha momentos especiais com seus passageiros espirituais.",
-      "Desconto": 20
+      "Desconto": 20,
+      "ImageUrl":"https://upload.wikimedia.org/wikipedia/pt/b/b3/Spiritfarer.jpg",
+      "ImageUrl2":"https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/972660/ss_13be8ec2a11cf1f012abbbe9d526447cfff6cdea.1920x1080.jpg?t=1729618510",
+      "ImageUrl3":"https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/JHB4Q3SG5JDBHK6Y6EXV7HBOLE.png&w=1800&h=1800",
+      "ImageUrl4":"https://www.pockettactics.com/wp-content/sites/pockettactics/2021/08/spiritfarer-review-1.jpg"
     },
     {
       "CodJogo": 20,
@@ -477,7 +549,11 @@
       "Preco": 45,
       "Descricao": "Um thriller cibernético sobre destino e felicidade.",
       "Sinopse": "The Red Strings Club é uma experiência narrativa cibernética sobre uma conspiração corporativa para eliminar a depressão e o medo da sociedade. Assuma o papel de um barman e um hacker e manipule pessoas para descobrir a verdade.",
-      "Desconto": 10
+      "Desconto": 10,
+      "ImageUrl":"https://i1.sndcdn.com/artworks-000292520178-881chp-t500x500.jpg",
+      "ImageUrl2":"https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000016348/f34ff9fe85dc6cdea6d0e66b8f79ab9231cb5a2a3ab60da30e8571798b7ef15a",
+      "ImageUrl3":"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/589780/ss_8b88a373c47f49987bed4dd25063b96ccf59c1a3.1920x1080.jpg?t=1728690203",
+      "ImageUrl4":"https://cdna.artstation.com/p/assets/images/images/022/301/596/large/david-lopez-photo1wena.jpg?1574889929"
     },
     {
       "CodJogo": 21,
@@ -489,8 +565,12 @@
       "Preco": 25,
       "Descricao": "Caminhe, escale e plane por uma montanha pacífica e charmosa.",
       "Sinopse": "A Short Hike é um jogo de aventura relaxante onde você explora uma ilha montanhosa no ritmo que quiser. Conheça outros viajantes, descubra segredos e aproveite a natureza com uma trilha sonora suave e encantadora.",
-      "Desconto": 0
-    },
+      "Desconto": 0,
+      "ImageUrl":"https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000032367/bc0bb51b14fcde8f0efadfc806c627c08f22dcb804c05d154b522841db586e5f",
+      "ImageUrl2":"https://image.api.playstation.com/vulcan/ap/rnd/202107/0919/9ewQXoMuOBkXXWXIoHyGGkXk.png",
+      "ImageUrl3":"https://cdn2.unrealengine.com/02-shorthike-1920x1079-8a083cb8aa02.jpg",
+      "ImageUrl4":"https://www.comfycozygaming.com/wp-content/uploads/2023/11/ashorthike5-1300x650.png"}
+    ,
     {
       "CodJogo": 22,
       "Nome": "Unpacking",
@@ -501,8 +581,12 @@
       "Preco": 30,
       "Descricao": "Um jogo zen sobre tirar coisas de caixas e colocá-las em casa.",
       "Sinopse": "Unpacking é uma mistura de quebra-cabeça com decoração de interiores. Viva uma história contada não por palavras, mas pelos objetos que você organiza em cada novo lar. Descubra fragmentos de vida em cada mudança.",
-      "Desconto": 5
-    },
+      "Desconto": 5,
+      "ImageUrl":"https://upload.wikimedia.org/wikipedia/pt/8/80/Capa_Unpacking.png",
+      "ImageUrl2":"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1135690/ss_e0be82259f402c277973c5d0c4f2a22d01d9b1c2.1920x1080.jpg?t=1745453778",
+      "ImageUrl3":"https://platform.polygon.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25201552/vlcsnap_2024_01_03_14h38m27s516.jpg?quality=90&strip=all&crop=7.8125,0,84.375,100",
+      "ImageUrl4":"https://static1.thegamerimages.com/wordpress/wp-content/uploads/2022/09/Unpacking-Beginner-Tips-Feature-Image.jpg"}
+    ,
     {
       "CodJogo": 23,
       "Nome": "Slay the Spire",
@@ -513,7 +597,11 @@
       "Preco": 70,
       "Descricao": "Escolha cartas sabiamente! Construa o baralho definitivo e derrote a torre.",
       "Sinopse": "Slay the Spire combina jogos de cartas e roguelikes em uma aventura dinâmica. Monte seu baralho, enfrente inimigos únicos e descubra relíquias poderosas enquanto sobe por uma torre sempre diferente.",
-      "Desconto": 15
+      "Desconto": 15,
+      "ImageUrl":"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/646570/capsule_616x353.jpg?t=1745019194",
+      "ImageUrl2":"https://m.media-amazon.com/images/I/71MD91ej0aL.jpg",
+      "ImageUrl3":"https://i.imgur.com/VNtO7KN.jpg",
+      "ImageUrl4":"https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/646570/ss_b757436d08ba08292796bfed9c60e7cc99d5f2c3.1920x1080.jpg?t=1745019194"
     },
     {
       "CodJogo": 24,
@@ -525,7 +613,11 @@
       "Preco": 45,
       "Descricao": "Um jogo de aventura sobrenatural sobre um grupo de amigos em uma ilha misteriosa.",
       "Sinopse": "Oxenfree é um thriller sobrenatural sobre um grupo de adolescentes que sem querer abrem um portal fantasmagórico. Viva diálogos dinâmicos e escolhas que moldam a história com atmosfera envolvente e visual estilizado.",
-      "Desconto": 10
+      "Desconto": 10,
+      "ImageUrl":"https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000001613/f52e6955d0158331c5666d3855c96516aadcfa7b9afa2cbfed3b180e4588b919",
+      "ImageUrl2":"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/388880/ss_d4d08fb80a91acffc1b9fc6eb1bbfdcdd14d9e38.1920x1080.jpg?t=1718924110",
+      "ImageUrl3":"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/388880/ss_75af452f6e7f6c5dc1ada4f001abcccac6c57db7.1920x1080.jpg?t=1718924110",
+      "ImageUrl4":"https://i0.wp.com/astralnoizeuk.com/wp-content/uploads/2021/02/Cliffs.jpg?fit=1920%2C1080&ssl=1"
     },
     {
       "CodJogo": 25,
@@ -537,7 +629,11 @@
       "Preco": 40,
       "Descricao": "GRIS é uma experiência serena e evocativa, livre de perigo e frustração.",
       "Sinopse": "GRIS é um jogo de plataforma narrativo onde você vive a jornada emocional de uma jovem perdida em seu próprio mundo. Através da dor e da esperança, descubra um universo artístico com jogabilidade fluida e poética.",
-      "Desconto": 10
+      "Desconto": 10,
+      "ImageUrl":"https://store-images.s-microsoft.com/image/apps.46837.14016784756610835.ef385530-19dc-4258-a580-04c303cc6b03.ee095130-c7c7-46f7-b5a6-a365528bc9bb",
+      "ImageUrl2":"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/683320/ss_631d99cc6462cce94081032b7e600a6b87c3f7d3.1920x1080.jpg?t=1728690313",
+      "ImageUrl3":"https://www.portallos.com.br/wp-content/uploads/2018/12/GRIS-12.jpg",
+      "ImageUrl4":"https://image.api.playstation.com/vulcan/img/cfn/11307zqzG5jEDK730Z_TPKohNcYFTVIyZZDE9D0Gp-5hlYY4-_Mpsaty64cyfM1-yRrx01tYxrWY9Yd4IvWq2wA_kRUXsFIm.jpg"
     },
     {
       "CodJogo": 26,
@@ -549,8 +645,12 @@
       "Preco": 35,
       "Descricao": "Gomez é uma criatura bidimensional que descobre um mundo tridimensional.",
       "Sinopse": "Fez é um jogo de quebra-cabeça e plataforma onde você muda a perspectiva do mundo para resolver desafios. Explore um vasto universo em 2D e 3D e desvende seus segredos em uma jornada cheia de charme.",
-      "Desconto": 5
-    },
+      "Desconto": 5,
+      "ImageUrl":"https://upload.wikimedia.org/wikipedia/commons/f/fc/Fez_%28video_game%29_cover_art.png",
+      "ImageUrl2":"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/224760/ss_052f5322575d56df335377423021da1a7bf18f22.1920x1080.jpg?t=1572375251",
+      "ImageUrl3":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgQkjdpwedsspREGU7hrmfCPuY7vVfemWIEg&s",
+      "ImageUrl4":"https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/224760/ss_9e1ae57025af60cb1f0b752ca63cbe8e178cc923.1920x1080.jpg?t=1572375251"}
+    ,
     {
       "CodJogo": 27,
       "Nome": "Journey",
@@ -561,7 +661,11 @@
       "Preco": 60,
       "Descricao": "Viaje por um vasto deserto em busca de significado.",
       "Sinopse": "Journey é uma aventura artística onde você explora paisagens deslumbrantes com trilha sonora premiada. Sozinho ou acompanhado por outro jogador anônimo, descubra um mundo simbólico e emocional.",
-      "Desconto": 15
+      "Desconto": 15,
+      "ImageUrl":"https://upload.wikimedia.org/wikipedia/pt/thumb/0/0c/Journey.png/250px-Journey.png",
+      "ImageUrl2":"https://im.ziffdavisinternational.com/ign_br/screenshot/default/journey1_jjjg.jpg",
+      "ImageUrl3":"https://www.adrenaline.com.br/wp-content/uploads/2012/03/7.jpg",
+      "ImageUrl4":"https://uploads.jovemnerd.com.br/wp-content/uploads/2018/12/journey-pc.png"
     },
     {
       "CodJogo": 28,
@@ -573,7 +677,11 @@
       "Preco": 50,
       "Descricao": "Um mistério em primeira pessoa ambientado em uma floresta isolada.",
       "Sinopse": "Firewatch é um jogo narrativo em que você assume o papel de Henry, um vigia de incêndios florestais. Com uma única conexão por rádio com sua supervisora Delilah, você explora o deserto do Wyoming e descobre segredos sombrios.",
-      "Desconto": 10
+      "Desconto": 10,
+      "ImageUrl":"https://image.api.playstation.com/cdn/UP0146/CUSA04107_00/XFEn5Mk8QsgH7gB9iTEWMgg9LLHFRiuD.png",
+      "ImageUrl2":"https://files.tecnoblog.net/wp-content/uploads/2021/10/firewatch.jpg",
+      "ImageUrl3":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS42fwVAKAJg5Zq7rZn1rsMOzXJDVovAX3Kdg&s",
+      "ImageUrl4":"https://uploads.jovemnerd.com.br/wp-content/uploads/Firewatch-500k.jpg"
     },
     {
       "CodJogo": 29,
@@ -585,7 +693,11 @@
       "Preco": 55,
       "Descricao": "Explore a cidade natal de Mae, cheia de histórias e mistérios.",
       "Sinopse": "Night in the Woods é uma aventura narrativa sobre juventude, amizade e mudança. Jogue como Mae Borowski, que retorna à sua cidade natal Possum Springs, e mergulhe em conversas, segredos e um estranho mistério.",
-      "Desconto": 10
+      "Desconto": 10,
+      "ImageUrl":"https://m.media-amazon.com/images/M/MV5BNjlkYzEwZWMtNWJmZi00OGIzLWE0NjgtY2QwZTc4MzhlM2U5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+      "ImageUrl2":"https://i.kinja-img.com/image/upload/c_fill,h_675,pg_1,q_80,w_1200/62dcb7351380b64905f359e58174477e.jpg",
+      "ImageUrl3":"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/481510/ss_f038268bdcef20dc090dca4e0ac8fbed4923c496.1920x1080.jpg?t=1706292417",
+      "ImageUrl4":"https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25066119/ss_03d9b8b9bae9213bbab3190a7975d81f4cb88fb1.jpg?quality=90&strip=all&crop=7.8125,0,84.375,100"
     },
     {
       "CodJogo": 30,
@@ -597,7 +709,11 @@
       "Preco": 75,
       "Descricao": "Um mundo aberto repleto de quebra-cabeças inteligentes e surpreendentes.",
       "Sinopse": "The Witness é um jogo de exploração em primeira pessoa com mais de 500 quebra-cabeças. Aventure-se em uma ilha misteriosa cheia de desafios mentais e descubra pistas sobre sua identidade e propósito.",
-      "Desconto": 20
+      "Desconto": 20,
+      "ImageUrl":"https://image.api.playstation.com/cdn/UP2124/CUSA00498_00/awvzBy4CY2NKeps2omt7SC8lxJNozWCe.png",
+      "ImageUrl2":"https://sm.ign.com/t/ign_br/review/t/the-witnes/the-witness-review_5s1j.1200.jpg",
+      "ImageUrl3":"https://sm.ign.com/ign_br/news/t/the-witnes/the-witness-brought-in-over-5-million-in-its-first_ggzc.jpg",
+      "ImageUrl4":"https://i.guim.co.uk/img/media/b2d4c0e46dec08aacd7ab028113cf024b4238e76/97_0_1795_1080/master/1795.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=341a1e0d5df23cc59e38a7b8245a8432"
     }
   ],
   "meiopagamento": [
