@@ -8,7 +8,7 @@ const CardJogo = ({ jogo }) => {
                 <p className="text-gray-300 text-xs">Jogo Base</p>
                 <p className="text-gray-300 text-sm font-semibold">{jogo.Nome}</p>
                 <div className="mt-1">
-                    <span className="text-lime-600 font-bold text-xs">{jogo.Desconto}-%</span>
+                    <span className="bg-rose-700 rounded-full px-2 py-0.5 text-white font-bold text-xs">-{jogo.Desconto}%</span>
                     <div className="flex items-center mt-1">
                         <span className="line-through text-gray-400 mr-1 text-xs">R$ {jogo.Preco}</span>
                         <span className="text-lime-600 font-bold text-xs">R$ {jogo.Preco - (jogo.Desconto / 100) * jogo.Preco}</span>
