@@ -164,6 +164,7 @@ const Free2Play = () => {
             >
               <div className="relative">
                 <CardJogo jogo={jogo} />
+
               </div>
             </div>
           ))}
