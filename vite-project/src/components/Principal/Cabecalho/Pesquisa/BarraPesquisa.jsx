@@ -12,7 +12,7 @@ const BarraPesquisa = ({ placeholder, label, type, name, value, onChange }) => {
         />
         <button
           className="px-3 py-1.5 bg-lime-600 text-white font-semibold rounded-r-md hover:bg-lime-500 transition text-sm mr-1.5">
-            Buscar <TODO></TODO>
+            Buscar
           </button>
       </div>
     );
