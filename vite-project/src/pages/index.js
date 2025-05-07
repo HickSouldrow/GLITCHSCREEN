@@ -6,3 +6,4 @@ export * from './Termos';
 export * from './Cadastro';
 export * from './Login';
 export * from './Perfil';
+export * from './Template_jogo';

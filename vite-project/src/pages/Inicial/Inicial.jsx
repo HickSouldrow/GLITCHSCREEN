@@ -1,5 +1,4 @@
-import { CardCarousel, Carousel, Populares, Destaque, Free2Play, SolidCards, LinhaPulsante, ThreeCards, VejaMais } from '../../components';
-
+import { CardCarousel, RandomCarousel, ReverseCarousel, PodeGostar, Carousel, Populares, Destaque, Free2Play, SolidCards, LinhaPulsante, ThreeCards, ThreeCards2, VejaMais } from '../../components';
 
 const Inicial = () => {
   return (
@@ -23,7 +22,7 @@ const Inicial = () => {
         <LinhaPulsante/>
 
         <div className="mt-8 mb-20 w-full">
-          <CardCarousel />
+          <ReverseCarousel />
         </div>
 
         <LinhaPulsante/>
@@ -35,11 +34,26 @@ const Inicial = () => {
         <div className="mt-8 mb-20 w-full">
           <Free2Play />
         </div>
-
         <LinhaPulsante/>
         
         <div className="mt-8 mb-20 w-full">
           <ThreeCards />
+        </div>
+
+        <LinhaPulsante/>
+
+        <br></br>
+              <PodeGostar/>
+        <br></br>
+        
+        <div className="mt-8 mb-20 w-full">
+          <RandomCarousel/>
+        </div>
+
+        <LinhaPulsante/>
+        
+        <div className="mt-8 mb-20 w-full">
+          <ThreeCards2 />
         </div>
 
         <LinhaPulsante/>

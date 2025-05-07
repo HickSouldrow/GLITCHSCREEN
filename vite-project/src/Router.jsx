@@ -1,7 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 
 import { LayoutPadrao } from './layouts';
-import { Erro404, Inicial, SobreNos, Termos, Contato, Login, Cadastro, Perfil } from './pages';
+import { Erro404, Inicial, SobreNos, Termos, Contato, Login, Cadastro, Perfil,  } from './pages';
+import Template_jogo from './pages/Template_jogo/Template_jogo';
+
 
 const Router = () => {
   return (
@@ -15,7 +17,8 @@ const Router = () => {
         <Route path="/Login" element={<Login />} />
         <Route path="/Cadastro" element={<Cadastro />} />
         <Route path="/Perfil" element={<Perfil />} />
-      </Route>
+        <Route path="/jogo/:CodJogo" element={<Template_jogo />} />
+        </Route>
     </Routes>
   );
 };
