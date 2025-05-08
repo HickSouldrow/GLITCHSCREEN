@@ -71,6 +71,15 @@ const Menu = () => {
           </li>
           <li>
             <Link
+              to="/Classificacao"
+              className="text-lime-500 hover:bg-lime-600 hover:text-white p-3 rounded-md transition"
+              onClick={() => setMenuOpen(false)}
+            >
+              Classificação Indicativa
+            </Link>
+          </li>
+          <li>
+            <Link
               to="/SobreNos"
               className="text-lime-500 hover:bg-lime-600 hover:text-white p-3 rounded-md transition"
               onClick={() => setMenuOpen(false)}

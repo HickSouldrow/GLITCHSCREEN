@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { LayoutPadrao } from './layouts';
 import { Erro404, Inicial, SobreNos, Termos, Contato, Login, Cadastro, Perfil, Resultados,  } from './pages';
 import Template_jogo from './pages/Template_jogo/Template_jogo';
+import Classificacao from './pages/Classificacao/Classificacao';
 
 
 const Router = () => {
@@ -18,7 +19,8 @@ const Router = () => {
         <Route path="/Cadastro" element={<Cadastro />} />
         <Route path="/Perfil" element={<Perfil />} />
         <Route path="/jogo/:CodJogo" element={<Template_jogo />} />
-        <Route path="/Resultado" element={<Resultados />} />
+        <Route path="/PesquisaResultado" element={<Resultados />} />
+        <Route path="/Classificacao" element={<Classificacao />} />
         </Route>
     </Routes>
   );
