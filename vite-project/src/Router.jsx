@@ -19,7 +19,7 @@ const Router = () => {
         <Route path="/Cadastro" element={<Cadastro />} />
         <Route path="/Perfil" element={<Perfil />} />
         <Route path="/jogo/:CodJogo" element={<Template_jogo />} />
-        <Route path="/PesquisaResultado" element={<Resultados />} />
+        <Route path="/Resultado" element={<Resultados />} />
         <Route path="/Classificacao" element={<Classificacao />} />
         </Route>
     </Routes>

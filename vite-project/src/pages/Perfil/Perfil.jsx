@@ -90,7 +90,7 @@ const Perfil = () => {
   }
 
   return (
-    <div className="min-h-screen mt-20 flex flex-col md:flex-row justify-center items-start px-4 py-10 gap-10 bg-stone-900 text-white">
+    <div className="min-h-screen mt-20 flex flex-col md:flex-row justify-center items-start px-4 py-10 gap-10 text-white">
       <div className="w-full md:w-1/3 bg-gradient-to-b from-stone-800 to-stone-700 p-6 rounded-xl shadow-lg border-2 border-lime-800 relative before:absolute before:inset-0 before:border before:border-lime-800 before:rounded-xl before:shadow-[0_0_15px_#84cc16] before:animate-pulse">
         <svg xmlns="http://www.w3.org/2000/svg" className="w-24 h-24 mx-auto rounded-full border-4 stroke-width-2 border-lime-600 mb-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A8.966 8.966 0 0112 15c2.21 0 4.21.8 5.879 2.121M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>

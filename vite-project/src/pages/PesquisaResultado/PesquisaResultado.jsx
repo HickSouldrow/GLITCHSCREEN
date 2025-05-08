@@ -42,28 +42,18 @@ const Resultados = ({pesquisaa}) => {
   }, [pesquisa]);
 
   return (
-    <div style={{ padding: '20px', minHeight: '80vh' }}>
-      <h2>Resultados para "{pesquisa}"</h2>
+    <div className='container mx-auto relative w-full px-4 py-20'>
+      <h2 className='text-xl font-bold text-lime-500 mb-6 text-center'>Resultados para "{pesquisa}"</h2>
       {carregando && <p>Carregando...</p>}
       {erro && <p style={{ color: 'red' }}>{erro}</p>}
 
       {/* Mensagem de “nenhum jogo” com estilo */}
       {!carregando && resultados.length === 0 && (
-        <div
-          style={{
-            marginTop: '120px',      // empurra pra baixo
-            textAlign: 'center',     // centraliza
-            fontSize: '1.8rem',      // texto maior
-            color: '#555',
-            display: 'flex',         // alinhamento ícone + texto
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '12px',
-          }}
-        >
-          <FaSadTear size={56} />   {/* ícone grande */}
+        <div className="mt-28 text-2xl text-gray-600 flex items-center gap-3">
+          <FaSadTear size={56} /> {/* ícone grande */}
           <span>Nenhum jogo encontrado.</span>
         </div>
+      
       )}
 
       <ul style={{ listStyle: 'none', padding: 0 }}>

@@ -1,14 +1,14 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "joao",
       "password": "123",
       "nickname": "João giga",
       "token": "abc123"
     },
     {
-      "id": 1,
+      "id": "1",
       "username": "Hick",
       "password": "Stunnados",
       "nickname": "Souldrow",
@@ -43,256 +43,276 @@
       "password": "Stunnados",
       "email": "123@4",
       "token": "newToken123"
+    },
+    {
+      "id": "4ed6",
+      "username": "Hick1lugar",
+      "password": "Stunnados",
+      "email": "henriquedasilvamacedo6@gmail.com",
+      "token": "newToken123"
     }
   ],
   "categorias": [
     {
       "CodCategoria": 1,
-      "CategoriaTipo": "Competitivo Online"
+      "CategoriaTipo": "Competitivo Online",
+      "id": "4b0e"
     },
     {
       "CodCategoria": 2,
-      "CategoriaTipo": "Cooperativo"
+      "CategoriaTipo": "Cooperativo",
+      "id": "2b37"
     },
     {
       "CodCategoria": 3,
-      "CategoriaTipo": "MMO"
+      "CategoriaTipo": "MMO",
+      "id": "5fb6"
     },
     {
       "CodCategoria": 4,
-      "CategoriaTipo": "Multijogador"
+      "CategoriaTipo": "Multijogador",
+      "id": "ba0c"
     },
     {
       "CodCategoria": 5,
-      "CategoriaTipo": "Multijogador local"
+      "CategoriaTipo": "Multijogador local",
+      "id": "d384"
     },
     {
       "CodCategoria": 6,
-      "CategoriaTipo": "Rede Local(LAN)"
+      "CategoriaTipo": "Rede Local(LAN)",
+      "id": "c487"
     },
     {
       "CodCategoria": 7,
-      "CategoriaTipo": "Um jogador"
+      "CategoriaTipo": "Um jogador",
+      "id": "0a0a"
     }
   ],
   "classificacoes": [
     {
       "CodFaixaEtaria": 1,
-      "ClassificacaoIndicativa": "Livre"
+      "ClassificacaoIndicativa": "Livre",
+      "id": "3127"
     },
     {
       "CodFaixaEtaria": 2,
-      "ClassificacaoIndicativa": "10 anos"
+      "ClassificacaoIndicativa": "10 anos",
+      "id": "8311"
     },
     {
       "CodFaixaEtaria": 3,
-      "ClassificacaoIndicativa": "12 anos"
+      "ClassificacaoIndicativa": "12 anos",
+      "id": "7c65"
     },
     {
       "CodFaixaEtaria": 4,
-      "ClassificacaoIndicativa": "14 anos"
+      "ClassificacaoIndicativa": "14 anos",
+      "id": "d878"
     },
     {
       "CodFaixaEtaria": 5,
-      "ClassificacaoIndicativa": "16 anos"
+      "ClassificacaoIndicativa": "16 anos",
+      "id": "8dfa"
     },
     {
       "CodFaixaEtaria": 6,
-      "ClassificacaoIndicativa": "18 anos"
+      "ClassificacaoIndicativa": "18 anos",
+      "id": "a89e"
     }
   ],
   "desenvolvedoras": [
     {
-      "id": 1,
+      "id": "1",
       "nome": "Team Cherry",
       "cnpj": "69907994000120",
       "email": "teamCherry@gmail.com",
       "site": "https://www.teamcherry.com.au/"
     },
     {
-      "id": 2,
+      "id": "2",
       "nome": "Studio MDHR Entertainment Inc",
       "cnpj": "04013024000136",
       "email": "press@studiomdhr.com",
       "site": "http://studiomdhr.com/"
     },
     {
-      "id": 3,
+      "id": "3",
       "nome": "Sabotage Studio",
       "cnpj": "08242237000190",
       "email": "philip@sabotagestudio.com",
       "site": "https://sabotagestudio.com/"
     },
     {
-      "id": 4,
+      "id": "4",
       "nome": "ConcernedApe",
       "cnpj": "98025037000179",
       "email": "support@stardewvalley.net",
       "site": "https://www.stardewvalley.net/author/concernedape/"
     },
     {
-      "id": 5,
+      "id": "5",
       "nome": "Bedtime Digital Games",
       "cnpj": "06142151000160",
       "email": "contact@bedtime.io",
       "site": "Bedtime Digital Games"
     },
     {
-      "id": 6,
+      "id": "6",
       "nome": "Unfinished Pixel",
       "cnpj": "64188722000102",
       "email": "contact@unfinishedpixel.com",
       "site": "https://www.unfinishedpixel.com/"
     },
     {
-      "id": 7,
+      "id": "7",
       "nome": "Extremely OK Games, Ltd",
       "cnpj": "08186210000128",
       "email": "contact@exok.com",
       "site": "https://www.exok.com/index.html"
     },
     {
-      "id": 8,
+      "id": "8",
       "nome": "tobyfox",
       "cnpj": "23176724000196",
       "email": "undertalegame@gmail.com",
       "site": "fangamer.com"
     },
     {
-      "id": 9,
+      "id": "9",
       "nome": "Playdead",
       "cnpj": "49831152000125",
       "email": "support@playdead.com",
       "site": "https://playdead.com/"
     },
     {
-      "id": 10,
+      "id": "10",
       "nome": "LocalThunk",
       "cnpj": "73088204000108",
       "email": "balatro@playstack.com",
       "site": "https://x.com/LocalThunk"
     },
     {
-      "id": 11,
+      "id": "11",
       "nome": "MINTROCKET",
       "cnpj": "61193266000192",
       "email": "press@mintrocketgames.com",
       "site": "https://mintrock.et/en/about"
     },
     {
-      "id": 12,
+      "id": "12",
       "nome": "niceplay games",
       "cnpj": "90804050000114",
       "email": "contact@niceplay-games.com",
       "site": "https://niceplay-games.com/"
     },
     {
-      "id": 13,
+      "id": "13",
       "nome": "MassHive Media",
       "cnpj": "74215697000154",
       "email": "contact@masshive-media.com",
       "site": "https://www.masshive-media.com/"
     },
     {
-      "id": 14,
+      "id": "14",
       "nome": "Billy Basso",
       "cnpj": "80416656000129",
       "email": "billybasso1@gmail.com",
       "site": "https://www.animalwell.net/"
     },
     {
-      "id": 15,
+      "id": "15",
       "nome": "Polychroma Games",
       "cnpj": "68602793000152",
       "email": "first@polychromagames.com",
       "site": "https://polychromagames.com/"
     },
     {
-      "id": 16,
+      "id": "16",
       "nome": "Orube Game Studio",
       "cnpj": "90848836000133",
       "email": "contato@orubegamestudio.com",
       "site": "https://www.orubegamestudio.com/"
     },
     {
-      "id": 17,
+      "id": "17",
       "nome": "Tour De Pizza",
       "cnpj": "23984062000180",
       "email": "pizzatowergame@gmail.com",
       "site": "https://x.com/pizzatowergame"
     },
     {
-      "id": 18,
+      "id": "18",
       "nome": "Dani",
       "cnpj": "12213303000171",
       "email": "danidevbusiness@gmail.com",
       "site": "https://www.youtube.com/@Danidev"
     },
     {
-      "id": 19,
+      "id": "19",
       "nome": "Askiisoft",
       "cnpj": "16566473000190",
       "email": "contact@askiisoft.com",
       "site": "https://x.com/askiisoft"
     },
     {
-      "id": 20,
+      "id": "20",
       "nome": "Magic Design Studios",
       "cnpj": "53263392000148",
       "email": "hello@magicdesignstudios.com",
       "site": "https://www.magicdesignstudios.com/contact"
     },
     {
-      "id": 21,
+      "id": "21",
       "nome": "Sewer Cat",
       "cnpj": "60491630000138",
       "email": "buggychickenjumper@gmail.com",
       "site": "https://www.industriadejogos.com.br/estudio/sewer-cat/"
     },
     {
-      "id": 22,
+      "id": "22",
       "nome": "HAMMER95",
       "cnpj": "14998154000129",
       "email": "hammer95studios@gmail.com",
       "site": "https://www.hammer95.com/"
     },
     {
-      "id": 23,
+      "id": "23",
       "nome": "Mobius Digital",
       "cnpj": "83645936000105",
       "email": "fanmail@mobiusdigitalgames.com",
       "site": "https://www.mobiusdigitalgames.com/"
     },
     {
-      "id": 24,
+      "id": "24",
       "nome": "vanripperart",
       "cnpj": "48429558000113",
       "email": "@vanripperart",
       "site": "https://x.com/vanripperart"
     },
     {
-      "id": 25,
+      "id": "25",
       "nome": "HopFrog",
       "cnpj": "08899521000134",
       "email": "mariano@hopfrogsa.com",
       "site": "https://hopfrogsa.net/"
     },
     {
-      "id": 26,
+      "id": "26",
       "nome": "Polytron Corporation",
       "cnpj": "",
       "email": "https://x.com/polytron",
       "site": "https://x.com/polytron"
     },
     {
-      "id": 27,
+      "id": "27",
       "nome": "Team Meat",
       "cnpj": "54884955000188",
       "email": "support@supermeatboy.com",
       "site": "http://www.supermeatboy.com/"
     },
     {
-      "id": 28,
+      "id": "28",
       "nome": "Freebird Games",
       "cnpj": "87383779000150",
       "email": "orders@Freebirdstores.com",
@@ -314,7 +334,8 @@
       "ImageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Hollow_Knight_first_cover_art.webp/274px-Hollow_Knight_first_cover_art.webp.png",
       "ImageUrl2": "https://store-images.s-microsoft.com/image/apps.24270.13847644057609868.a4a91f76-8d1c-4e19-aa78-f4d27d2818fb.d96146d7-d00a-4db9-ad68-197b2f962a17?h=862&format=jpg",
       "ImageUrl3": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/wm/2024/07/hollow-knight-abyss-hornet-and-knight.jpg",
-      "ImageUrl4": "https://media.gq.com/photos/5b4f85bf80d4544fbe01ecc9/16:9/w_2560%2Cc_limit/hollow-night-review-gq-1.jpg"
+      "ImageUrl4": "https://media.gq.com/photos/5b4f85bf80d4544fbe01ecc9/16:9/w_2560%2Cc_limit/hollow-night-review-gq-1.jpg",
+      "id": "feab"
     },
     {
       "CodJogo": 2,
@@ -330,7 +351,8 @@
       "ImageUrl": "https://upload.wikimedia.org/wikipedia/pt/c/c1/Cuphead_capa.png",
       "ImageUrl2": "https://s2-techtudo.glbimg.com/ywUmd6jisZBFWfU3KZu9KbgBrCo=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2022/O/x/RpFqFQSrqBCUWZ6MBU9A/cuphead-dlc-1.png",
       "ImageUrl3": "https://uploads.jovemnerd.com.br/wp-content/uploads/2019/07/cuphead-netflix-sdcc-2019.png",
-      "ImageUrl4": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp3FpwZK_6kV_v629QbTJntBmo9cACcvWm5w&s"
+      "ImageUrl4": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp3FpwZK_6kV_v629QbTJntBmo9cACcvWm5w&s",
+      "id": "fd24"
     },
     {
       "CodJogo": 3,
@@ -346,7 +368,8 @@
       "ImageUrl": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000046189/f06f8dc22b97bcbe125aaa458c99330de4c0a173ec6dc0c2dc5eaab2deb041c2",
       "ImageUrl2": "https://tm.ibxk.com.br/2023/08/29/29081833452010.jpg",
       "ImageUrl3": "https://i.guim.co.uk/img/media/d619049335125b6fe843d911c8c6711381b44acf/380_0_1204_722/master/1204.jpg?width=1200&quality=85&auto=format&fit=max&s=735c293c60014758f0d81b54f03220a9",
-      "ImageUrl4": "https://sm.ign.com/ign_br/screenshot/default/sea-of-stars-mundo_6evd.jpg"
+      "ImageUrl4": "https://sm.ign.com/ign_br/screenshot/default/sea-of-stars-mundo_6evd.jpg",
+      "id": "320b"
     },
     {
       "CodJogo": 4,
@@ -362,7 +385,8 @@
       "ImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6zaBNyftsIQokTYniflXXo9XDlR4_WcPh3w&s",
       "ImageUrl2": "https://sm.ign.com/ign_br/gallery/s/stardew-va/stardew-valley-gameplay-screenshots-16-update_811c.jpg",
       "ImageUrl3": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/413150/ss_f79d2066dfaf32bbe87868d36db4845f771eddbd.1920x1080.jpg?t=1711128146",
-      "ImageUrl4": "https://uploads.jovemnerd.com.br/wp-content/uploads/2022/05/stardew_valley_20_milhoes_vendidos__0o0r0jz0i.jpg"
+      "ImageUrl4": "https://uploads.jovemnerd.com.br/wp-content/uploads/2022/05/stardew_valley_20_milhoes_vendidos__0o0r0jz0i.jpg",
+      "id": "95a6"
     },
     {
       "CodJogo": 5,
@@ -378,7 +402,8 @@
       "ImageUrl": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/308040/capsule_616x353.jpg?t=1729500405",
       "ImageUrl2": "https://m.media-amazon.com/images/I/B1j-MgRcygS.png",
       "ImageUrl3": "https://cdn4.idcgames.com/storage/image/1070/game_home_bg_section_2/default.png",
-      "ImageUrl4": "https://www.macgamestore.com/images_screenshots/back-to-bed-68779.jpg"
+      "ImageUrl4": "https://www.macgamestore.com/images_screenshots/back-to-bed-68779.jpg",
+      "id": "3e5b"
     },
     {
       "CodJogo": 6,
@@ -394,7 +419,8 @@
       "ImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTZpzvACTrIRIK2cCvxvNI9mPo_NcVD3euFQ&s",
       "ImageUrl2": "https://image.api.playstation.com/vulcan/ap/rnd/202011/1609/ukUPvyphKVZQwQNXViLRRL2D.jpg",
       "ImageUrl3": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1253680/ss_ce42c62db8d874f4d39ee0c77f30a6b3772e4a7d.1920x1080.jpg?t=1623428873",
-      "ImageUrl4": "https://www.operationsports.com/wp-content/uploads/2020/12/Super-Sports-Blast_20201229190553-scaled.jpg?fit=1200%2C675"
+      "ImageUrl4": "https://www.operationsports.com/wp-content/uploads/2020/12/Super-Sports-Blast_20201229190553-scaled.jpg?fit=1200%2C675",
+      "id": "a996"
     },
     {
       "CodJogo": 7,
@@ -410,7 +436,8 @@
       "ImageUrl": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000006442/691ba3e0801180a9864cc8a7694b6f98097f9d9799bc7e3dc6db92f086759252",
       "ImageUrl2": "https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fceleste%2Fhome%2F00-1920x1080-656978e07c631e4fb1dc5d2f435c536edaafd8d5.jpg",
       "ImageUrl3": "https://image.api.playstation.com/cdn/UP2120/CUSA11302_00/FREE_CONTENT8dLigN91u10590gFwsBX/PREVIEW_SCREENSHOT2_161659.png",
-      "ImageUrl4": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1092840/ss_a110fe2f50c5828af4b1ff4e7c1ca773a1a7e5aa.1920x1080.jpg?t=1607394540"
+      "ImageUrl4": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1092840/ss_a110fe2f50c5828af4b1ff4e7c1ca773a1a7e5aa.1920x1080.jpg?t=1607394540",
+      "id": "bb0e"
     },
     {
       "CodJogo": 8,
@@ -426,7 +453,8 @@
       "ImageUrl": "https://cdn.awsli.com.br/2500x2500/229/229111/produto/56691874/1-avd224akxr.png",
       "ImageUrl2": "https://assetsio.gnwcdn.com/undertale-endings-and-how-to-access-hard-mode-1502376001860.jpg?width=1200&height=600&fit=crop&enable=upscale&auto=webp",
       "ImageUrl3": "https://criticalhits.com.br/wp-content/uploads/2016/03/undertale-05.png",
-      "ImageUrl4": "https://img.redbull.com/images/c_crop,w_1920,h_960,x_0,y_120/c_auto,w_1200,h_600/f_auto,q_auto/redbullcom/2018/09/07/3846aef4-2c63-4977-b334-20492f761835/undertale-landscape"
+      "ImageUrl4": "https://img.redbull.com/images/c_crop,w_1920,h_960,x_0,y_120/c_auto,w_1200,h_600/f_auto,q_auto/redbullcom/2018/09/07/3846aef4-2c63-4977-b334-20492f761835/undertale-landscape",
+      "id": "ad9e"
     },
     {
       "CodJogo": 9,
@@ -442,7 +470,8 @@
       "ImageUrl": "https://image.api.playstation.com/cdn/UP2054/CUSA01664_00/OjfS773qw3ho5t9EXnVtdlcxVltVXBRb.png?w=440",
       "ImageUrl2": "https://www.gamerpoint.com.br/wp-content/uploads/2020/12/limbo-enforcado.jpg",
       "ImageUrl3": "https://i.ytimg.com/vi/Y4HSyVXKYz8/maxresdefault.jpg",
-      "ImageUrl4": "https://cdn2.unrealengine.com/Diesel%2Funtitled-page%2FEGS_PLAYDEAD_LIMBO_GALLERY_2-1920x1080-fa07f7fe68eca645cf5cdacdb281af8296450ed4.jpg"
+      "ImageUrl4": "https://cdn2.unrealengine.com/Diesel%2Funtitled-page%2FEGS_PLAYDEAD_LIMBO_GALLERY_2-1920x1080-fa07f7fe68eca645cf5cdacdb281af8296450ed4.jpg",
+      "id": "32e5"
     },
     {
       "CodJogo": 10,
@@ -458,7 +487,8 @@
       "ImageUrl": "https://cdn1.epicgames.com/offer/13bb5776b9e1424d84ce42d9ba61c0ca/EGS_INSIDE_Playdead_S2_1200x1600-2753b8f312f8e0ac33f7a3d37c1eb242",
       "ImageUrl2": "https://image.api.playstation.com/vulcan/img/rnd/202010/0810/auNTa3kASBnpCXKUsakn3xHx.jpg",
       "ImageUrl3": "https://sm.ign.com/t/ign_br/news/i/inside-is-/inside-is-coming-to-nintendo-switch_4nvm.1200.jpg",
-      "ImageUrl4": "https://lavrapalavra.com/wp-content/uploads/2021/01/inside.jpg"
+      "ImageUrl4": "https://lavrapalavra.com/wp-content/uploads/2021/01/inside.jpg",
+      "id": "9606"
     },
     {
       "CodJogo": 11,
@@ -474,7 +504,8 @@
       "ImageUrl": "https://store-images.s-microsoft.com/image/apps.51959.14272217582130616.02bf9982-d980-42d9-93e6-372b4b7e36d8.31c1e585-05c9-4f32-b695-4b900c913466",
       "ImageUrl2": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2379780/ss_d17a3adc6176c7f99e0dc31c49f4764f137e6374.1920x1080.jpg?t=1745331508",
       "ImageUrl3": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2379780/ss_e32ac94d7d1d6be7dd015d78f2b52aeb4cc282ed.1920x1080.jpg?t=1745331508",
-      "ImageUrl4": "https://cdn.mos.cms.futurecdn.net/bZA9i7KrBKbMo3pJ2ykpAF-1200-80.png"
+      "ImageUrl4": "https://cdn.mos.cms.futurecdn.net/bZA9i7KrBKbMo3pJ2ykpAF-1200-80.png",
+      "id": "d207"
     },
     {
       "CodJogo": 12,
@@ -490,7 +521,8 @@
       "ImageUrl": "https://image.api.playstation.com/vulcan/ap/rnd/202401/2508/f194dc023adef481689d90db93f343b73f5b4c5741925556.png",
       "ImageUrl2": "https://projectn.com.br/wp-content/uploads/2025/03/image-68.png",
       "ImageUrl3": "https://image.api.playstation.com/vulcan/ap/rnd/202403/2806/024e0017899b4430a553226ff93f8054b7d04dd2fbc9bdc9.jpg",
-      "ImageUrl4": "https://i.guim.co.uk/img/media/45fdd2e61e8a63d4f78397f9ef96e5795db01f80/80_0_2400_1440/master/2400.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=388db4085b35003305a16e7733e7b084"
+      "ImageUrl4": "https://i.guim.co.uk/img/media/45fdd2e61e8a63d4f78397f9ef96e5795db01f80/80_0_2400_1440/master/2400.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=388db4085b35003305a16e7733e7b084",
+      "id": "7024"
     },
     {
       "CodJogo": 13,
@@ -506,7 +538,8 @@
       "ImageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNhRfYA-ibSItaHByWg8L-Z1pwnEijNDR4BQ&s",
       "ImageUrl2": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1210320/ss_76d4a5ca38e4a9543a7106346c5c9c162474c689.1920x1080.jpg?t=1742477199",
       "ImageUrl3": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1210320/ss_a0c1d496af8071557b72dae3dc3f7c01aa9d9c0a.1920x1080.jpg?t=1742477199",
-      "ImageUrl4": "https://live.staticflickr.com/65535/52552478327_97c8335a44_h.jpg"
+      "ImageUrl4": "https://live.staticflickr.com/65535/52552478327_97c8335a44_h.jpg",
+      "id": "ad38"
     },
     {
       "CodJogo": 14,
@@ -522,7 +555,8 @@
       "ImageUrl": "https://image.api.playstation.com/vulcan/ap/rnd/202205/3115/FS9OyTnbApSLRK8erPUQln71.jpg",
       "ImageUrl2": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1337760/ss_cdbab8c3e61d887eef35d2583edcf491d1add04a.1920x1080.jpg?t=1741787991",
       "ImageUrl3": "https://www.gematsu.com/wp-content/uploads/2022/06/Potion-Permit_06-22-22.jpg",
-      "ImageUrl4": "https://www.digitallydownloaded.net/wp-content/uploads/2022/09/wqfdZdKmVw3Crc8xSeKMdBBp-scaled.webp"
+      "ImageUrl4": "https://www.digitallydownloaded.net/wp-content/uploads/2022/09/wqfdZdKmVw3Crc8xSeKMdBBp-scaled.webp",
+      "id": "7ab0"
     },
     {
       "CodJogo": 16,
@@ -538,7 +572,8 @@
       "ImageUrl": "https://image.api.playstation.com/vulcan/ap/rnd/202403/2811/44592d9494079904903a460d1912eb202066e408c1e738d5.png",
       "ImageUrl2": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/730390/ss_fe1620c69435bd878884e4d9d04982a14807a962.1920x1080.jpg?t=1744995676",
       "ImageUrl3": "https://theeliteinstitute.net/wp-content/uploads/2021/03/raji-hero500.jpg",
-      "ImageUrl4": "https://guarientoportal.com/wp-content/uploads/2021/07/Raji-An-Ancient-Epic-Mahabalasura.jpg"
+      "ImageUrl4": "https://guarientoportal.com/wp-content/uploads/2021/07/Raji-An-Ancient-Epic-Mahabalasura.jpg",
+      "id": "aa77"
     },
     {
       "CodJogo": 17,
@@ -554,7 +589,8 @@
       "ImageUrl": "https://assets.nintendo.com/image/upload/q_auto/f_auto/ncom/software/switch/70010000018710/89e1f45e5012962fcdbc47b297dbb99472d04fdae7c60213bce6fb44713d2068",
       "ImageUrl2": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/261570/ss_bcc055d95261e3c1450b031c02d92bbd32f0ecf6.1920x1080.jpg?t=1667504148",
       "ImageUrl3": "https://sm.ign.com/ign_br/screenshot/default/2626013-timeline-scene03_zm1r.jpg",
-      "ImageUrl4": "https://criticalhits.com.br/wp-content/uploads/2016/01/0bcOEmP1ETd5k8Oc.jpg"
+      "ImageUrl4": "https://criticalhits.com.br/wp-content/uploads/2016/01/0bcOEmP1ETd5k8Oc.jpg",
+      "id": "0bea"
     },
     {
       "CodJogo": 18,
@@ -570,7 +606,8 @@
       "ImageUrl": "https://image.api.playstation.com/cdn/UP0700/CUSA05929_00/BCXhBnr9X5jjilzuc5tyv7GOcBukog6V.png",
       "ImageUrl2": "https://cdn.awsli.com.br/2500x2500/2693/2693981/produto/247592940/little-nightmares-ps4-midia-digital-c307f35b-bbjz3uz8lk.jpg",
       "ImageUrl3": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi4W6d9WVIFjUOTN15dX2Eu_t0gI7W2jRmzQ&s",
-      "ImageUrl4": "https://rggames.com.br/wp-content/uploads/2022/03/Little-Nightmares-Screenshot-2022.03.21-23.43.30.18.jpg"
+      "ImageUrl4": "https://rggames.com.br/wp-content/uploads/2022/03/Little-Nightmares-Screenshot-2022.03.21-23.43.30.18.jpg",
+      "id": "959b"
     },
     {
       "CodJogo": 19,
@@ -586,7 +623,8 @@
       "ImageUrl": "https://upload.wikimedia.org/wikipedia/pt/b/b3/Spiritfarer.jpg",
       "ImageUrl2": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/972660/ss_13be8ec2a11cf1f012abbbe9d526447cfff6cdea.1920x1080.jpg?t=1729618510",
       "ImageUrl3": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/JHB4Q3SG5JDBHK6Y6EXV7HBOLE.png&w=1800&h=1800",
-      "ImageUrl4": "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/08/spiritfarer-review-1.jpg"
+      "ImageUrl4": "https://www.pockettactics.com/wp-content/sites/pockettactics/2021/08/spiritfarer-review-1.jpg",
+      "id": "4dfa"
     },
     {
       "CodJogo": 20,
@@ -602,7 +640,8 @@
       "ImageUrl": "https://i1.sndcdn.com/artworks-000292520178-881chp-t500x500.jpg",
       "ImageUrl2": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000016348/f34ff9fe85dc6cdea6d0e66b8f79ab9231cb5a2a3ab60da30e8571798b7ef15a",
       "ImageUrl3": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/589780/ss_8b88a373c47f49987bed4dd25063b96ccf59c1a3.1920x1080.jpg?t=1728690203",
-      "ImageUrl4": "https://cdna.artstation.com/p/assets/images/images/022/301/596/large/david-lopez-photo1wena.jpg?1574889929"
+      "ImageUrl4": "https://cdna.artstation.com/p/assets/images/images/022/301/596/large/david-lopez-photo1wena.jpg?1574889929",
+      "id": "09ba"
     },
     {
       "CodJogo": 21,
@@ -618,7 +657,8 @@
       "ImageUrl": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000032367/bc0bb51b14fcde8f0efadfc806c627c08f22dcb804c05d154b522841db586e5f",
       "ImageUrl2": "https://image.api.playstation.com/vulcan/ap/rnd/202107/0919/9ewQXoMuOBkXXWXIoHyGGkXk.png",
       "ImageUrl3": "https://cdn2.unrealengine.com/02-shorthike-1920x1079-8a083cb8aa02.jpg",
-      "ImageUrl4": "https://www.comfycozygaming.com/wp-content/uploads/2023/11/ashorthike5-1300x650.png"
+      "ImageUrl4": "https://www.comfycozygaming.com/wp-content/uploads/2023/11/ashorthike5-1300x650.png",
+      "id": "3c6b"
     },
     {
       "CodJogo": 22,
@@ -634,7 +674,8 @@
       "ImageUrl": "https://upload.wikimedia.org/wikipedia/pt/8/80/Capa_Unpacking.png",
       "ImageUrl2": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1135690/ss_e0be82259f402c277973c5d0c4f2a22d01d9b1c2.1920x1080.jpg?t=1745453778",
       "ImageUrl3": "https://platform.polygon.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25201552/vlcsnap_2024_01_03_14h38m27s516.jpg?quality=90&strip=all&crop=7.8125,0,84.375,100",
-      "ImageUrl4": "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2022/09/Unpacking-Beginner-Tips-Feature-Image.jpg"
+      "ImageUrl4": "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2022/09/Unpacking-Beginner-Tips-Feature-Image.jpg",
+      "id": "1996"
     },
     {
       "CodJogo": 23,
@@ -650,7 +691,8 @@
       "ImageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/646570/capsule_616x353.jpg?t=1745019194",
       "ImageUrl2": "https://m.media-amazon.com/images/I/71MD91ej0aL.jpg",
       "ImageUrl3": "https://i.imgur.com/VNtO7KN.jpg",
-      "ImageUrl4": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/646570/ss_b757436d08ba08292796bfed9c60e7cc99d5f2c3.1920x1080.jpg?t=1745019194"
+      "ImageUrl4": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/646570/ss_b757436d08ba08292796bfed9c60e7cc99d5f2c3.1920x1080.jpg?t=1745019194",
+      "id": "904c"
     },
     {
       "CodJogo": 24,
@@ -666,7 +708,8 @@
       "ImageUrl": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000001613/f52e6955d0158331c5666d3855c96516aadcfa7b9afa2cbfed3b180e4588b919",
       "ImageUrl2": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/388880/ss_d4d08fb80a91acffc1b9fc6eb1bbfdcdd14d9e38.1920x1080.jpg?t=1718924110",
       "ImageUrl3": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/388880/ss_75af452f6e7f6c5dc1ada4f001abcccac6c57db7.1920x1080.jpg?t=1718924110",
-      "ImageUrl4": "https://i0.wp.com/astralnoizeuk.com/wp-content/uploads/2021/02/Cliffs.jpg?fit=1920%2C1080&ssl=1"
+      "ImageUrl4": "https://i0.wp.com/astralnoizeuk.com/wp-content/uploads/2021/02/Cliffs.jpg?fit=1920%2C1080&ssl=1",
+      "id": "3b32"
     },
     {
       "CodJogo": 25,
@@ -682,7 +725,8 @@
       "ImageUrl": "https://store-images.s-microsoft.com/image/apps.46837.14016784756610835.ef385530-19dc-4258-a580-04c303cc6b03.ee095130-c7c7-46f7-b5a6-a365528bc9bb",
       "ImageUrl2": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/683320/ss_631d99cc6462cce94081032b7e600a6b87c3f7d3.1920x1080.jpg?t=1728690313",
       "ImageUrl3": "https://www.portallos.com.br/wp-content/uploads/2018/12/GRIS-12.jpg",
-      "ImageUrl4": "https://image.api.playstation.com/vulcan/img/cfn/11307zqzG5jEDK730Z_TPKohNcYFTVIyZZDE9D0Gp-5hlYY4-_Mpsaty64cyfM1-yRrx01tYxrWY9Yd4IvWq2wA_kRUXsFIm.jpg"
+      "ImageUrl4": "https://image.api.playstation.com/vulcan/img/cfn/11307zqzG5jEDK730Z_TPKohNcYFTVIyZZDE9D0Gp-5hlYY4-_Mpsaty64cyfM1-yRrx01tYxrWY9Yd4IvWq2wA_kRUXsFIm.jpg",
+      "id": "f6ca"
     },
     {
       "CodJogo": 26,
@@ -698,7 +742,8 @@
       "ImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Fez_%28video_game%29_cover_art.png",
       "ImageUrl2": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/224760/ss_052f5322575d56df335377423021da1a7bf18f22.1920x1080.jpg?t=1572375251",
       "ImageUrl3": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgQkjdpwedsspREGU7hrmfCPuY7vVfemWIEg&s",
-      "ImageUrl4": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/224760/ss_9e1ae57025af60cb1f0b752ca63cbe8e178cc923.1920x1080.jpg?t=1572375251"
+      "ImageUrl4": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/224760/ss_9e1ae57025af60cb1f0b752ca63cbe8e178cc923.1920x1080.jpg?t=1572375251",
+      "id": "4031"
     },
     {
       "CodJogo": 27,
@@ -714,7 +759,8 @@
       "ImageUrl": "https://upload.wikimedia.org/wikipedia/pt/thumb/0/0c/Journey.png/250px-Journey.png",
       "ImageUrl2": "https://im.ziffdavisinternational.com/ign_br/screenshot/default/journey1_jjjg.jpg",
       "ImageUrl3": "https://www.adrenaline.com.br/wp-content/uploads/2012/03/7.jpg",
-      "ImageUrl4": "https://uploads.jovemnerd.com.br/wp-content/uploads/2018/12/journey-pc.png"
+      "ImageUrl4": "https://uploads.jovemnerd.com.br/wp-content/uploads/2018/12/journey-pc.png",
+      "id": "fbb8"
     },
     {
       "CodJogo": 28,
@@ -730,7 +776,8 @@
       "ImageUrl": "https://image.api.playstation.com/cdn/UP0146/CUSA04107_00/XFEn5Mk8QsgH7gB9iTEWMgg9LLHFRiuD.png",
       "ImageUrl2": "https://files.tecnoblog.net/wp-content/uploads/2021/10/firewatch.jpg",
       "ImageUrl3": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS42fwVAKAJg5Zq7rZn1rsMOzXJDVovAX3Kdg&s",
-      "ImageUrl4": "https://uploads.jovemnerd.com.br/wp-content/uploads/Firewatch-500k.jpg"
+      "ImageUrl4": "https://uploads.jovemnerd.com.br/wp-content/uploads/Firewatch-500k.jpg",
+      "id": "8ae6"
     },
     {
       "CodJogo": 29,
@@ -746,7 +793,8 @@
       "ImageUrl": "https://m.media-amazon.com/images/M/MV5BNjlkYzEwZWMtNWJmZi00OGIzLWE0NjgtY2QwZTc4MzhlM2U5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
       "ImageUrl2": "https://i.kinja-img.com/image/upload/c_fill,h_675,pg_1,q_80,w_1200/62dcb7351380b64905f359e58174477e.jpg",
       "ImageUrl3": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/481510/ss_f038268bdcef20dc090dca4e0ac8fbed4923c496.1920x1080.jpg?t=1706292417",
-      "ImageUrl4": "https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25066119/ss_03d9b8b9bae9213bbab3190a7975d81f4cb88fb1.jpg?quality=90&strip=all&crop=7.8125,0,84.375,100"
+      "ImageUrl4": "https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25066119/ss_03d9b8b9bae9213bbab3190a7975d81f4cb88fb1.jpg?quality=90&strip=all&crop=7.8125,0,84.375,100",
+      "id": "57f2"
     },
     {
       "CodJogo": 30,
@@ -762,33 +810,40 @@
       "ImageUrl": "https://image.api.playstation.com/cdn/UP2124/CUSA00498_00/awvzBy4CY2NKeps2omt7SC8lxJNozWCe.png",
       "ImageUrl2": "https://sm.ign.com/t/ign_br/review/t/the-witnes/the-witness-review_5s1j.1200.jpg",
       "ImageUrl3": "https://sm.ign.com/ign_br/news/t/the-witnes/the-witness-brought-in-over-5-million-in-its-first_ggzc.jpg",
-      "ImageUrl4": "https://i.guim.co.uk/img/media/b2d4c0e46dec08aacd7ab028113cf024b4238e76/97_0_1795_1080/master/1795.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=341a1e0d5df23cc59e38a7b8245a8432"
+      "ImageUrl4": "https://i.guim.co.uk/img/media/b2d4c0e46dec08aacd7ab028113cf024b4238e76/97_0_1795_1080/master/1795.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=341a1e0d5df23cc59e38a7b8245a8432",
+      "id": "c95c"
     }
   ],
   "meiopagamento": [
     {
       "CodMeioPagamento": 1,
-      "OpcoesPagamento": "Débito"
+      "OpcoesPagamento": "Débito",
+      "id": "ddfb"
     },
     {
       "CodMeioPagamento": 2,
-      "OpcoesPagamento": "Crédito"
+      "OpcoesPagamento": "Crédito",
+      "id": "c6a4"
     },
     {
       "CodMeioPagamento": 3,
-      "OpcoesPagamento": "PicPay"
+      "OpcoesPagamento": "PicPay",
+      "id": "db58"
     },
     {
       "CodMeioPagamento": 4,
-      "OpcoesPagamento": "Pix"
+      "OpcoesPagamento": "Pix",
+      "id": "bf38"
     },
     {
       "CodMeioPagamento": 5,
-      "OpcoesPagamento": "Boleto"
+      "OpcoesPagamento": "Boleto",
+      "id": "665a"
     },
     {
       "CodMeioPagamento": 6,
-      "OpcoesPagamento": "PayPal"
+      "OpcoesPagamento": "PayPal",
+      "id": "bcd1"
     }
   ],
   "reqminimos": [
@@ -800,7 +855,8 @@
       "DirectXMin": "DirectX 9",
       "Armazenamento": "2 GB",
       "RAMmin": "2 GB",
-      "OBS": "PC de nível baixo"
+      "OBS": "PC de nível baixo",
+      "id": "1ad2"
     },
     {
       "ReqMinId": 2,
@@ -810,7 +866,8 @@
       "DirectXMin": "DirectX 10",
       "Armazenamento": "5 GB",
       "RAMmin": "4 GB",
-      "OBS": "PC de potência moderadamente baixa"
+      "OBS": "PC de potência moderadamente baixa",
+      "id": "2b07"
     },
     {
       "ReqMinId": 3,
@@ -820,7 +877,8 @@
       "DirectXMin": "DirectX 11",
       "Armazenamento": "10 GB",
       "RAMmin": "6 GB",
-      "OBS": "PC de potência média"
+      "OBS": "PC de potência média",
+      "id": "a94e"
     },
     {
       "ReqMinId": 4,
@@ -830,7 +888,8 @@
       "DirectXMin": "DirectX 11",
       "Armazenamento": "20 GB",
       "RAMmin": "8 GB",
-      "OBS": "PC de potência moderadamente alta"
+      "OBS": "PC de potência moderadamente alta",
+      "id": "7c80"
     },
     {
       "ReqMinId": 5,
@@ -840,7 +899,8 @@
       "DirectXMin": "DirectX 12",
       "Armazenamento": "30 GB",
       "RAMmin": "12 GB",
-      "OBS": "PC de potência alta"
+      "OBS": "PC de potência alta",
+      "id": "16d3"
     }
   ]
 }
