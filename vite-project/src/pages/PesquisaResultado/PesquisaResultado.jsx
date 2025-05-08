@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import Card from '../../components/CardsGeral/Card/Card'
 import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
 import { FaSadTear } from 'react-icons/fa';
 
-const Resultados = () => {
+const Resultados = ({pesquisaa}) => {
   const [searchParams] = useSearchParams();
-  const termo = searchParams.get('busca') || '';
+  const pesquisa = searchParams.get('busca') || '';
   const [resultados, setResultados] = useState([]);
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState(null);
@@ -15,10 +16,17 @@ const Resultados = () => {
       setCarregando(true);
       setErro(null);
       try {
-        const res = await axios.get(
-          `http://localhost:5000/jogos?q=${encodeURIComponent(termo)}`
-        );
-        setResultados(res.data);
+        const res = (await fetch(`http://localhost:5000/jogos`));
+        const data = await res.json();
+        const filtrados = [];
+  
+        data.forEach(element => {
+          if (element.Nome.toLowerCase().includes(pesquisa.toLowerCase())) {
+            filtrados.push(element);
+          }
+        });
+
+        setResultados(filtrados);
       } catch (err) {
         setErro('Erro ao buscar jogos');
       } finally {
@@ -26,16 +34,16 @@ const Resultados = () => {
       }
     };
 
-    if (termo) {
+    if (pesquisa) {
       buscarJogos();
     } else {
-      setResultados([]); // limpa resultados se não houver termo
+      setResultados([]); // limpa resultados se não houver pesquisa
     }
-  }, [termo]);
+  }, [pesquisa]);
 
   return (
     <div style={{ padding: '20px', minHeight: '80vh' }}>
-      <h2>Resultados para "{termo}"</h2>
+      <h2>Resultados para "{pesquisa}"</h2>
       {carregando && <p>Carregando...</p>}
       {erro && <p style={{ color: 'red' }}>{erro}</p>}
 
@@ -61,7 +69,7 @@ const Resultados = () => {
       <ul style={{ listStyle: 'none', padding: 0 }}>
         {resultados.map((jogo) => (
           <li key={jogo.id} style={{ marginBottom: '16px' }}>
-            <CardJogo jogo={jogo} />
+            <Card jogo={jogo} />
           </li>
         ))}
       </ul>

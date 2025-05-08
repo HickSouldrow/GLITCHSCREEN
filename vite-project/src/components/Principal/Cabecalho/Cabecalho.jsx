@@ -3,31 +3,14 @@ import { Menu } from './menu';
 import { BarraPesquisa } from './Pesquisa/BarraPesquisa';
 import GlitchScreen from '../../../assets/GlitchScreen.png';
 import { useState } from 'react';
-import { MenuPerfil } from './MenuPerfil'; // Importe o novo componente
+import axios from "axios";
+
 
 const Cabecalho = () => {
   const [pesquisa, setPesquisa] = useState("");
   const [jogosBuscados, setJogosBuscados] = useState([]);
 
-  const buscarJogos = async () => {
-    try {      
-      const response = (await fetch(`http://localhost:5000/jogos`));
-      const data = await response.json();
-      const filtrados = [];
 
-      data.forEach(element => {
-        if (element.Nome.toLowerCase().includes(pesquisa.toLowerCase())) {
-          filtrados.push(element);
-        }
-      });
-
-      setJogosBuscados(filtrados);
-
-      console.log(filtrados);
-    } catch (error) {
-      console.error("Erro ao buscar jogos:", error);
-    }
-  };
   
 
   return (
@@ -44,12 +27,12 @@ const Cabecalho = () => {
       <div className="flex items-center space-x-3">
         {/* Barra de busca */}
         <BarraPesquisa 
-          placeholder="Pesquisar Jogo" 
-          type="text"
-          name="pesquisa"
-          value={pesquisa}
-          onChange={(e) => setPesquisa(e.target.value)}
-          onClick={buscarJogos}
+        placeholder="Pesquisar Jogo" 
+        type="text"
+        name="pesquisa"
+        value={pesquisa}
+        onChange={(e) => setPesquisa(e.target.value)}
+        
         />
 
         <MenuPerfil />
