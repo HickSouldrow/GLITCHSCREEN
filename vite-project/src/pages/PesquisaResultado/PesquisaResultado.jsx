@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Card from '../../components/CardsGeral/Card/Card'
+import Card from '../../components/CardsGeral/Card/Card';
 import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
-import { FaSadTear } from 'react-icons/fa';
+import { FaSadTear, FaSearch } from 'react-icons/fa';
+import { ImSpinner8 } from 'react-icons/im';
 
-const Resultados = ({pesquisaa}) => {
+const Resultados = ({ pesquisaa }) => {
   const [searchParams] = useSearchParams();
   const pesquisa = searchParams.get('busca') || '';
   const [resultados, setResultados] = useState([]);
@@ -16,19 +17,16 @@ const Resultados = ({pesquisaa}) => {
       setCarregando(true);
       setErro(null);
       try {
-        const res = (await fetch(`http://localhost:5000/jogos`));
+        const res = await fetch(`http://localhost:5000/jogos`);
         const data = await res.json();
-        const filtrados = [];
-  
-        data.forEach(element => {
-          if (element.Nome.toLowerCase().includes(pesquisa.toLowerCase())) {
-            filtrados.push(element);
-          }
-        });
-
+        const filtrados = data.filter(element => 
+          element.Nome.toLowerCase().includes(pesquisa.toLowerCase())
+        );
+        
         setResultados(filtrados);
       } catch (err) {
-        setErro('Erro ao buscar jogos');
+        setErro('Erro ao buscar jogos. Tente novamente mais tarde.');
+        console.error(err);
       } finally {
         setCarregando(false);
       }
@@ -37,32 +35,64 @@ const Resultados = ({pesquisaa}) => {
     if (pesquisa) {
       buscarJogos();
     } else {
-      setResultados([]); // limpa resultados se não houver pesquisa
+      setResultados([]);
     }
   }, [pesquisa]);
 
   return (
-    <div className='container mx-auto relative w-full px-4 py-20'>
-      <h2 className='text-xl font-bold text-lime-500 mb-6 text-center'>Resultados para "{pesquisa}"</h2>
-      {carregando && <p>Carregando...</p>}
-      {erro && <p style={{ color: 'red' }}>{erro}</p>}
-
-      {/* Mensagem de “nenhum jogo” com estilo */}
-      {!carregando && resultados.length === 0 && (
-        <div className="mt-28 text-2xl text-gray-600 flex items-center gap-3">
-          <FaSadTear size={56} /> {/* ícone grande */}
-          <span>Nenhum jogo encontrado.</span>
+    <div className="min-h-screen text-white pt-28 pb-16 px-4 mb-20 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto mb-20">
+        {/* Cabeçalho da pesquisa */}
+        <div className="flex flex-col items-center mb-12">
+          <h2 className="text-3xl font-bold text-lime-500 mb-2 flex items-center">
+            <FaSearch className="mr-3" />
+            Resultados para "{pesquisa}"
+          </h2>
+          <p className="text-stone-400 p-4">
+            {resultados.length} {resultados.length === 1 ? 'jogo encontrado' : 'jogos encontrados'}
+          </p>
         </div>
-      
-      )}
 
-      <ul style={{ listStyle: 'none', padding: 0 }}>
-        {resultados.map((jogo) => (
-          <li key={jogo.id} style={{ marginBottom: '16px' }}>
-            <Card jogo={jogo} />
-          </li>
-        ))}
-      </ul>
+        {/* Estado de carregamento */}
+        {carregando && (
+          <div className="flex justify-center items-center py-20">
+            <ImSpinner8 className="animate-spin text-lime-500 text-4xl" />
+          </div>
+        )}
+
+        {/* Mensagem de erro */}
+        {erro && (
+          <div className="bg-red-900/50 border border-red-700 rounded-lg p-4 max-w-2xl mx-auto text-center">
+            {erro}
+          </div>
+        )}
+
+        {/* Nenhum resultado encontrado */}
+        {!carregando && resultados.length === 0 && !erro && (
+          <div className="flex flex-col items-center mb-20 justify-center py-20 text-center">
+            <FaSadTear className="text-6xl text-lime-500 mb-20" />
+            <h3 className="text-2xl font-semibold text-stone-300 mb-2">
+              Nenhum jogo encontrado
+            </h3>
+            <p className="text-stone-500 max-w-md">
+              Não encontramos jogos correspondentes à sua pesquisa. Tente usar termos diferentes.
+            </p>
+          </div>
+        )}
+
+        {/* Grid de resultados */}
+        {!carregando && resultados.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {resultados.map((jogo) => (
+              <Card 
+                key={jogo.CodJogo} 
+                jogo={jogo} 
+                className="transition-transform hover:scale-105"
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

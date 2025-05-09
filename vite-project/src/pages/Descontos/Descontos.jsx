@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-// Componente do card do jogo (usando o estilo melhorado da versão 2)
+// Componente do card do jogo
 const CardJogoCarrossel = ({ jogo }) => {
     const navigate = useNavigate();
     const precoOriginal = jogo.Preco.toFixed(2).replace('.', ',');
@@ -17,6 +17,7 @@ const CardJogoCarrossel = ({ jogo }) => {
             }
         });
     };
+// Componente do carrossel com animações
 
     return (
         <a 
@@ -67,8 +68,8 @@ const CardJogoCarrossel = ({ jogo }) => {
     );
 };
 
-// Componente do carrossel para uma classificação específica (com melhorias da versão 2)
-const CarrosselClassificacao = ({ classificacao, jogos }) => {
+// Componente do carrossel
+const Carrossel = ({ titulo, jogos }) => {
     const [startIndex, setStartIndex] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
     const [direction, setDirection] = useState(null);
@@ -83,16 +84,16 @@ const CarrosselClassificacao = ({ classificacao, jogos }) => {
     };
 
     const anteCards = () => {
-        const newIndex = Math.max(startIndex - 5, 0);
+        const newIndex = Math.max(startIndex - 4, 0);
         if (newIndex !== startIndex) animateCards(newIndex, 'left');
     };
 
     const proxCards = () => {
-        const newIndex = Math.min(startIndex + 5, jogos.length - 5);
+        const newIndex = Math.min(startIndex + 4, jogos.length - 4);
         if (newIndex !== startIndex) animateCards(newIndex, 'right');
     };
 
-    const mostrarCards = jogos.slice(startIndex, startIndex + 5);
+    const mostrarCards = jogos.slice(startIndex, startIndex + 4);
 
     const getAnimationClass = () => {
         if (!isAnimating) return '';
@@ -102,26 +103,11 @@ const CarrosselClassificacao = ({ classificacao, jogos }) => {
     return (
         <div className="mb-16">
             <div className="flex items-center max-w-6xl justify-between mb-6 px-4">
-                <h3 className="text-2xl font-bold text-lime-500">
-                    {classificacao.ClassificacaoIndicativa}
-                </h3>
+                <h3 className="text-2xl font-bold text-lime-500">{titulo}</h3>
             </div>
 
             <div className="relative w-full max-w-6xl mx-auto">
-                <style>
-                    {`
-                    .animate-slideOutLeft {
-                        animation: slideOutLeft 0.3s forwards;
-                    }
-                    .animate-slideOutRight {
-                        animation: slideOutRight 0.3s forwards;
-                    }
-                    .animate-slideInLeft {
-                        animation: slideInLeft 0.3s forwards;
-                    }
-                    .animate-slideInRight {
-                        animation: slideInRight 0.3s forwards;
-                    }
+                  <style jsx>{`
                     @keyframes slideOutLeft {
                         from { transform: translateX(0); opacity: 1; }
                         to { transform: translateX(-100%); opacity: 0; }
@@ -138,10 +124,21 @@ const CarrosselClassificacao = ({ classificacao, jogos }) => {
                         from { transform: translateX(-100%); opacity: 0; }
                         to { transform: translateX(0); opacity: 1; }
                     }
-                    `}
-                </style>
+                    .animate-slideOutLeft {
+                        animation: slideOutLeft 0.3s forwards;
+                    }
+                    .animate-slideOutRight {
+                        animation: slideOutRight 0.3s forwards;
+                    }
+                    .animate-slideInLeft {
+                        animation: slideInLeft 0.3s forwards;
+                    }
+                    .animate-slideInRight {
+                        animation: slideInRight 0.3s forwards;
+                    }
+                `}</style>
 
-                <div className="flex items-center justify-between">
+  <div className="flex items-center justify-between">
                     <button
                         onClick={anteCards}
                         disabled={isAnimating || startIndex === 0}
@@ -149,16 +146,17 @@ const CarrosselClassificacao = ({ classificacao, jogos }) => {
                             isAnimating || startIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''
                         }`}
                     >
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M15 18l-6-6 6-6" />
+                        <svg width="15" height="15" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="10" height="10" fill="#44403c" rx="25" />
+                            <path d="M30 10L15 25L30 40" stroke="#84cc16" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </button>
 
                     <div className="flex overflow-hidden w-full h-90 py-2 relative">
                         {mostrarCards.map((jogo, index) => (
                             <div
-                                key={`${classificacao.CodFaixaEtaria}-${startIndex}-${index}`}
-                                className={`flex-shrink-0 w-1/5 px-2 ${
+                                key={`${startIndex}-${index}`}
+                                className={`flex-shrink-0 w-1/4 px-2 ${
                                     isAnimating ? getAnimationClass() :
                                     direction === 'right' ? 'animate-slideInLeft' : 'animate-slideInRight'
                                 }`}
@@ -170,13 +168,14 @@ const CarrosselClassificacao = ({ classificacao, jogos }) => {
 
                     <button
                         onClick={proxCards}
-                        disabled={isAnimating || startIndex + 5 >= jogos.length}
+                        disabled={isAnimating || startIndex + 4 >= jogos.length}
                         className={`p-3 bg-stone-700 text-lime-500 rounded-full hover:bg-stone-600 transition-transform duration-200 transform hover:scale-110 ${
-                            isAnimating || startIndex + 5 >= jogos.length ? 'opacity-50 cursor-not-allowed' : ''
+                            isAnimating || startIndex + 4 >= jogos.length ? 'opacity-50 cursor-not-allowed' : ''
                         }`}
                     >
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M9 18l6-6-6-6" />
+                        <svg width="15" height="15" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="10" height="10" fill="#44403c" rx="25" />
+                            <path d="M20 10L35 25L20 40" stroke="#84cc16" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </button>
                 </div>
@@ -185,33 +184,15 @@ const CarrosselClassificacao = ({ classificacao, jogos }) => {
     );
 };
 
-// Componente principal que agrupa tudo (da versão 1)
-const ClassificacaoPage = () => {
-    const [classificacoes, setClassificacoes] = useState([]);
-    const [jogosPorClassificacao, setJogosPorClassificacao] = useState({});
+const Descontos = () => {
+    const [jogos, setJogos] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [classResponse, jogosResponse] = await Promise.all([
-                    axios.get('http://localhost:5000/classificacoes'),
-                    axios.get('http://localhost:5000/jogos')
-                ]);
-
-                const classificacoes = classResponse.data;
-                const jogos = jogosResponse.data;
-
-                const jogosAgrupados = {};
-                classificacoes.forEach(classificacao => {
-                    jogosAgrupados[classificacao.CodFaixaEtaria] = {
-                        classificacao,
-                        jogos: jogos.filter(jogo => jogo.CodFaixaEtaria === classificacao.CodFaixaEtaria)
-                    };
-                });
-
-                setClassificacoes(classificacoes);
-                setJogosPorClassificacao(jogosAgrupados);
+                const response = await axios.get('http://localhost:5000/jogos');
+                setJogos(response.data);
                 setLoading(false);
             } catch (error) {
                 console.error('Erro ao buscar dados:', error);
@@ -230,28 +211,34 @@ const ClassificacaoPage = () => {
         );
     }
 
+    const jogosComDesconto = jogos.filter(jogo => jogo.Desconto > 0);
+    const carrossel1 = [...jogosComDesconto].sort((a, b) => b.Desconto - a.Desconto).slice(0, 12);
+    const carrossel2 = [...jogosComDesconto].sort((a, b) => a.CodJogo - b.CodJogo).slice(0, 12);
+    const carrossel3 = [...jogosComDesconto].sort((a, b) => b.Preco - a.Preco).slice(0, 12);
+
     return (
-        <div className="text-white mt-40 min-h-screen py-10 px-4">
-            <h2 className="text-3xl font-bold text-lime-500 mb-8 text-center">
-                Jogos por Classificação Indicativa
-            </h2>
+        <div className="text-white mt-20 min-h-screen py-10 px-4">
+            <div className="text-center">
+                <h1 className="text-white text-3xl font-bold">Descontos do mês</h1>
+                <div className="w-40 h-1 bg-lime-800 mb-20 mx-auto mt-2"></div>
+            </div>
 
             <div className="max-w-7xl mx-auto">
-                {classificacoes.map(classificacao => {
-                    const dados = jogosPorClassificacao[classificacao.CodFaixaEtaria];
-                    if (!dados || dados.jogos.length === 0) return null;
-
-                    return (
-                        <CarrosselClassificacao
-                            key={classificacao.CodFaixaEtaria}
-                            classificacao={classificacao}
-                            jogos={dados.jogos}
-                        />
-                    );
-                })}
+                <Carrossel 
+                    titulo="Maiores Descontos" 
+                    jogos={carrossel1} 
+                />
+                <Carrossel 
+                    titulo="Lançamentos em Promoção" 
+                    jogos={carrossel2} 
+                />
+                <Carrossel 
+                    titulo="Jogos Premium com Desconto" 
+                    jogos={carrossel3} 
+                />
             </div>
         </div>
     );
 };
 
-export default ClassificacaoPage;
+export default Descontos;

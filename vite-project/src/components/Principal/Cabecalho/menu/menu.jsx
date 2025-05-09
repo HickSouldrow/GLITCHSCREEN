@@ -58,63 +58,93 @@ const Menu = () => {
             />
           </svg>
         </button>
+<ul className="flex flex-col px-4 py-6 space-y-2 mt-10 text-base font-medium">
+  <li>
+    <Link
+      to="/"
+      className="block w-full text-lime-400 hover:bg-lime-600 hover:text-white px-4 py-2 rounded-lg transition"
+      onClick={() => setMenuOpen(false)}
+    >
+       Home
+    </Link>
+  </li>
+  <li>
+    <Link
+      to="/Classificacao"
+      className="block w-full text-lime-400 hover:bg-lime-600 hover:text-white px-4 py-2 rounded-lg transition"
+      onClick={() => setMenuOpen(false)}
+    >
+       Classificação Indicativa
+    </Link>
+  </li>
+  <li>
+    <Link
+      to="/Avaliacoes"
+      className="block w-full text-lime-400 hover:bg-lime-600 hover:text-white px-4 py-2 rounded-lg transition"
+      onClick={() => setMenuOpen(false)}
+    >
+       Avaliações
+    </Link>
+  </li>
+  <li>
+    <Link
+      to="/Novidades"
+      className="block w-full text-lime-400 hover:bg-lime-600 hover:text-white px-4 py-2 rounded-lg transition"
+      onClick={() => setMenuOpen(false)}
+    >
+       Novidades
+    </Link>
+  </li>
+  <li>
+    <Link
+      to="/Descontos"
+      className="block w-full text-lime-400 hover:bg-lime-600 hover:text-white px-4 py-2 rounded-lg transition"
+      onClick={() => setMenuOpen(false)}
+    >
+       Descontos
+    </Link>
+  </li>
+  <li>
+    <Link
+      to="/SobreNos"
+      className="block w-full text-lime-400 hover:bg-lime-600 hover:text-white px-4 py-2 rounded-lg transition"
+      onClick={() => setMenuOpen(false)}
+    >
+       Sobre
+    </Link>
+  </li>
+  <li>
+    <Link
+      to="/Contato"
+      className="block w-full text-lime-400 hover:bg-lime-600 hover:text-white px-4 py-2 rounded-lg transition"
+      onClick={() => setMenuOpen(false)}
+    >
+       Contato
+    </Link>
+  </li>
+  <li>
+    <Link
+      to="/Termos"
+      className="block w-full text-lime-400 hover:bg-lime-600 hover:text-white px-4 py-2 rounded-lg transition"
+      onClick={() => setMenuOpen(false)}
+    >
+       Termos
+    </Link>
+  </li>
 
-        <ul className="flex flex-col p-6 space-y-6 mt-12">
-          <li>
-            <Link
-              to="/"
-              className="text-lime-500 hover:bg-lime-600 hover:text-white p-3 rounded-md transition"
-              onClick={() => setMenuOpen(false)}
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/Classificacao"
-              className="text-lime-500 hover:bg-lime-600 hover:text-white p-3 rounded-md transition"
-              onClick={() => setMenuOpen(false)}
-            >
-              Classificação Indicativa
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/SobreNos"
-              className="text-lime-500 hover:bg-lime-600 hover:text-white p-3 rounded-md transition"
-              onClick={() => setMenuOpen(false)}
-            >
-              Sobre
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/Contato"
-              className="text-lime-500 hover:bg-lime-600 hover:text-white p-3 rounded-md transition"
-              onClick={() => setMenuOpen(false)}
-            >
-              Contato
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/Termos"
-              className="text-lime-500 hover:bg-lime-600 hover:text-white p-3 rounded-md transition"
-              onClick={() => setMenuOpen(false)}
-            >
-              Termos
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/"
-              className="text-gray-400 hover:bg-stone-800 hover:text-white p-3 rounded-md transition"
-              onClick={() => setMenuOpen(false)}
-            >
-              Em breve...
-            </Link>
-          </li>
-        </ul>
+  <hr className="border-stone-700 my-3" />
+
+  <li>
+    <Link
+      to="/"
+      className="block w-full text-gray-400 hover:bg-stone-800 hover:text-white px-4 py-2 rounded-lg transition"
+      onClick={() => setMenuOpen(false)}
+    >
+       Em breve...
+    </Link>
+  </li>
+</ul>
+
       </div>
     </div>
   );
