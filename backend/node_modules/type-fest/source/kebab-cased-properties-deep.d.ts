@@ -1,29 +1,29 @@
-import type {DefaultDelimiterCaseOptions} from './delimiter-case';
-import type {DelimiterCasedPropertiesDeep} from './delimiter-cased-properties-deep';
-import type {ApplyDefaultOptions} from './internal';
-import type {WordsOptions} from './words';
+import type {_DefaultDelimiterCaseOptions} from './delimiter-case.d.ts';
+import type {DelimiterCasedPropertiesDeep} from './delimiter-cased-properties-deep.d.ts';
+import type {ApplyDefaultOptions} from './internal/index.d.ts';
+import type {WordsOptions} from './words.d.ts';
 
 /**
 Convert object properties to kebab case recursively.
 
 This can be useful when, for example, converting some API types from a different style.
 
-@see KebabCase
-@see KebabCasedProperties
+@see {@link KebabCase}
+@see {@link KebabCasedProperties}
 
 @example
 ```
-import type [KebabCasedPropertiesDeep] from 'type-fest';
+import type {KebabCasedPropertiesDeep} from 'type-fest';
 
-interface User {
+type User = {
 	userId: number;
 	userName: string;
-}
+};
 
-interface UserWithFriends {
+type UserWithFriends = {
 	userInfo: User;
 	userFriends: User[];
-}
+};
 
 const result: KebabCasedPropertiesDeep<UserWithFriends> = {
 	'user-info': {
@@ -42,7 +42,7 @@ const result: KebabCasedPropertiesDeep<UserWithFriends> = {
 	],
 };
 
-const splitOnNumbers: KebabCasedPropertiesDeep<{line1: { line2: [{ line3: string }] }}, {splitOnNumbers: true}> = {
+const splitOnNumbers: KebabCasedPropertiesDeep<{line1: {line2: [{line3: string}]}}, {splitOnNumbers: true}> = {
 	'line-1': {
 		'line-2': [
 			{
@@ -60,4 +60,6 @@ const splitOnNumbers: KebabCasedPropertiesDeep<{line1: { line2: [{ line3: string
 export type KebabCasedPropertiesDeep<
 	Value,
 	Options extends WordsOptions = {},
-> = DelimiterCasedPropertiesDeep<Value, '-', ApplyDefaultOptions<WordsOptions, DefaultDelimiterCaseOptions, Options>>;
+> = DelimiterCasedPropertiesDeep<Value, '-', ApplyDefaultOptions<WordsOptions, _DefaultDelimiterCaseOptions, Options>>;
+
+export {};

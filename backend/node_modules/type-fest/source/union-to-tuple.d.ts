@@ -1,5 +1,5 @@
-import type {IsNever} from './is-never';
-import type {UnionToIntersection} from './union-to-intersection';
+import type {IsNever} from './is-never.d.ts';
+import type {UnionToIntersection} from './union-to-intersection.d.ts';
 
 /**
 Returns the last element of a union type.
@@ -36,9 +36,9 @@ type NumbersTuple = UnionToTuple<Numbers>;
 import type {UnionToTuple} from 'type-fest';
 
 const pets = {
-  dog: '🐶',
-  cat: '🐱',
-  snake: '🐍',
+	dog: '🐶',
+	cat: '🐱',
+	snake: '🐍',
 };
 
 type Pet = keyof typeof pets;
@@ -54,3 +54,5 @@ export type UnionToTuple<T, L = LastOfUnion<T>> =
 IsNever<T> extends false
 	? [...UnionToTuple<Exclude<T, L>>, L]
 	: [];
+
+export {};

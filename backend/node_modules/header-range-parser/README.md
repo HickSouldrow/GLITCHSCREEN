@@ -2,22 +2,21 @@
 
 ![Header • Range • Parser](https://raw.githubusercontent.com/r37r0m0d3l/header-range-parser/master/.github/assets/logo_200.webp?raw=true "Header • Range • Parser")
 
-Range header field parser. Fork of a̶b̶a̶n̶d̶o̶n̶e̶d̶ [range-parser](https://github.com/jshttp/range-parser). If you write to me with a request to change or update something, I will do it. Honestly 👼.
+Range header field parser. Fork of  a̶b̶a̶n̶d̶o̶n̶e̶d̶ [range-parser](https://github.com/jshttp/range-parser).
 
 [![NPM Version][npm-version-img]][npm-version-url]
 [![NPM Downloads][npm-downloads-img]][npm-downloads-url]
-[![GitHub Stars][gh-stars-img]][gh-stars-url]
 [![Node.js Version][node-image]][node-url]
 [![TypeScript Typings][ts-img]][ts-url]
-
-[![GitHub Checks][gh-checks-img]][gh-checks-url]
-[![Travis CI][travis-img]][travis-url]
-[![Snyk][snyk-img]][snyk-url]
-
-[![Maintainability Rating][sonarcloud-img]][sonarcloud-url]
-[![LGTM][lgtm-img]][lgtm-url]
 [![Codacy Badge][codacy-img]][codacy-url]
 [![CodeFactor][codefactor-img]][codefactor-url]
+
+[//]: # ([![GitHub Checks][gh-checks-img]][gh-checks-url])
+[//]: # ([![GitHub Stars][gh-stars-img]][gh-stars-url])
+[//]: # ([![LGTM][lgtm-img]][lgtm-url])
+[//]: # ([![Maintainability Rating][sonarcloud-img]][sonarcloud-url])
+[//]: # ([![Snyk][snyk-img]][snyk-url])
+[//]: # ([![Travis CI][travis-img]][travis-url])
 
 [comment]: <> ([![Dependabot][dependabot-img]][dependabot-url])
 
@@ -64,17 +63,17 @@ declare function parseRange(
 ): Ranges | Result;
 ```
 
-| Parameter | Type      | Description                                           |
-| :-------- | :---------| :---------------------------------------------------- |
-| `size`    | `number`  | **Required**. Size in bytes.                          |
-| `header`  | `string`  | **Required**. String containing header.               |
-| `options` | `object`  | Optional options: combine (bool), throwError (bool).  |
+| Parameter | Type     | Description                                          |
+|:----------|:---------|:-----------------------------------------------------|
+| `size`    | `number` | **Required**. Size in bytes.                         |
+| `header`  | `string` | **Required**. String containing header.              |
+| `options` | `object` | Optional options: combine (bool), throwError (bool). |
 
 Parse the given `header` string where `size` is the size of the selected
 representation that is to be partitioned into sub-ranges. An array of sub-ranges
 will be returned or negative numbers indicating an error parsing.
 
-- `-1` or `ERROR_UNSATISFIABLE_RESULT` or ` esultUnsatisfiable` signals an unsatisfiable range
+- `-1` or `ERROR_UNSATISFIABLE_RESULT` or ` ResultUnsatisfiable` signals an unsatisfiable range
 
 - `-2` or `ERROR_STRING_IS_NOT_HEADER` or `ResultInvalid` signals a malformed header string
 
@@ -130,11 +129,13 @@ parseRange(
 //  ]
 ```
 
-## See also
+[//]: # (## See also)
 
-[💾 My other projects](https://r37r0m0d3l.icu/open_source_map)
+[//]: # ()
+[//]: # ([💾 My other projects]&#40;https://r37r0m0d3l.icu/open_source_map&#41;)
 
-<img alt="Open Source" src="https://raw.githubusercontent.com/r37r0m0d3l/r37r0m0d3l/master/osmap.svg?sanitize=true" width="960" height="520" style="display:block;height:auto;margin-left:auto;margin-right:auto;min-height:520px;min-width:960px;width:100%;">
+[//]: # ()
+[//]: # (<img alt="Open Source" src="https://raw.githubusercontent.com/r37r0m0d3l/r37r0m0d3l/master/osmap.svg?sanitize=true" width="960" height="520" style="display:block;height:auto;margin-left:auto;margin-right:auto;min-height:520px;min-width:960px;width:100%;">)
 
 <!-- Badges -->
 

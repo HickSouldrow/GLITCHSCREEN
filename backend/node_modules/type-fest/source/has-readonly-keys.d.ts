@@ -1,4 +1,4 @@
-import type {ReadonlyKeysOf} from './readonly-keys-of';
+import type {ReadonlyKeysOf} from './readonly-keys-of.d.ts';
 
 /**
 Creates a type that represents `true` or `false` depending on whether the given type has any readonly fields.
@@ -12,10 +12,12 @@ import type {HasReadonlyKeys, ReadonlyKeysOf} from 'type-fest';
 type UpdateService<Entity extends object> = {
 	removeField: HasReadonlyKeys<Entity> extends true
 		? (field: ReadonlyKeysOf<Entity>) => Promise<void>
-		: never
-}
+		: never;
+};
 ```
 
 @category Utilities
 */
 export type HasReadonlyKeys<BaseType extends object> = ReadonlyKeysOf<BaseType> extends never ? false : true;
+
+export {};

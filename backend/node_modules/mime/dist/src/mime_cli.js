@@ -64,4 +64,3 @@ export default async function () {
         process.exit(1);
     process.stdout.write(type + '\n');
 }
-//# sourceMappingURL=mime_cli.js.map

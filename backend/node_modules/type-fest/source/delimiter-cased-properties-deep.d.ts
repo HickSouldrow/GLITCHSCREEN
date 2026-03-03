@@ -1,33 +1,33 @@
-import type {DefaultDelimiterCaseOptions, DelimiterCase} from './delimiter-case';
-import type {ApplyDefaultOptions, NonRecursiveType} from './internal';
-import type {UnknownArray} from './unknown-array';
-import type {WordsOptions} from './words';
+import type {_DefaultDelimiterCaseOptions, DelimiterCase} from './delimiter-case.d.ts';
+import type {ApplyDefaultOptions, NonRecursiveType} from './internal/index.d.ts';
+import type {UnknownArray} from './unknown-array.d.ts';
+import type {WordsOptions} from './words.d.ts';
 
 /**
 Convert object properties to delimiter case recursively.
 
 This can be useful when, for example, converting some API types from a different style.
 
-@see DelimiterCase
-@see DelimiterCasedProperties
+@see {@link DelimiterCase}
+@see {@link DelimiterCasedProperties}
 
 @example
 ```
 import type {DelimiterCasedPropertiesDeep} from 'type-fest';
 
-interface User {
+type User = {
 	userId: number;
 	userName: string;
-}
+};
 
-interface UserWithFriends {
+type UserWithFriends = {
 	userInfo: User;
 	userFriends: User[];
-}
+};
 
 const result: DelimiterCasedPropertiesDeep<UserWithFriends, '-'> = {
 	'user-info': {
-	'user-id': 1,
+		'user-id': 1,
 		'user-name': 'Tom',
 	},
 	'user-friends': [
@@ -42,7 +42,7 @@ const result: DelimiterCasedPropertiesDeep<UserWithFriends, '-'> = {
 	],
 };
 
-const splitOnNumbers: DelimiterCasedPropertiesDeep<{line1: { line2: [{ line3: string }] }}, '-', {splitOnNumbers: true}> = {
+const splitOnNumbers: DelimiterCasedPropertiesDeep<{line1: {line2: [{line3: string}]}}, '-', {splitOnNumbers: true}> = {
 	'line-1': {
 		'line-2': [
 			{
@@ -61,7 +61,7 @@ export type DelimiterCasedPropertiesDeep<
 	Value,
 	Delimiter extends string,
 	Options extends WordsOptions = {},
-> = _DelimiterCasedPropertiesDeep<Value, Delimiter, ApplyDefaultOptions<WordsOptions, DefaultDelimiterCaseOptions, Options>>;
+> = _DelimiterCasedPropertiesDeep<Value, Delimiter, ApplyDefaultOptions<WordsOptions, _DefaultDelimiterCaseOptions, Options>>;
 
 type _DelimiterCasedPropertiesDeep<
 	Value,
@@ -104,3 +104,5 @@ type DelimiterCasedPropertiesArrayDeep<
 						: Value extends ReadonlyArray<infer U>
 							? ReadonlyArray<_DelimiterCasedPropertiesDeep<U, Delimiter, Options>>
 							: never;
+
+export {};

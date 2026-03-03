@@ -1,8 +1,8 @@
-import type {Primitive} from './primitive';
-import type {Numeric} from './numeric';
-import type {IsNotFalse, IsPrimitive} from './internal';
-import type {IsNever} from './is-never';
-import type {IfNever} from './if-never';
+import type {Primitive} from './primitive.d.ts';
+import type {_Numeric} from './numeric.d.ts';
+import type {CollapseLiterals, IfNotAnyOrNever, IsNotFalse, IsPrimitive} from './internal/index.d.ts';
+import type {IsNever} from './is-never.d.ts';
+import type {TagContainer, UnwrapTagged} from './tagged.d.ts';
 
 /**
 Returns a boolean for whether the given type `T` is the specified `LiteralType`.
@@ -11,13 +11,13 @@ Returns a boolean for whether the given type `T` is the specified `LiteralType`.
 
 @example
 ```
-LiteralCheck<1, number>
+type A = LiteralCheck<1, number>;
 //=> true
 
-LiteralCheck<number, number>
+type B = LiteralCheck<number, number>;
 //=> false
 
-LiteralCheck<1, string>
+type C = LiteralCheck<1, string>;
 //=> false
 ```
 */
@@ -38,13 +38,13 @@ Returns a boolean for whether the given type `T` is one of the specified literal
 
 @example
 ```
-LiteralChecks<1, Numeric>
+type A = LiteralChecks<1, Numeric>;
 //=> true
 
-LiteralChecks<1n, Numeric>
+type B = LiteralChecks<1n, Numeric>;
 //=> true
 
-LiteralChecks<bigint, Numeric>
+type C = LiteralChecks<bigint, Numeric>;
 //=> false
 ```
 */
@@ -114,14 +114,18 @@ type L2 = Length<`${number}`>;
 @category Type Guard
 @category Utilities
 */
-export type IsStringLiteral<T> = IfNever<T, false,
+export type IsStringLiteral<S> = IfNotAnyOrNever<S,
+	_IsStringLiteral<CollapseLiterals<S extends TagContainer<any> ? UnwrapTagged<S> : S>>,
+	false, false>;
+
+export type _IsStringLiteral<S> =
 // If `T` is an infinite string type (e.g., `on${string}`), `Record<T, never>` produces an index signature,
 // and since `{}` extends index signatures, the result becomes `false`.
-T extends string
-	? {} extends Record<T, never>
+S extends string
+	? {} extends Record<S, never>
 		? false
 		: true
-	: false>;
+	: false;
 
 /**
 Returns a boolean for whether the given type is a `number` or `bigint` [literal type](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types).
@@ -132,9 +136,9 @@ Useful for:
 
 @example
 ```
-import type {IsNumericLiteral} from 'type-fest';
+import type {IsNumericLiteral, IsStringLiteral} from 'type-fest';
 
-// https://github.com/inocan-group/inferred-types/blob/master/src/types/boolean-logic/EndsWith.ts
+// https://github.com/inocan-group/inferred-types/blob/master/modules/types/src/boolean-logic/operators/EndsWith.ts
 type EndsWith<TValue, TEndsWith extends string> =
 	TValue extends string
 		? IsStringLiteral<TEndsWith> extends true
@@ -157,7 +161,7 @@ function endsWith<Input extends string | number, End extends string>(input: Inpu
 endsWith('abc', 'c');
 //=> true
 
-endsWith(123456, '456');
+endsWith(123_456, '456');
 //=> true
 
 const end = '123' as string;
@@ -169,7 +173,7 @@ endsWith('abc123', end);
 @category Type Guard
 @category Utilities
 */
-export type IsNumericLiteral<T> = LiteralChecks<T, Numeric>;
+export type IsNumericLiteral<T> = LiteralChecks<T, _Numeric>;
 
 /**
 Returns a boolean for whether the given type is a `true` or `false` [literal type](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types).
@@ -203,7 +207,7 @@ const stringId = getId({asString: true});
 
 declare const runtimeBoolean: boolean;
 const eitherId = getId({asString: runtimeBoolean});
-//=> number | string
+//=> string | number
 ```
 
 @category Type Guard
@@ -222,17 +226,18 @@ Useful for:
 ```
 import type {IsSymbolLiteral} from 'type-fest';
 
-type Get<Obj extends Record<symbol, number>, Key extends keyof Obj> =
+type Get<Object_ extends Record<symbol, number>, Key extends keyof Object_> =
 	IsSymbolLiteral<Key> extends true
-		? Obj[Key]
+		? Object_[Key]
 		: number;
 
-function get<Obj extends Record<symbol, number>, Key extends keyof Obj>(o: Obj, key: Key) {
-	return o[key] as Get<Obj, Key>;
+function get<Object_ extends Record<symbol, number>, Key extends keyof Object_>(o: Object_, key: Key) {
+	return o[key] as Get<Object_, Key>;
 }
 
 const symbolLiteral = Symbol('literal');
-const symbolValue: symbol = Symbol('value');
+let symbolValue = Symbol('value1');
+symbolValue = Symbol('value2');
 
 get({[symbolLiteral]: 1} as const, symbolLiteral);
 //=> 1
@@ -264,27 +269,39 @@ Useful for:
 ```
 import type {IsLiteral} from 'type-fest';
 
-// https://github.com/inocan-group/inferred-types/blob/master/src/types/string-literals/StripLeading.ts
-export type StripLeading<A, B> =
-	A extends string
-		? B extends string
-			? IsLiteral<A> extends true
-				? string extends B ? never : A extends `${B & string}${infer After}` ? After : A
-				: string
-			: A
-		: A;
+type A = IsLiteral<1>;
+//=> true
 
-function stripLeading<Input extends string, Strip extends string>(input: Input, strip: Strip) {
-	return input.replace(`^${strip}`, '') as StripLeading<Input, Strip>;
-}
+type B = IsLiteral<number>;
+//=> false
 
-stripLeading('abc123', 'abc');
-//=> '123'
+type C = IsLiteral<1n>;
+//=> true
 
-const str = 'abc123' as string;
+type D = IsLiteral<bigint>;
+//=> false
 
-stripLeading(str, 'abc');
-//=> string
+type E = IsLiteral<'type-fest'>;
+//=> true
+
+type F = IsLiteral<string>;
+//=> false
+
+type G = IsLiteral<`on${string}`>;
+//=> false
+
+declare const symbolLiteral: unique symbol;
+type H = IsLiteral<typeof symbolLiteral>;
+//=> true
+
+type I = IsLiteral<symbol>;
+//=> false
+
+type J = IsLiteral<true>;
+//=> true
+
+type K = IsLiteral<boolean>;
+//=> false
 ```
 
 @category Type Guard
@@ -294,3 +311,5 @@ export type IsLiteral<T> =
 	IsPrimitive<T> extends true
 		? IsNotFalse<IsLiteralUnion<T>>
 		: false;
+
+export {};

@@ -1,9 +1,10 @@
-import type {ApplyDefaultOptions, AsciiPunctuation, StartsWith} from './internal';
-import type {IsStringLiteral} from './is-literal';
-import type {Merge} from './merge';
-import type {DefaultWordsOptions, Words, WordsOptions} from './words';
+import type {ApplyDefaultOptions, AsciiPunctuation, StartsWith} from './internal/index.d.ts';
+import type {IsStringLiteral} from './is-literal.d.ts';
+import type {Merge} from './merge.d.ts';
+import type {RemovePrefix} from './remove-prefix.d.ts';
+import type {_DefaultWordsOptions, Words, WordsOptions} from './words.d.ts';
 
-export type DefaultDelimiterCaseOptions = Merge<DefaultWordsOptions, {splitOnNumbers: false}>;
+export type _DefaultDelimiterCaseOptions = Merge<_DefaultWordsOptions, {splitOnNumbers: false}>;
 
 /**
 Convert an array of words to delimiter case starting with a delimiter with input capitalization.
@@ -21,17 +22,13 @@ type DelimiterCaseFromArray<
 	}${FirstWord}`>
 	: OutputString;
 
-type RemoveFirstLetter<S extends string> = S extends `${infer _}${infer Rest}`
-	? Rest
-	: '';
-
 /**
 Convert a string literal to a custom string delimiter casing.
 
 This can be useful when, for example, converting a camel-cased object property to an oddly cased one.
 
-@see KebabCase
-@see SnakeCase
+@see {@link KebabCase}
+@see {@link SnakeCase}
 
 @example
 ```
@@ -48,16 +45,16 @@ type OddlyCasedProperties<T> = {
 	[K in keyof T as DelimiterCase<K, '#'>]: T[K]
 };
 
-interface SomeOptions {
+type SomeOptions = {
 	dryRun: boolean;
 	includeFile: string;
 	foo: number;
-}
+};
 
 const rawCliOptions: OddlyCasedProperties<SomeOptions> = {
 	'dry#run': true,
 	'include#file': 'bar.js',
-	foo: 123
+	foo: 123,
 };
 ```
 
@@ -71,8 +68,10 @@ export type DelimiterCase<
 > = Value extends string
 	? IsStringLiteral<Value> extends false
 		? Value
-		: Lowercase<RemoveFirstLetter<DelimiterCaseFromArray<
-		Words<Value, ApplyDefaultOptions<WordsOptions, DefaultDelimiterCaseOptions, Options>>,
-		Delimiter
-		>>>
+		: Lowercase<RemovePrefix<DelimiterCaseFromArray<
+			Words<Value, ApplyDefaultOptions<WordsOptions, _DefaultDelimiterCaseOptions, Options>>,
+			Delimiter
+		>, string, {strict: false}>>
 	: Value;
+
+export {};

@@ -1,7 +1,7 @@
-import type {GreaterThan} from '../greater-than';
-import type {LessThan} from '../less-than';
-import type {NegativeInfinity, PositiveInfinity} from '../numeric';
-import type {UnknownArray} from '../unknown-array';
+import type {GreaterThan} from '../greater-than.d.ts';
+import type {LessThan} from '../less-than.d.ts';
+import type {NegativeInfinity, PositiveInfinity} from '../numeric.d.ts';
+import type {UnknownArray} from '../unknown-array.d.ts';
 
 /**
 Infer the length of the given tuple `<T>`.
@@ -17,7 +17,7 @@ type Array = TupleLength<string[]>;
 //=> never
 
 // Supports union types.
-type Union = TupleLength<[] | [1, 2, 3] | Array<number>>;
+type Union = TupleLength<[] | [1, 2, 3] | number[]>;
 //=> 1 | 3
 ```
 */
@@ -31,19 +31,6 @@ export type TupleLength<T extends UnknownArray> =
 		: never; // Should never happen
 
 /**
-Create a tuple type of the given length `<L>` and fill it with the given type `<Fill>`.
-
-If `<Fill>` is not provided, it will default to `unknown`.
-
-@link https://itnext.io/implementing-arithmetic-within-typescripts-type-system-a1ef140a6f6f
-*/
-export type BuildTuple<L extends number, Fill = unknown, T extends readonly unknown[] = []> = number extends L
-	? Fill[]
-	: L extends T['length']
-		? T
-		: BuildTuple<L, Fill, [...T, Fill]>;
-
-/**
 Returns the maximum value from a tuple of integers.
 
 Note:
@@ -51,10 +38,10 @@ Note:
 
 @example
 ```
-ArrayMax<[1, 2, 5, 3]>;
+type A = TupleMax<[1, 2, 5, 3]>;
 //=> 5
 
-ArrayMax<[1, 2, 5, 3, 99, -1]>;
+type B = TupleMax<[1, 2, 5, 3, 99, -1]>;
 //=> 99
 ```
 */
@@ -74,10 +61,10 @@ Note:
 
 @example
 ```
-ArrayMin<[1, 2, 5, 3]>;
+type A = TupleMin<[1, 2, 5, 3]>;
 //=> 1
 
-ArrayMin<[1, 2, 5, 3, -5]>;
+type B = TupleMin<[1, 2, 5, 3, -5]>;
 //=> -5
 ```
 */
@@ -88,3 +75,5 @@ export type TupleMin<A extends number[], Result extends number = PositiveInfinit
 			? TupleMin<R, F>
 			: TupleMin<R, Result>
 		: Result;
+
+export {};

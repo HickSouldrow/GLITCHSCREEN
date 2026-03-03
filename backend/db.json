@@ -50,6 +50,13 @@
       "password": "Stunnados",
       "email": "henriquedasilvamacedo6@gmail.com",
       "token": "newToken123"
+    },
+    {
+      "id": "a511",
+      "username": "a",
+      "password": "a",
+      "email": "a@a",
+      "token": "newToken123"
     }
   ],
   "categorias": [
@@ -331,7 +338,7 @@
       "Descricao": "Hollow Knight é um jogo de ação e aventura em estilo metroidvania 2D que se passa em Hallownest, antigo reino fictício.",
       "Sinopse": "Forje seu caminho em Hollow Knight! Uma aventura de ação épica em um vasto reino arruinado de insetos e heróis. Explore cavernas serpenteantes, lute contra criaturas malignas e alie-se a insetos bizarros num estilo clássico 2D desenhado à mão.",
       "Desconto": 5,
-      "ImageUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Hollow_Knight_first_cover_art.webp/274px-Hollow_Knight_first_cover_art.webp.png",
+      "ImageUrl": "https://cdn.wikimg.net/en/hkwiki/images/a/a1/HK_first_cover_art.png",
       "ImageUrl2": "https://store-images.s-microsoft.com/image/apps.24270.13847644057609868.a4a91f76-8d1c-4e19-aa78-f4d27d2818fb.d96146d7-d00a-4db9-ad68-197b2f962a17?h=862&format=jpg",
       "ImageUrl3": "https://static0.gamerantimages.com/wordpress/wp-content/uploads/wm/2024/07/hollow-knight-abyss-hornet-and-knight.jpg",
       "ImageUrl4": "https://media.gq.com/photos/5b4f85bf80d4544fbe01ecc9/16:9/w_2560%2Cc_limit/hollow-night-review-gq-1.jpg",

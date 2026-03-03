@@ -1,4 +1,4 @@
-import type {WritableKeysOf} from './writable-keys-of';
+import type {WritableKeysOf} from './writable-keys-of.d.ts';
 
 /**
 Creates a type that represents `true` or `false` depending on whether the given type has any writable fields.
@@ -12,10 +12,12 @@ import type {HasWritableKeys, WritableKeysOf} from 'type-fest';
 type UpdateService<Entity extends object> = {
 	removeField: HasWritableKeys<Entity> extends true
 		? (field: WritableKeysOf<Entity>) => Promise<void>
-		: never
-}
+		: never;
+};
 ```
 
 @category Utilities
 */
 export type HasWritableKeys<BaseType extends object> = WritableKeysOf<BaseType> extends never ? false : true;
+
+export {};

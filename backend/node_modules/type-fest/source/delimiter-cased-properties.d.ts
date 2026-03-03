@@ -1,23 +1,23 @@
-import type {DefaultDelimiterCaseOptions, DelimiterCase} from './delimiter-case';
-import type {ApplyDefaultOptions} from './internal';
-import type {WordsOptions} from './words';
+import type {_DefaultDelimiterCaseOptions, DelimiterCase} from './delimiter-case.d.ts';
+import type {ApplyDefaultOptions} from './internal/index.d.ts';
+import type {WordsOptions} from './words.d.ts';
 
 /**
 Convert object properties to delimiter case but not recursively.
 
 This can be useful when, for example, converting some API types from a different style.
 
-@see DelimiterCase
-@see DelimiterCasedPropertiesDeep
+@see {@link DelimiterCase}
+@see {@link DelimiterCasedPropertiesDeep}
 
 @example
 ```
 import type {DelimiterCasedProperties} from 'type-fest';
 
-interface User {
+type User = {
 	userId: number;
 	userName: string;
-}
+};
 
 const result: DelimiterCasedProperties<User, '-'> = {
 	'user-id': 1,
@@ -42,5 +42,7 @@ export type DelimiterCasedProperties<
 	: Value extends Array<infer U>
 		? Value
 		: {[K in keyof Value as
-			DelimiterCase<K, Delimiter, ApplyDefaultOptions<WordsOptions, DefaultDelimiterCaseOptions, Options>>
+			DelimiterCase<K, Delimiter, ApplyDefaultOptions<WordsOptions, _DefaultDelimiterCaseOptions, Options>>
 			]: Value[K]};
+
+export {};

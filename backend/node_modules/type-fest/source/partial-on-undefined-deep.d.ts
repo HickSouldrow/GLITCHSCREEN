@@ -1,9 +1,10 @@
-import type {IfUnknown} from './if-unknown';
-import type {ApplyDefaultOptions, BuiltIns, LiteralKeyOf} from './internal';
-import type {Merge} from './merge';
+import type {If} from './if.d.ts';
+import type {ApplyDefaultOptions, BuiltIns, LiteralKeyOf} from './internal/index.d.ts';
+import type {IsUnknown} from './is-unknown.d.ts';
+import type {Merge} from './merge.d.ts';
 
 /**
-@see PartialOnUndefinedDeep
+@see {@link PartialOnUndefinedDeep}
 */
 export type PartialOnUndefinedDeepOptions = {
 	/**
@@ -30,13 +31,13 @@ Use-cases:
 ```
 import type {PartialOnUndefinedDeep} from 'type-fest';
 
-interface Settings {
+type Settings = {
 	optionA: string;
 	optionB: number | undefined;
 	subOption: {
 		subOptionA: boolean;
 		subOptionB: boolean | undefined;
-	}
+	};
 };
 
 const testSettings: PartialOnUndefinedDeep<Settings> = {
@@ -55,7 +56,7 @@ export type PartialOnUndefinedDeep<T, Options extends PartialOnUndefinedDeepOpti
 	_PartialOnUndefinedDeep<T, ApplyDefaultOptions<PartialOnUndefinedDeepOptions, DefaultPartialOnUndefinedDeepOptions, Options>>;
 
 type _PartialOnUndefinedDeep<T, Options extends Required<PartialOnUndefinedDeepOptions>> = T extends Record<any, any> | undefined
-	? {[KeyType in keyof T as undefined extends T[KeyType] ? IfUnknown<T[KeyType], never, KeyType> : never]?: PartialOnUndefinedDeepValue<T[KeyType], Options>} extends infer U // Make a partial type with all value types accepting undefined (and set them optional)
+	? {[KeyType in keyof T as undefined extends T[KeyType] ? If<IsUnknown<T[KeyType]>, never, KeyType> : never]?: PartialOnUndefinedDeepValue<T[KeyType], Options>} extends infer U // Make a partial type with all value types accepting undefined (and set them optional)
 		? Merge<{[KeyType in keyof T as KeyType extends LiteralKeyOf<U> ? never : KeyType]: PartialOnUndefinedDeepValue<T[KeyType], Options>}, U> // Join all remaining keys not treated in U
 		: never // Should not happen
 	: T;
@@ -76,3 +77,5 @@ type PartialOnUndefinedDeepValue<T, Options extends Required<PartialOnUndefinedD
 		: T extends Record<any, any> | undefined
 			? _PartialOnUndefinedDeep<T, Options>
 			: unknown;
+
+export {};

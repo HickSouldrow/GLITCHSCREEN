@@ -1,9 +1,9 @@
-import type {ArrayEntry, MapEntry, ObjectEntry, SetEntry} from './entry';
+import type {_ArrayEntry, _MapEntry, _ObjectEntry, _SetEntry} from './entry.d.ts';
 
-type ArrayEntries<BaseType extends readonly unknown[]> = Array<ArrayEntry<BaseType>>;
-type MapEntries<BaseType> = Array<MapEntry<BaseType>>;
-type ObjectEntries<BaseType> = Array<ObjectEntry<BaseType>>;
-type SetEntries<BaseType extends Set<unknown>> = Array<SetEntry<BaseType>>;
+type ArrayEntries<BaseType extends readonly unknown[]> = Array<_ArrayEntry<BaseType>>;
+type MapEntries<BaseType> = Array<_MapEntry<BaseType>>;
+type ObjectEntries<BaseType> = Array<_ObjectEntry<BaseType>>;
+type SetEntries<BaseType extends Set<unknown>> = Array<_SetEntry<BaseType>>;
 
 /**
 Many collections have an `entries` method which returns an array of a given object's own enumerable string-keyed property [key, value] pairs. The `Entries` type will return the type of that collection's entries.
@@ -16,16 +16,16 @@ For example the {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/R
 ```
 import type {Entries} from 'type-fest';
 
-interface Example {
+type Example = {
 	someKey: number;
-}
+};
 
 const manipulatesEntries = (examples: Entries<Example>) => examples.map(example => [
 	// Does some arbitrary processing on the key (with type information available)
 	example[0].toUpperCase(),
 
 	// Does some arbitrary processing on the value (with type information available)
-	example[1].toFixed()
+	example[1].toFixed(0),
 ]);
 
 const example: Example = {someKey: 1};
@@ -60,3 +60,5 @@ export type Entries<BaseType> =
 			: BaseType extends readonly unknown[] ? ArrayEntries<BaseType>
 				: BaseType extends object ? ObjectEntries<BaseType>
 					: never;
+
+export {};

@@ -1,5 +1,5 @@
-import type {ApplyDefaultOptions, BuiltIns} from './internal';
-import type {IsNever} from './is-never';
+import type {ApplyDefaultOptions, BuiltIns, HasMultipleCallSignatures} from './internal/index.d.ts';
+import type {IsNever} from './is-never.d.ts';
 
 /**
 @see {@link PartialDeep}
@@ -18,10 +18,10 @@ export type PartialDeepOptions = {
 	- When set to `true`, elements of non-tuple arrays can be `undefined`.
 	- When set to `false`, only explicitly defined elements are allowed in non-tuple arrays, ensuring stricter type checking.
 
-	@default true
+	@default false
 
 	@example
-	You can prevent `undefined` values in non-tuple arrays by passing `{recurseIntoArrays: true; allowUndefinedInNonTupleArrays: false}` as the second type argument:
+	You can allow `undefined` values in non-tuple arrays by passing `{recurseIntoArrays: true; allowUndefinedInNonTupleArrays: true}` as the second type argument:
 
 	```
 	import type {PartialDeep} from 'type-fest';
@@ -30,10 +30,9 @@ export type PartialDeepOptions = {
 		languages: string[];
 	};
 
-	declare const partialSettings: PartialDeep<Settings, {recurseIntoArrays: true; allowUndefinedInNonTupleArrays: false}>;
+	declare const partialSettings: PartialDeep<Settings, {recurseIntoArrays: true; allowUndefinedInNonTupleArrays: true}>;
 
-	partialSettings.languages = [undefined]; // Error
-	partialSettings.languages = []; // Ok
+	partialSettings.languages = [undefined]; // OK
 	```
 	*/
 	readonly allowUndefinedInNonTupleArrays?: boolean;
@@ -41,7 +40,7 @@ export type PartialDeepOptions = {
 
 type DefaultPartialDeepOptions = {
 	recurseIntoArrays: false;
-	allowUndefinedInNonTupleArrays: true;
+	allowUndefinedInNonTupleArrays: false;
 };
 
 /**
@@ -55,19 +54,19 @@ Use-cases:
 ```
 import type {PartialDeep} from 'type-fest';
 
-const settings: Settings = {
+let settings = {
 	textEditor: {
 		fontSize: 14,
 		fontColor: '#000000',
-		fontWeight: 400
+		fontWeight: 400,
 	},
 	autocomplete: false,
-	autosave: true
+	autosave: true,
 };
 
-const applySavedSettings = (savedSettings: PartialDeep<Settings>) => {
-	return {...settings, ...savedSettings};
-}
+const applySavedSettings = (savedSettings: PartialDeep<typeof settings>) => (
+	{...settings, ...savedSettings, textEditor: {...settings.textEditor, ...savedSettings.textEditor}}
+);
 
 settings = applySavedSettings({textEditor: {fontWeight: 500}});
 ```
@@ -77,13 +76,15 @@ By default, this does not affect elements in array and tuple types. You can chan
 ```
 import type {PartialDeep} from 'type-fest';
 
-type Settings = {
-	languages: string[];
-}
-
-const partialSettings: PartialDeep<Settings, {recurseIntoArrays: true}> = {
-	languages: [undefined]
+type Shape = {
+	dimensions: [number, number];
 };
+
+const partialShape: PartialDeep<Shape, {recurseIntoArrays: true}> = {
+	dimensions: [], // OK
+};
+
+partialShape.dimensions = [15]; // OK
 ```
 
 @see {@link PartialDeepOptions}
@@ -98,16 +99,20 @@ export type PartialDeep<T, Options extends PartialDeepOptions = {}> =
 
 type _PartialDeep<T, Options extends Required<PartialDeepOptions>> = T extends BuiltIns | ((new (...arguments_: any[]) => unknown))
 	? T
-	: IsNever<keyof T> extends true // For functions with no properties
-		? T
-		: T extends Map<infer KeyType, infer ValueType>
-			? PartialMapDeep<KeyType, ValueType, Options>
-			: T extends Set<infer ItemType>
-				? PartialSetDeep<ItemType, Options>
-				: T extends ReadonlyMap<infer KeyType, infer ValueType>
-					? PartialReadonlyMapDeep<KeyType, ValueType, Options>
-					: T extends ReadonlySet<infer ItemType>
-						? PartialReadonlySetDeep<ItemType, Options>
+	: T extends Map<infer KeyType, infer ValueType>
+		? PartialMapDeep<KeyType, ValueType, Options>
+		: T extends Set<infer ItemType>
+			? PartialSetDeep<ItemType, Options>
+			: T extends ReadonlyMap<infer KeyType, infer ValueType>
+				? PartialReadonlyMapDeep<KeyType, ValueType, Options>
+				: T extends ReadonlySet<infer ItemType>
+					? PartialReadonlySetDeep<ItemType, Options>
+					: T extends (...arguments_: any[]) => unknown
+						? IsNever<keyof T> extends true
+							? T // For functions with no properties
+							: HasMultipleCallSignatures<T> extends true
+								? T
+								: ((...arguments_: Parameters<T>) => ReturnType<T>) & PartialObjectDeep<T, Options>
 						: T extends object
 							? T extends ReadonlyArray<infer ItemType> // Test for arrays/tuples, per https://github.com/microsoft/TypeScript/issues/35156
 								? Options['recurseIntoArrays'] extends true
@@ -143,9 +148,8 @@ type PartialReadonlySetDeep<T, Options extends Required<PartialDeepOptions>> = {
 /**
 Same as `PartialDeep`, but accepts only `object`s as inputs. Internal helper for `PartialDeep`.
 */
-type PartialObjectDeep<ObjectType extends object, Options extends Required<PartialDeepOptions>> =
-	(ObjectType extends (...arguments_: any) => unknown
-		? (...arguments_: Parameters<ObjectType>) => ReturnType<ObjectType>
-		: {}) & ({
-		[KeyType in keyof ObjectType]?: _PartialDeep<ObjectType[KeyType], Options>
-	});
+type PartialObjectDeep<ObjectType extends object, Options extends Required<PartialDeepOptions>> = {
+	[KeyType in keyof ObjectType]?: _PartialDeep<ObjectType[KeyType], Options>
+};
+
+export {};

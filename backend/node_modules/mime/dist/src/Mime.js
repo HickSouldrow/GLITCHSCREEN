@@ -44,8 +44,8 @@ class Mime {
     getType(path) {
         if (typeof path !== 'string')
             return null;
-        const last = path.replace(/^.*[/\\]/, '').toLowerCase();
-        const ext = last.replace(/^.*\./, '').toLowerCase();
+        const last = path.replace(/^.*[/\\]/s, '').toLowerCase();
+        const ext = last.replace(/^.*\./s, '').toLowerCase();
         const hasPath = last.length < path.length;
         const hasDot = ext.length < last.length - 1;
         if (!hasDot && hasPath)
@@ -82,4 +82,3 @@ class Mime {
 }
 _Mime_extensionToType = new WeakMap(), _Mime_typeToExtension = new WeakMap(), _Mime_typeToExtensions = new WeakMap();
 export default Mime;
-//# sourceMappingURL=Mime.js.map
