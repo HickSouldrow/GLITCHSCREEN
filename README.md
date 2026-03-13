@@ -28,7 +28,7 @@ cd GlitchScreen/vite-project
 npm i
 
 # Install the main libraries
-npm install react react-dom react-router-dom firebase sweetalert2 json-server lucide-react
+npm install react react-dom react-router-dom firebase sweetalert2 lucide-react
 
 # Install TailwindCSS
 npm install tailwindcss @tailwindcss/vite
