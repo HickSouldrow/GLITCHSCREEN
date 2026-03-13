@@ -10,7 +10,7 @@ Built with **React**, **Vite**, and **TailwindCSS**, featuring routing, API requ
 - React
 - Vite
 - React Router DOM
-- Axios
+- Firebase
 - SweetAlert2
 - TailwindCSS
 - json-server (for simulating a backend API)
@@ -28,7 +28,7 @@ cd GlitchScreen/vite-project
 npm i
 
 # Install the main libraries
-npm install react react-dom react-router-dom axios sweetalert2 json-server lucide-react
+npm install react react-dom react-router-dom firebase sweetalert2 json-server lucide-react
 
 # Install TailwindCSS
 npm install tailwindcss @tailwindcss/vite
@@ -44,3 +44,4 @@ npm install --save-dev concurrently
 
 # Run the development server
 npm run start
+```

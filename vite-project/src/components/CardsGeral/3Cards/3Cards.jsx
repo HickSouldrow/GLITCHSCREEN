@@ -1,62 +1,65 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { db } from "../../../services/firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 const CardJogo = ({ jogo }) => {
   const navigate = useNavigate();
 
   const handleClick = (e) => {
-      e.preventDefault();
-      // Envia TODOS os dados do jogo para a página de detalhes
-      navigate(`/jogo/${jogo.CodJogo}`, { 
-          state: { 
-              jogoData: jogo,
-              fromCard: true 
-          }
-      });
+    e.preventDefault();
+    navigate(`/jogo/${jogo.CodJogo}`, {
+      state: {
+        jogoData: jogo,
+        fromCard: true,
+      },
+    });
   };
 
   return (
-  
     <div className="flex flex-col w-full bg-stone-800 rounded-lg shadow-lg overflow-hidden h-full transform transition duration-300 hover:scale-105 hover:shadow-xl">
-        <a href={`/jogo/${jogo.CodJogo}`} onClick={handleClick} className="block">
-      <div className="h-60 bg-lime-600 flex items-center justify-center transition duration-300 hover:bg-lime-500">
-        {jogo.ImageUrl ? (
-          <img 
-            src={jogo.ImageUrl} 
-            alt={jogo.Nome} 
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <span className="text-white text-lg">Sem imagem</span>
-        )}
-      </div>
-      <div className="p-4">
-        <h3 className="text-white font-bold text-lg mb-2">{jogo.Nome}</h3>
-        {jogo.Preco === 0 ? (
-          <span className="text-lime-600 font-bold">Gratuito</span>
-        ) : (
-          <div>
-<div className="relative flex items-center">
-  {jogo.Desconto > 0 && (
-    <>
-      <span className="line-through text-gray-400 mr-2">
-        R$ {jogo.Preco.toFixed(2).replace('.', ',')}
-      </span>
+      <a href={`/jogo/${jogo.CodJogo}`} onClick={handleClick} className="block">
+        <div className="h-60 bg-lime-600 flex items-center justify-center transition duration-300 hover:bg-lime-500">
+          {/* Note que no Firebase costumamos usar 'Imagem' ou 'ImageUrl', ajuste conforme seu banco */}
+          {jogo.ImageUrl || jogo.Imagem ? (
+            <img
+              src={jogo.ImageUrl || jogo.Imagem}
+              alt={jogo.Nome}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <span className="text-white text-lg">Sem imagem</span>
+          )}
+        </div>
+        <div className="p-4">
+          <h3 className="text-white font-bold text-lg mb-2">{jogo.Nome}</h3>
+          {jogo.Preco === 0 ? (
+            <span className="text-lime-600 font-bold">Gratuito</span>
+          ) : (
+            <div>
+              <div className="relative flex items-center">
+                {jogo.Desconto > 0 && (
+                  <>
+                    <span className="line-through text-gray-400 mr-2">
+                      R$ {jogo.Preco.toFixed(2).replace(".", ",")}
+                    </span>
 
-      <span className="absolute bottom-70 left-0.5 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">
-        -{jogo.Desconto}%
-      </span>
-    </>
-  )}
-</div>
+                    <span className="absolute bottom-70 left-0.5 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">
+                      -{jogo.Desconto}%
+                    </span>
+                  </>
+                )}
+              </div>
 
-            <span className="text-lime-600 font-bold">
-              R$ {(jogo.Preco * (1 - jogo.Desconto/100)).toFixed(2).replace('.', ',')}
-            </span>
-          </div>
-        )}
-      </div>
+              <span className="text-lime-600 font-bold">
+                R${" "}
+                {(jogo.Preco * (1 - (jogo.Desconto || 0) / 100))
+                  .toFixed(2)
+                  .replace(".", ",")}
+              </span>
+            </div>
+          )}
+        </div>
       </a>
     </div>
   );
@@ -70,24 +73,26 @@ const ThreeCards = () => {
   useEffect(() => {
     const fetchJogosMaisCaros = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/jogos');
-        
-        // Ordena do mais caro para o mais barato
-        const jogosOrdenados = response.data.sort((a, b) => {
-          // Considera o preço com desconto para ordenação
-          const precoA = a.Preco * (1 - a.Desconto/100);
-          const precoB = b.Preco * (1 - b.Desconto/100);
+        // Busca todos os jogos da coleção
+        const querySnapshot = await getDocs(collection(db, "jogos"));
+        const listaJogos = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        // Ordena no cliente pelo preço calculado (Preço com desconto)
+        const jogosOrdenados = listaJogos.sort((a, b) => {
+          const precoA = a.Preco * (1 - (a.Desconto || 0) / 100);
+          const precoB = b.Preco * (1 - (b.Desconto || 0) / 100);
           return precoB - precoA;
         });
 
-        // Pega os 3 mais caros
-        const tresMaisCaros = jogosOrdenados.slice(0, 3);
-        
-        setJogos(tresMaisCaros);
+        // Pega os 3 primeiros
+        setJogos(jogosOrdenados.slice(0, 3));
         setLoading(false);
       } catch (err) {
-        console.error('Erro ao buscar jogos:', err);
-        setError(err.message);
+        console.error("Erro ao buscar jogos no Firebase:", err);
+        setError("Não foi possível carregar os jogos.");
         setLoading(false);
       }
     };
@@ -106,9 +111,20 @@ const ThreeCards = () => {
 
   if (error) {
     return (
-      <div className="absolute top-2 left-2 bg-red-600 text-center py-8">
-        <svg className="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      <div className="bg-red-600 text-white text-center py-8 rounded-xl p-4">
+        <svg
+          className="w-12 h-12 mx-auto mb-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
         </svg>
         <p>Erro ao carregar jogos:</p>
         <p className="text-sm">{error}</p>
@@ -119,8 +135,19 @@ const ThreeCards = () => {
   if (jogos.length === 0) {
     return (
       <div className="text-center text-white py-8">
-        <svg className="w-12 h-12 mx-auto mb-2 text-lime-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        <svg
+          className="w-12 h-12 mx-auto mb-2 text-lime-500"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
         </svg>
         <p>Nenhum jogo encontrado.</p>
       </div>
@@ -129,8 +156,10 @@ const ThreeCards = () => {
 
   return (
     <div className="p-6 rounded-xl bg-gradient-to-br from-stone-900 via-lime-950 shadow-2xl">
-      <h2 className="text-xl font-bold text-lime-500 mb-6 text-center">JOGOS POPULARES</h2>
-      
+      <h2 className="text-xl font-bold text-lime-500 mb-6 text-center">
+        JOGOS POPULARES
+      </h2>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {jogos.map((jogo) => (
           <div key={jogo.id} className="flex">
