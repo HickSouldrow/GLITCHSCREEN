@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { db } from "../../services/firebase"; // Certifique-se de que o caminho está correto
+import { doc, updateDoc } from "firebase/firestore";
 
 const ModalEditarPerfil = ({ usuario, onClose, onSave }) => {
   const [form, setForm] = useState({
@@ -12,7 +13,6 @@ const ModalEditarPerfil = ({ usuario, onClose, onSave }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Atualiza o form se o usuário mudar
   useEffect(() => {
     setForm({
       name: usuario.name,
@@ -24,7 +24,7 @@ const ModalEditarPerfil = ({ usuario, onClose, onSave }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm(prev => ({ ...prev, [name]: value }));
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   const salvar = async () => {
@@ -37,13 +37,23 @@ const ModalEditarPerfil = ({ usuario, onClose, onSave }) => {
       setLoading(true);
       setError(null);
 
-      await axios.patch(`http://localhost:5000/usuarios/${usuario.id}`, form);
+      // Referência do documento no Firestore
+      // Substitua "usuarios" pelo nome da sua coleção no Firebase
+      const usuarioRef = doc(db, "usuarios", usuario.id);
+
+      // Atualiza apenas os campos necessários
+      await updateDoc(usuarioRef, {
+        name: form.name,
+        email: form.email,
+        username: form.username,
+        senha: form.senha,
+      });
 
       if (onSave) onSave({ ...usuario, ...form });
       onClose();
-    } catch (error) {
-      console.error("Erro ao atualizar perfil:", error);
-      setError("Erro ao atualizar perfil. Tente novamente.");
+    } catch (err) {
+      console.error("Erro ao atualizar perfil no Firebase:", err);
+      setError("Erro ao atualizar perfil. Verifique as permissões do banco.");
     } finally {
       setLoading(false);
     }
@@ -101,10 +111,10 @@ const ModalEditarPerfil = ({ usuario, onClose, onSave }) => {
           </button>
           <button
             onClick={salvar}
-            className={`px-4 py-2 ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-lime-600 text-white'} rounded hover:bg-lime-500`}
+            className={`px-4 py-2 ${loading ? "bg-gray-400 cursor-not-allowed" : "bg-lime-600 text-white"} rounded hover:bg-lime-500`}
             disabled={loading}
           >
-            {loading ? 'Salvando...' : 'Salvar'}
+            {loading ? "Salvando..." : "Salvar"}
           </button>
         </div>
       </div>
