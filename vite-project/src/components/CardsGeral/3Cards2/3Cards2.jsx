@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { db } from "../../../services/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { database } from "../../../services/firebase";
+import { ref, get } from "firebase/database";
 
-const CardJogo = ({ jogo }) => {
+export const CardJogo = ({ jogo }) => {
   const navigate = useNavigate();
 
   const handleClick = (e) => {
@@ -16,10 +16,15 @@ const CardJogo = ({ jogo }) => {
     });
   };
 
+  const precoOriginal = (jogo.Preco || 0).toFixed(2).replace(".", ",");
+  const precoFinal = (jogo.Preco * (1 - (jogo.Desconto || 0) / 100))
+    .toFixed(2)
+    .replace(".", ",");
+
   return (
     <div className="flex flex-col w-full bg-stone-800 rounded-lg shadow-lg overflow-hidden h-full transform transition duration-300 hover:scale-105 hover:shadow-xl">
       <a href={`/jogo/${jogo.CodJogo}`} onClick={handleClick} className="block">
-        <div className="h-60 bg-lime-600 flex items-center justify-center transition duration-300 hover:bg-lime-500">
+        <div className="h-48 bg-stone-900 flex items-center justify-center overflow-hidden">
           {jogo.ImageUrl || jogo.Imagem ? (
             <img
               src={jogo.ImageUrl || jogo.Imagem}
@@ -27,32 +32,30 @@ const CardJogo = ({ jogo }) => {
               className="w-full h-full object-cover"
             />
           ) : (
-            <span className="text-white text-lg">Sem imagem</span>
+            <span className="text-stone-500 text-sm italic">Sem imagem</span>
           )}
         </div>
-        <div className="p-4">
-          <h3 className="text-white font-bold text-lg mb-2">{jogo.Nome}</h3>
+        <div className="p-4 flex flex-col justify-between flex-grow">
+          <h3 className="text-white font-bold text-md mb-2 truncate uppercase tracking-tighter">
+            {jogo.Nome}
+          </h3>
+
           {jogo.Preco === 0 ? (
-            <span className="text-lime-600 font-bold">Gratuito</span>
+            <span className="text-lime-500 font-bold">Gratuito</span>
           ) : (
-            <div>
-              <div className="relative flex items-center">
-                {jogo.Desconto > 0 && (
-                  <>
-                    <span className="line-through text-gray-400 mr-2">
-                      R$ {jogo.Preco.toFixed(2).replace(".", ",")}
-                    </span>
-                    <span className="absolute bottom-70 left-0.5 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">
-                      -{jogo.Desconto}%
-                    </span>
-                  </>
-                )}
-              </div>
-              <span className="text-lime-600 font-bold">
-                R${" "}
-                {(jogo.Preco * (1 - (jogo.Desconto || 0) / 100))
-                  .toFixed(2)
-                  .replace(".", ",")}
+            <div className="flex flex-col">
+              {jogo.Desconto > 0 && (
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="bg-red-600 text-white text-[10px] font-black px-1.5 py-0.5 rounded">
+                    -{jogo.Desconto}%
+                  </span>
+                  <span className="line-through text-stone-500 text-xs">
+                    R$ {precoOriginal}
+                  </span>
+                </div>
+              )}
+              <span className="text-lime-500 font-black text-lg">
+                R$ {precoFinal}
               </span>
             </div>
           )}
@@ -62,7 +65,7 @@ const CardJogo = ({ jogo }) => {
   );
 };
 
-const ThreeCards2 = () => {
+export const ThreeCards2 = () => {
   const [jogos, setJogos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -70,10 +73,19 @@ const ThreeCards2 = () => {
   useEffect(() => {
     const fetchJogosProximosMedia = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, "jogos"));
-        const listaJogos = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
+        const jogosRef = ref(database, "jogos");
+        const snapshot = await get(jogosRef);
+
+        if (!snapshot.exists()) {
+          setJogos([]);
+          setLoading(false);
+          return;
+        }
+
+        const data = snapshot.val();
+        const listaJogos = Object.keys(data).map((key) => ({
+          id: key,
+          ...data[key],
         }));
 
         const todosJogosPagos = listaJogos.filter(
@@ -86,7 +98,7 @@ const ThreeCards2 = () => {
           return;
         }
 
-        // Calcula a média de preços usando os dados vindos do Firestore
+        // Cálculo da média
         const somaPrecos = todosJogosPagos.reduce((acc, jogo) => {
           const precoComDesconto =
             jogo.Preco * (1 - (jogo.Desconto || 0) / 100);
@@ -95,7 +107,7 @@ const ThreeCards2 = () => {
 
         const mediaPrecos = somaPrecos / todosJogosPagos.length;
 
-        // Encontra jogos mais próximos da média
+        // Lógica de distância da média
         const jogosComDistancia = todosJogosPagos.map((jogo) => {
           const precoComDesconto =
             jogo.Preco * (1 - (jogo.Desconto || 0) / 100);
@@ -112,7 +124,7 @@ const ThreeCards2 = () => {
         setJogos(jogosOrdenados.slice(0, 3));
         setLoading(false);
       } catch (err) {
-        console.error("Erro ao buscar jogos no Firebase:", err);
+        console.error("Erro ao processar Realtime Database:", err);
         setError("Erro ao processar dados dos jogos.");
         setLoading(false);
       }
@@ -123,72 +135,39 @@ const ThreeCards2 = () => {
 
   if (loading) {
     return (
-      <div className="text-center text-white py-8">
-        <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-lime-500 mb-2"></div>
-        <p>Carregando jogos...</p>
+      <div className="flex flex-col items-center justify-center py-12">
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-lime-500 mb-4"></div>
+        <p className="text-stone-400 text-xs uppercase tracking-widest">
+          Sincronizando Preços...
+        </p>
       </div>
     );
   }
 
-  if (error) {
+  if (error || jogos.length === 0) {
     return (
-      <div className="text-center text-red-500 py-8">
-        <svg
-          className="w-12 h-12 mx-auto mb-2"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          ></path>
-        </svg>
-        <p>Erro ao carregar jogos:</p>
-        <p className="text-sm">{error}</p>
-      </div>
-    );
-  }
-
-  if (jogos.length === 0) {
-    return (
-      <div className="text-center text-white py-8">
-        <svg
-          className="w-12 h-12 mx-auto mb-2 text-lime-500"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          ></path>
-        </svg>
-        <p>Nenhum jogo encontrado.</p>
+      <div className="text-center text-stone-500 py-12 border border-dashed border-stone-800 rounded-xl">
+        <p className="text-sm uppercase tracking-widest">
+          {error || "Nenhum título disponível no momento."}
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="p-6 rounded-xl bg-gradient-to-br from-stone-900 via-lime-950 shadow-2xl">
-      <h2 className="text-xl font-bold text-lime-500 mb-6 text-center">
-        PREÇOS DO MOMENTO
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="p-8 rounded-2xl bg-stone-900 border border-stone-800 shadow-2xl">
+      <div className="flex items-center gap-4 mb-8">
+        <div className="h-px bg-stone-800 flex-grow"></div>
+        <h2 className="text-sm font-black text-lime-500 uppercase tracking-[0.3em]">
+          Preços do Momento
+        </h2>
+        <div className="h-px bg-stone-800 flex-grow"></div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {jogos.map((jogo) => (
-          <div key={jogo.id} className="flex">
-            <CardJogo jogo={jogo} />
-          </div>
+          <CardJogo key={jogo.id} jogo={jogo} />
         ))}
       </div>
     </div>
   );
 };
-
-export { ThreeCards2 };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CardJogo } from "../Card/Card";
-import { db } from "../../../services/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { database } from "../../../services/firebase"; // Importando o Realtime Database
+import { ref, get } from "firebase/database"; // Funções do Realtime
 
 const Free2Play = () => {
   const [freeGames, setFreeGames] = useState([]);
@@ -14,21 +14,31 @@ const Free2Play = () => {
   useEffect(() => {
     const fetchJogos = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, "jogos"));
-        const allGames = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        // Conexão com o nó 'jogos' no Realtime Database
+        const jogosRef = ref(database, "jogos");
+        const snapshot = await get(jogosRef);
 
-        // Filtra jogos gratuitos (Preco === 0) ou com 100% de desconto
-        const filteredGames = allGames.filter(
-          (jogo) => (jogo.Preco || 0) === 0 || (jogo.Desconto || 0) === 100,
-        );
+        if (snapshot.exists()) {
+          const data = snapshot.val();
 
-        setFreeGames(filteredGames);
+          // Converte o objeto do Realtime para Array
+          const allGames = Object.keys(data).map((key) => ({
+            id: key,
+            ...data[key],
+          }));
+
+          // Filtra jogos gratuitos (Preco === 0) ou com 100% de desconto
+          const filteredGames = allGames.filter(
+            (jogo) => (jogo.Preco || 0) === 0 || (jogo.Desconto || 0) === 100,
+          );
+
+          setFreeGames(filteredGames);
+        } else {
+          setFreeGames([]);
+        }
         setLoading(false);
       } catch (err) {
-        console.error("Erro ao buscar jogos no Firestore:", err);
+        console.error("Erro ao buscar jogos no Realtime Database:", err);
         setError("Não foi possível carregar os jogos gratuitos.");
         setLoading(false);
       }
@@ -54,7 +64,9 @@ const Free2Play = () => {
   };
 
   const proxCards = () => {
-    const newIndex = Math.min(startIndex + 5, freeGames.length - 5);
+    const maxIndex = Math.max(0, freeGames.length - 5);
+    const newIndex = Math.min(startIndex + 5, maxIndex);
+
     if (newIndex !== startIndex && newIndex < freeGames.length) {
       animateCards(newIndex, "right");
     }
@@ -131,60 +143,20 @@ const Free2Play = () => {
           : "JOGOS GRATUITOS"}
       </h2>
 
-      <style jsx>{`
-        @keyframes slideOutLeft {
-          from {
-            transform: translateX(0);
-            opacity: 1;
-          }
-          to {
-            transform: translateX(-100%);
-            opacity: 0;
-          }
-        }
-        @keyframes slideOutRight {
-          from {
-            transform: translateX(0);
-            opacity: 1;
-          }
-          to {
-            transform: translateX(100%);
-            opacity: 0;
-          }
-        }
-        @keyframes slideInLeft {
-          from {
-            transform: translateX(100%);
-            opacity: 0;
-          }
-          to {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-        @keyframes slideInRight {
-          from {
-            transform: translateX(-100%);
-            opacity: 0;
-          }
-          to {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-        .animate-slideOutLeft {
-          animation: slideOutLeft 0.3s forwards;
-        }
-        .animate-slideOutRight {
-          animation: slideOutRight 0.3s forwards;
-        }
-        .animate-slideInLeft {
-          animation: slideInLeft 0.3s forwards;
-        }
-        .animate-slideInRight {
-          animation: slideInRight 0.3s forwards;
-        }
-      `}</style>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+        @keyframes slideOutLeft { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-100%); opacity: 0; } }
+        @keyframes slideOutRight { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }
+        @keyframes slideInLeft { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes slideInRight { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .animate-slideOutLeft { animation: slideOutLeft 0.3s forwards; }
+        .animate-slideOutRight { animation: slideOutRight 0.3s forwards; }
+        .animate-slideInLeft { animation: slideInLeft 0.3s forwards; }
+        .animate-slideInRight { animation: slideInRight 0.3s forwards; }
+      `,
+        }}
+      />
 
       <div className="flex items-center justify-between">
         <button
@@ -197,14 +169,7 @@ const Free2Play = () => {
           }`}
           aria-label="Voltar"
         >
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 50 50"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect width="10" height="10" fill="#44403c" rx="25" />
+          <svg width="15" height="15" viewBox="0 0 50 50" fill="none">
             <path
               d="M30 10L15 25L30 40"
               stroke="#84cc16"
@@ -229,9 +194,7 @@ const Free2Play = () => {
                       : ""
               }`}
             >
-              <div className="relative">
-                <CardJogo jogo={jogo} />
-              </div>
+              <CardJogo jogo={jogo} />
             </div>
           ))}
         </div>
@@ -246,14 +209,7 @@ const Free2Play = () => {
           }`}
           aria-label="Avançar"
         >
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 50 50"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect width="10" height="10" fill="#44403c" rx="25" />
+          <svg width="15" height="15" viewBox="0 0 50 50" fill="none">
             <path
               d="M20 10L35 25L20 40"
               stroke="#84cc16"
