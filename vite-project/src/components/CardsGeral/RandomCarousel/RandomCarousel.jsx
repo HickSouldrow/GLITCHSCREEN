@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { CardJogo } from "../Card/Card"; // Ajustado para export nomeado
-import { db } from "../../../services/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { CardJogo } from "../Card/Card";
+import { database } from "../../../services/firebase";
+import { ref, get } from "firebase/database";
 
 export const RandomCarousel = () => {
   const [jogos, setJogos] = useState([]);
@@ -10,23 +10,33 @@ export const RandomCarousel = () => {
   const [direction, setDirection] = useState(null);
 
   useEffect(() => {
-    const fetchJogos = async () => {
+    const buscarDados = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, "jogos"));
-        const jogosData = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        const jogosRef = ref(database, "jogos");
+        const snapshot = await get(jogosRef);
 
-        // Embaralha os jogos vindo do Firebase
-        const jogosAleatorios = [...jogosData].sort(() => Math.random() - 0.5);
-        setJogos(jogosAleatorios);
+        if (snapshot.exists()) {
+          const data = snapshot.val();
+          // Converte objeto para Array para podermos embaralhar
+          let jogosData = Object.keys(data).map((key) => ({
+            id: key,
+            ...data[key],
+          }));
+
+          // Mantendo seu algoritmo Fisher-Yates para embaralhamento real
+          for (let i = jogosData.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [jogosData[i], jogosData[j]] = [jogosData[j], jogosData[i]];
+          }
+
+          setJogos(jogosData);
+        }
       } catch (error) {
-        console.error("Erro ao buscar jogos no Firebase:", error);
+        console.error("Erro ao buscar jogos no Realtime Database:", error);
       }
     };
 
-    fetchJogos();
+    buscarDados();
   }, []);
 
   const animateCards = (newStartIndex, dir) => {
@@ -46,7 +56,9 @@ export const RandomCarousel = () => {
   };
 
   const proxCards = () => {
-    const newIndex = Math.min(startIndex + 5, jogos.length - 5);
+    const maxIndex = Math.max(0, jogos.length - 5);
+    const newIndex = Math.min(startIndex + 5, maxIndex);
+
     if (newIndex !== startIndex) {
       animateCards(newIndex, "right");
     }
@@ -63,40 +75,39 @@ export const RandomCarousel = () => {
 
   return (
     <div className="relative w-full max-w-6xl mx-auto py-8">
-      {/* Correção do erro de atributo 'jsx': Injetando CSS de forma segura no React */}
       <style
         dangerouslySetInnerHTML={{
           __html: `
         @keyframes slideOutLeft {
           from { transform: translateX(0); opacity: 1; }
-          to { transform: translateX(-20%); opacity: 0; }
+          to { transform: translateX(-30px); opacity: 0; }
         }
         @keyframes slideOutRight {
           from { transform: translateX(0); opacity: 1; }
-          to { transform: translateX(20%); opacity: 0; }
+          to { transform: translateX(30px); opacity: 0; }
         }
         @keyframes slideInLeft {
-          from { transform: translateX(20%); opacity: 0; }
+          from { transform: translateX(30px); opacity: 0; }
           to { transform: translateX(0); opacity: 1; }
         }
         @keyframes slideInRight {
-          from { transform: translateX(-20%); opacity: 0; }
+          from { transform: translateX(-30px); opacity: 0; }
           to { transform: translateX(0); opacity: 1; }
         }
-        .animate-slideOutLeft { animation: slideOutLeft 0.3s forwards; }
-        .animate-slideOutRight { animation: slideOutRight 0.3s forwards; }
-        .animate-slideInLeft { animation: slideInLeft 0.3s forwards; }
-        .animate-slideInRight { animation: slideInRight 0.3s forwards; }
+        .animate-slideOutLeft { animation: slideOutLeft 0.3s ease-in-out forwards; }
+        .animate-slideOutRight { animation: slideOutRight 0.3s ease-in-out forwards; }
+        .animate-slideInLeft { animation: slideInLeft 0.3s ease-in-out forwards; }
+        .animate-slideInRight { animation: slideInRight 0.3s ease-in-out forwards; }
       `,
         }}
       />
 
       <div className="flex items-center justify-between gap-4">
-        {/* Botão Esquerda */}
         <button
           onClick={anteCards}
           disabled={isAnimating || startIndex === 0}
-          className={`p-4 bg-stone-800 border border-stone-700 text-lime-500 rounded-full hover:border-lime-500 transition-all transform hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed`}
+          className="p-4 bg-stone-800 border border-stone-700 text-lime-500 rounded-full hover:border-lime-500 transition-all transform hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed"
+          aria-label="Anterior"
         >
           <svg width="20" height="20" viewBox="0 0 50 50" fill="none">
             <path
@@ -109,15 +120,14 @@ export const RandomCarousel = () => {
           </svg>
         </button>
 
-        {/* Container de cards */}
-        <div className="flex overflow-hidden w-full h-auto py-2 relative">
+        <div className="flex overflow-hidden w-full py-2 relative">
           <div
-            className={`flex w-full ${isAnimating ? getAnimationClass() : ""}`}
+            className={`flex w-full gap-4 ${isAnimating ? getAnimationClass() : ""}`}
           >
             {mostrarCards.map((jogo, index) => (
               <div
                 key={`${jogo.id}-${startIndex}-${index}`}
-                className={`flex-shrink-0 w-1/5 px-2 ${
+                className={`flex-shrink-0 w-[calc(20%-1rem)] ${
                   !isAnimating && direction === "right"
                     ? "animate-slideInLeft"
                     : !isAnimating && direction === "left"
@@ -131,11 +141,11 @@ export const RandomCarousel = () => {
           </div>
         </div>
 
-        {/* Botão Direita */}
         <button
           onClick={proxCards}
           disabled={isAnimating || startIndex + 5 >= jogos.length}
-          className={`p-4 bg-stone-800 border border-stone-700 text-lime-500 rounded-full hover:border-lime-500 transition-all transform hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed`}
+          className="p-4 bg-stone-800 border border-stone-700 text-lime-500 rounded-full hover:border-lime-500 transition-all transform hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed"
+          aria-label="Próximo"
         >
           <svg width="20" height="20" viewBox="0 0 50 50" fill="none">
             <path

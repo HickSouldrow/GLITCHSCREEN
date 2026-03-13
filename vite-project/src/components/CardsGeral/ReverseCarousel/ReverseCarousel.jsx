@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CardJogo } from "../Card/Card";
-import { db } from "../../../services/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { database } from "../../../services/firebase"; // Conexão com Realtime Database
+import { ref, get } from "firebase/database";
 
 export const ReverseCarousel = () => {
   const [jogos, setJogos] = useState([]);
@@ -12,17 +12,25 @@ export const ReverseCarousel = () => {
   useEffect(() => {
     const fetchJogos = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, "jogos"));
-        const jogosData = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        // Conexão com Realtime Database
+        const jogosRef = ref(database, "jogos");
+        const snapshot = await get(jogosRef);
 
-        // Mantém a lógica de inversão (ex: lançamentos mais recentes primeiro)
-        const jogosOrdenados = [...jogosData].reverse();
-        setJogos(jogosOrdenados);
+        if (snapshot.exists()) {
+          const data = snapshot.val();
+
+          // Converte o objeto para Array
+          const jogosData = Object.keys(data).map((key) => ({
+            id: key,
+            ...data[key],
+          }));
+
+          // Mantém a lógica de inversão (ex: itens mais recentes primeiro)
+          const jogosOrdenados = [...jogosData].reverse();
+          setJogos(jogosOrdenados);
+        }
       } catch (error) {
-        console.error("Erro ao buscar dados no Firebase:", error);
+        console.error("Erro ao buscar dados no Realtime Database:", error);
       }
     };
 
@@ -46,7 +54,9 @@ export const ReverseCarousel = () => {
   };
 
   const proxCards = () => {
-    const newIndex = Math.min(startIndex + 5, jogos.length - 5);
+    const maxIndex = Math.max(0, jogos.length - 5);
+    const newIndex = Math.min(startIndex + 5, maxIndex);
+
     if (newIndex !== startIndex) {
       animateCards(newIndex, "right");
     }
@@ -63,7 +73,6 @@ export const ReverseCarousel = () => {
 
   return (
     <div className="relative w-full max-w-6xl mx-auto py-8">
-      {/* Correção do erro de atributo 'jsx' usando dangerouslySetInnerHTML */}
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -92,7 +101,6 @@ export const ReverseCarousel = () => {
       />
 
       <div className="flex items-center justify-between gap-4">
-        {/* Botão Esquerda */}
         <button
           onClick={anteCards}
           disabled={isAnimating || startIndex === 0}
@@ -109,7 +117,6 @@ export const ReverseCarousel = () => {
           </svg>
         </button>
 
-        {/* Container de cards */}
         <div className="flex overflow-hidden w-full h-auto py-2 relative">
           <div
             className={`flex w-full ${isAnimating ? getAnimationClass() : ""}`}
@@ -131,7 +138,6 @@ export const ReverseCarousel = () => {
           </div>
         </div>
 
-        {/* Botão Direita */}
         <button
           onClick={proxCards}
           disabled={isAnimating || startIndex + 5 >= jogos.length}

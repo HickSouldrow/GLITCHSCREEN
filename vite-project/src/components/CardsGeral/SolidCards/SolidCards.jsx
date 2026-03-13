@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { db } from "../../../services/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { database } from "../../../services/firebase"; // Importando Realtime Database
+import { ref, get } from "firebase/database"; // Funções do Realtime
 
 export const HorizontalGameCard = ({ jogo }) => {
   const navigate = useNavigate();
 
   const temDesconto = jogo.Desconto > 0;
-  const precoOriginal = jogo.Preco.toFixed(2).replace(".", ",");
+  // Garantindo que Preco seja tratado como número antes do toFixed
+  const precoOriginal = (Number(jogo.Preco) || 0).toFixed(2).replace(".", ",");
   const precoComDesconto = temDesconto
-    ? (jogo.Preco * (1 - jogo.Desconto / 100)).toFixed(2).replace(".", ",")
+    ? (Number(jogo.Preco) * (1 - jogo.Desconto / 100))
+        .toFixed(2)
+        .replace(".", ",")
     : null;
 
   const handleClick = (e) => {
@@ -29,7 +32,7 @@ export const HorizontalGameCard = ({ jogo }) => {
       className="block hover:no-underline group"
     >
       <div className="flex bg-stone-800 rounded-lg hover:bg-stone-750 border border-transparent hover:border-stone-600 transition-all h-24 cursor-pointer overflow-hidden">
-        <div className="w-20 h-24 flex-shrink-0">
+        <div className="w-20 h-24">
           {jogo.ImageUrl ? (
             <img
               className="w-full h-full object-cover bg-stone-900"
@@ -84,14 +87,21 @@ export const SolidCards = () => {
   useEffect(() => {
     const fetchJogos = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, "jogos"));
-        const jogosData = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setJogos(jogosData);
+        // Conexão com o nó 'jogos' do Realtime Database
+        const jogosRef = ref(database, "jogos");
+        const snapshot = await get(jogosRef);
+
+        if (snapshot.exists()) {
+          const data = snapshot.val();
+          // Converte o objeto para Array
+          const jogosData = Object.keys(data).map((key) => ({
+            id: key,
+            ...data[key],
+          }));
+          setJogos(jogosData);
+        }
       } catch (error) {
-        console.error("Erro ao buscar os jogos no Firebase:", error);
+        console.error("Erro ao buscar os jogos no Realtime Database:", error);
       }
     };
 
@@ -102,7 +112,7 @@ export const SolidCards = () => {
     return jogos.filter(filtro).slice(0, 5);
   };
 
-  // Mantendo a sua lógica de filtros baseada na faixa etária
+  // Mantendo sua lógica de filtros original
   const vendidos = filtrarJogos((j) => j.CodFaixaEtaria <= 2);
   const jogados = filtrarJogos(
     (j) => j.CodFaixaEtaria >= 3 && j.CodFaixaEtaria <= 4,
