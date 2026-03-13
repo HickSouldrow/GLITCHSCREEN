@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { db } from "../../services/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { database } from "../../services/firebase"; // Importando seu serviço Firebase
+import { ref, get } from "firebase/database"; // Funções do Realtime
 
 const CardJogoCarrossel = ({ jogo }) => {
   const navigate = useNavigate();
 
-  // Fallbacks de segurança
-  const preco = jogo.Preco || 0;
-  const desconto = jogo.Desconto || 0;
+  // Garantindo que valores numéricos sejam tratados corretamente
+  const preco = Number(jogo.Preco) || 0;
+  const desconto = Number(jogo.Desconto) || 0;
   const jogoId = jogo.id || jogo.CodJogo;
 
   const precoOriginal = preco.toFixed(2).replace(".", ",");
@@ -19,10 +19,7 @@ const CardJogoCarrossel = ({ jogo }) => {
   const handleClick = (e) => {
     e.preventDefault();
     navigate(`/jogo/${jogoId}`, {
-      state: {
-        jogoData: jogo,
-        fromCard: true,
-      },
+      state: { jogoData: jogo, fromCard: true },
     });
   };
 
@@ -54,28 +51,14 @@ const CardJogoCarrossel = ({ jogo }) => {
             <p className="text-gray-400 text-[0.6rem] mb-1 uppercase tracking-wider">
               Jogo Base
             </p>
-            <p
-              className="text-gray-100 font-semibold text-xs truncate group-hover:text-lime-400 transition-colors duration-200"
-              title={jogo.Nome}
-            >
+            <p className="text-gray-100 font-semibold text-xs truncate group-hover:text-lime-400 transition-colors duration-200">
               {jogo.Nome}
             </p>
           </div>
           <div className="mt-2">
-            {desconto > 0 ? (
-              <div className="flex items-center gap-1">
-                <span className="line-through text-gray-400 text-[0.65rem]">
-                  R$ {precoOriginal}
-                </span>
-                <span className="text-lime-500 font-bold text-xs">
-                  R$ {precoComDesconto}
-                </span>
-              </div>
-            ) : (
-              <span className="text-lime-500 font-bold text-xs">
-                R$ {precoOriginal}
-              </span>
-            )}
+            <span className="text-lime-500 font-bold text-xs">
+              R$ {desconto > 0 ? precoComDesconto : precoOriginal}
+            </span>
           </div>
         </div>
       </div>
@@ -126,16 +109,20 @@ const CarrosselClassificacao = ({ classificacao, jogos }) => {
       </div>
 
       <div className="relative w-full max-w-6xl mx-auto group">
-        <style>{`
-                    .animate-slideOutLeft { animation: slideOutLeft 0.3s forwards; }
-                    .animate-slideOutRight { animation: slideOutRight 0.3s forwards; }
-                    .animate-slideInLeft { animation: slideInLeft 0.3s forwards; }
-                    .animate-slideInRight { animation: slideInRight 0.3s forwards; }
-                    @keyframes slideOutLeft { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-100%); opacity: 0; } }
-                    @keyframes slideOutRight { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }
-                    @keyframes slideInLeft { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-                    @keyframes slideInRight { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-                `}</style>
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+          .animate-slideOutLeft { animation: slideOutLeft 0.3s forwards; }
+          .animate-slideOutRight { animation: slideOutRight 0.3s forwards; }
+          .animate-slideInLeft { animation: slideInLeft 0.3s forwards; }
+          .animate-slideInRight { animation: slideInRight 0.3s forwards; }
+          @keyframes slideOutLeft { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-100%); opacity: 0; } }
+          @keyframes slideOutRight { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }
+          @keyframes slideInLeft { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+          @keyframes slideInRight { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        `,
+          }}
+        />
 
         <div className="flex items-center">
           <button
@@ -212,40 +199,46 @@ const ClassificacaoPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Busca as duas coleções simultaneamente
         const [classSnap, jogosSnap] = await Promise.all([
-          getDocs(collection(db, "classificacoes")),
-          getDocs(collection(db, "jogos")),
+          get(ref(database, "classificacoes")),
+          get(ref(database, "jogos")),
         ]);
 
-        const listaClass = classSnap.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        const listaJogos = jogosSnap.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        const listaClass = classSnap.exists()
+          ? Object.keys(classSnap.val()).map((k) => ({
+              id: k,
+              ...classSnap.val()[k],
+            }))
+          : [];
 
-        const jogosAgrupados = {};
-        listaClass.forEach((classificacao) => {
-          // Mapeia usando o id do documento ou CodFaixaEtaria
-          const classId = classificacao.id || classificacao.CodFaixaEtaria;
+        const listaJogos = jogosSnap.exists()
+          ? Object.keys(jogosSnap.val()).map((k) => ({
+              id: k,
+              ...jogosSnap.val()[k],
+            }))
+          : [];
 
-          jogosAgrupados[classId] = {
-            classificacao,
-            jogos: listaJogos.filter(
-              (jogo) =>
-                jogo.CodFaixaEtaria === classId ||
-                jogo.idFaixaEtaria === classId,
-            ),
-          };
+        const agrupados = {};
+        listaClass.forEach((cls) => {
+          const classId = String(cls.id || cls.CodFaixaEtaria);
+
+          const filtrados = listaJogos.filter((jogo) => {
+            const jogoRef = String(jogo.CodFaixaEtaria || jogo.idFaixaEtaria);
+            return jogoRef === classId;
+          });
+
+          if (filtrados.length > 0) {
+            agrupados[classId] = {
+              classificacao: cls,
+              jogos: filtrados,
+            };
+          }
         });
 
         setClassificacoes(listaClass);
-        setJogosPorClassificacao(jogosAgrupados);
+        setJogosPorClassificacao(agrupados);
       } catch (error) {
-        console.error("Erro ao buscar dados do Firebase:", error);
+        console.error("Erro ao buscar dados:", error);
       } finally {
         setLoading(false);
       }
@@ -257,11 +250,8 @@ const ClassificacaoPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-stone-950 text-white flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-lime-500 border-t-transparent rounded-full animate-spin"></div>
-          <p className="animate-pulse font-bold text-lime-500">
-            Organizando por faixa etária...
-          </p>
+        <div className="animate-pulse text-lime-500 font-bold">
+          Carregando jogos...
         </div>
       </div>
     );
@@ -277,16 +267,15 @@ const ClassificacaoPage = () => {
       </header>
 
       <div className="max-w-7xl mx-auto">
-        {classificacoes.map((classificacao) => {
-          const classId = classificacao.id || classificacao.CodFaixaEtaria;
-          const dados = jogosPorClassificacao[classId];
-
-          if (!dados || dados.jogos.length === 0) return null;
+        {classificacoes.map((cls) => {
+          const id = String(cls.id || cls.CodFaixaEtaria);
+          const dados = jogosPorClassificacao[id];
+          if (!dados) return null;
 
           return (
             <CarrosselClassificacao
-              key={classId}
-              classificacao={classificacao}
+              key={id}
+              classificacao={cls}
               jogos={dados.jogos}
             />
           );

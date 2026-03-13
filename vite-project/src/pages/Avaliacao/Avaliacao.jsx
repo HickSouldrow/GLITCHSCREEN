@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { db } from "../../services/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { database } from "../../services/firebase"; // Importando Realtime Database
+import { ref, get } from "firebase/database"; // Funções do Realtime
 
 const CardJogo = ({ jogo }) => {
   const navigate = useNavigate();
 
   // Fallbacks para evitar erros de renderização
-  const preco = jogo.Preco || 0;
-  const desconto = jogo.Desconto || 0;
-  const avaliacao = jogo.Avaliacao || 0;
+  const preco = Number(jogo.Preco) || 0;
+  const desconto = Number(jogo.Desconto) || 0;
+  const avaliacao = Number(jogo.Avaliacao) || 0;
   const jogoId = jogo.id || jogo.CodJogo;
 
   const precoOriginal = preco.toFixed(2).replace(".", ",");
@@ -112,14 +112,20 @@ const CarrosselJogosPorAvaliacao = () => {
   useEffect(() => {
     const fetchJogos = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, "jogos"));
-        const lista = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setJogos(lista);
+        const jogosRef = ref(database, "jogos");
+        const snapshot = await get(jogosRef);
+
+        if (snapshot.exists()) {
+          const data = snapshot.val();
+          // Converte o objeto do Realtime Database para Array
+          const lista = Object.keys(data).map((key) => ({
+            id: key,
+            ...data[key],
+          }));
+          setJogos(lista);
+        }
       } catch (error) {
-        console.error("Erro ao buscar jogos:", error);
+        console.error("Erro ao buscar jogos no Realtime:", error);
       } finally {
         setLoading(false);
       }
@@ -128,11 +134,11 @@ const CarrosselJogosPorAvaliacao = () => {
   }, []);
 
   const jogosPorAvaliacao = {
-    1: jogos.filter((j) => Math.floor(j.Avaliacao) === 1),
-    2: jogos.filter((j) => Math.floor(j.Avaliacao) === 2),
-    3: jogos.filter((j) => Math.floor(j.Avaliacao) === 3),
-    4: jogos.filter((j) => Math.floor(j.Avaliacao) === 4),
-    5: jogos.filter((j) => Math.floor(j.Avaliacao) === 5),
+    1: jogos.filter((j) => Math.floor(Number(j.Avaliacao)) === 1),
+    2: jogos.filter((j) => Math.floor(Number(j.Avaliacao)) === 2),
+    3: jogos.filter((j) => Math.floor(Number(j.Avaliacao)) === 3),
+    4: jogos.filter((j) => Math.floor(Number(j.Avaliacao)) === 4),
+    5: jogos.filter((j) => Math.floor(Number(j.Avaliacao)) === 5),
   };
 
   if (loading) {
@@ -144,12 +150,12 @@ const CarrosselJogosPorAvaliacao = () => {
   }
 
   return (
-    <div className="space-y-12 mt-10 mb-20">
+    <div className="space-y-12 mt-30 mb-20">
       {[5, 4, 3, 2, 1].map((estrelas) => (
         <div key={`estrelas-${estrelas}`} className="mb-12 px-6">
           <div className="flex items-center max-w-6xl justify-between mb-6 px-4">
             <h3 className="text-xl font-bold text-lime-500 flex items-center gap-2">
-              {estrelas} ★ {estrelas !== 1 ? "s" : ""}
+              {estrelas} ★ {estrelas !== 1 ? "estrelas" : "estrela"}
               <span className="text-sm text-gray-500 font-normal">
                 ({jogosPorAvaliacao[estrelas].length} jogos)
               </span>
@@ -208,60 +214,20 @@ const CarrosselJogos = ({ jogos }) => {
 
   return (
     <div className="relative w-full max-w-6xl mx-auto group/carousel">
-      <style jsx>{`
-        @keyframes slideOutLeft {
-          from {
-            transform: translateX(0);
-            opacity: 1;
-          }
-          to {
-            transform: translateX(-100%);
-            opacity: 0;
-          }
-        }
-        @keyframes slideOutRight {
-          from {
-            transform: translateX(0);
-            opacity: 1;
-          }
-          to {
-            transform: translateX(100%);
-            opacity: 0;
-          }
-        }
-        @keyframes slideInLeft {
-          from {
-            transform: translateX(100%);
-            opacity: 0;
-          }
-          to {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-        @keyframes slideInRight {
-          from {
-            transform: translateX(-100%);
-            opacity: 0;
-          }
-          to {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-        .animate-slideOutLeft {
-          animation: slideOutLeft 0.3s forwards;
-        }
-        .animate-slideOutRight {
-          animation: slideOutRight 0.3s forwards;
-        }
-        .animate-slideInLeft {
-          animation: slideInLeft 0.3s forwards;
-        }
-        .animate-slideInRight {
-          animation: slideInRight 0.3s forwards;
-        }
-      `}</style>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+        @keyframes slideOutLeft { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-100%); opacity: 0; } }
+        @keyframes slideOutRight { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }
+        @keyframes slideInLeft { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes slideInRight { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .animate-slideOutLeft { animation: slideOutLeft 0.3s forwards; }
+        .animate-slideOutRight { animation: slideOutRight 0.3s forwards; }
+        .animate-slideInLeft { animation: slideInLeft 0.3s forwards; }
+        .animate-slideInRight { animation: slideInRight 0.3s forwards; }
+      `,
+        }}
+      />
 
       <div className="flex items-center">
         <button

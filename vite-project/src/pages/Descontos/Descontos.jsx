@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { db } from "../../services/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { database } from "../../services/firebase"; // Importando Realtime Database
+import { ref, get } from "firebase/database"; // Funções do Realtime
 
 const CardJogoCarrossel = ({ jogo }) => {
   const navigate = useNavigate();
 
-  // Fallbacks para garantir que o componente não quebre se faltar algum dado
-  const preco = jogo.Preco || 0;
-  const desconto = jogo.Desconto || 0;
+  // Fallbacks com conversão para Number para garantir cálculos precisos
+  const preco = Number(jogo.Preco) || 0;
+  const desconto = Number(jogo.Desconto) || 0;
   const jogoId = jogo.id || jogo.CodJogo;
 
   const precoOriginal = preco.toFixed(2).replace(".", ",");
@@ -118,16 +118,20 @@ const Carrossel = ({ titulo, jogos }) => {
       </div>
 
       <div className="relative w-full max-w-6xl mx-auto">
-        <style>{`
-                    @keyframes slideOutLeft { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-100%); opacity: 0; } }
-                    @keyframes slideOutRight { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }
-                    @keyframes slideInLeft { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-                    @keyframes slideInRight { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-                    .animate-slideOutLeft { animation: slideOutLeft 0.3s forwards; }
-                    .animate-slideOutRight { animation: slideOutRight 0.3s forwards; }
-                    .animate-slideInLeft { animation: slideInLeft 0.3s forwards; }
-                    .animate-slideInRight { animation: slideInRight 0.3s forwards; }
-                `}</style>
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+          @keyframes slideOutLeft { from { transform: translateX(0); opacity: 1; } to { transform: translateX(-100%); opacity: 0; } }
+          @keyframes slideOutRight { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }
+          @keyframes slideInLeft { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+          @keyframes slideInRight { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+          .animate-slideOutLeft { animation: slideOutLeft 0.3s forwards; }
+          .animate-slideOutRight { animation: slideOutRight 0.3s forwards; }
+          .animate-slideInLeft { animation: slideInLeft 0.3s forwards; }
+          .animate-slideInRight { animation: slideInRight 0.3s forwards; }
+        `,
+          }}
+        />
 
         <div className="flex items-center justify-between">
           <button
@@ -203,14 +207,20 @@ const Descontos = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, "jogos"));
-        const listaJogos = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setJogos(listaJogos);
+        const jogosRef = ref(database, "jogos");
+        const snapshot = await get(jogosRef);
+
+        if (snapshot.exists()) {
+          const data = snapshot.val();
+          // Convertendo o objeto do Realtime Database em Array
+          const listaJogos = Object.keys(data).map((key) => ({
+            id: key,
+            ...data[key],
+          }));
+          setJogos(listaJogos);
+        }
       } catch (error) {
-        console.error("Erro ao buscar dados do Firebase:", error);
+        console.error("Erro ao buscar dados do Realtime Database:", error);
       } finally {
         setLoading(false);
       }
@@ -232,17 +242,25 @@ const Descontos = () => {
     );
   }
 
-  const jogosComDesconto = jogos.filter((jogo) => (jogo.Desconto || 0) > 0);
+  const jogosComDesconto = jogos.filter(
+    (jogo) => (Number(jogo.Desconto) || 0) > 0,
+  );
 
-  // Organização dos carrosséis
+  // Organização dos carrosséis com as lógicas de ordenação originais
   const carrossel1 = [...jogosComDesconto]
-    .sort((a, b) => (b.Desconto || 0) - (a.Desconto || 0))
+    .sort((a, b) => (Number(b.Desconto) || 0) - (Number(a.Desconto) || 0))
     .slice(0, 12);
+
   const carrossel2 = [...jogosComDesconto]
-    .sort((a, b) => (b.DataLancamento || 0) - (a.DataLancamento || 0))
+    .sort((a, b) => {
+      const dataA = a.DtLancamento ? new Date(a.DtLancamento).getTime() : 0;
+      const dataB = b.DtLancamento ? new Date(b.DtLancamento).getTime() : 0;
+      return dataB - dataA;
+    })
     .slice(0, 12);
+
   const carrossel3 = [...jogosComDesconto]
-    .sort((a, b) => (b.Preco || 0) - (a.Preco || 0))
+    .sort((a, b) => (Number(b.Preco) || 0) - (Number(a.Preco) || 0))
     .slice(0, 12);
 
   return (
