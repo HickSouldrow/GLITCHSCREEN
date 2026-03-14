@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Card from "../../components/CardsGeral/Card/Card";
+import Card from "../../components/CardsGeral/card/Card";
 import { useSearchParams } from "react-router-dom";
 import { FaSadTear, FaSearch } from "react-icons/fa";
 import { ImSpinner8 } from "react-icons/im";
+import { database } from "../../services/firebase";
+import { ref, get } from "firebase/database";
 
 const Resultados = () => {
   const [searchParams] = useSearchParams();
@@ -17,23 +19,37 @@ const Resultados = () => {
       setErro(null);
 
       try {
-        const res = await fetch(`http://localhost:5000/jogos`);
-        const data = await res.json();
+        // 1. Referência para o nó 'jogos' no seu Realtime Database
+        const jogosRef = ref(database, "jogos");
+        const snapshot = await get(jogosRef);
 
-        const filtrados = data.filter((element) =>
-          element.Nome.toLowerCase().includes(pesquisa.toLowerCase()),
-        );
+        if (snapshot.exists()) {
+          const data = snapshot.val();
 
-        setResultados(filtrados);
+          // 2. Transformar o objeto do Firebase em Array
+          const listaJogos = Object.keys(data).map((key) => ({
+            id: key,
+            ...data[key],
+          }));
+
+          // 3. Filtrar os jogos pelo nome (case insensitive)
+          const filtrados = listaJogos.filter((jogo) =>
+            jogo.Nome.toLowerCase().includes(pesquisa.toLowerCase()),
+          );
+
+          setResultados(filtrados);
+        } else {
+          setResultados([]);
+        }
       } catch (err) {
         setErro("Erro ao buscar jogos. Tente novamente mais tarde.");
-        console.error(err);
+        console.error("Erro Firebase Search:", err);
       } finally {
         setCarregando(false);
       }
     };
 
-    if (pesquisa) {
+    if (pesquisa.trim()) {
       buscarJogos();
     } else {
       setResultados([]);
@@ -95,20 +111,10 @@ const Resultados = () => {
         )}
 
         {!carregando && resultados.length > 0 && (
-          <div
-            className="grid 
-    grid-cols-1 
-    sm:grid-cols-2 
-    md:grid-cols-3 
-    lg:grid-cols-4 
-    gap-x-4 
-    gap-y-12
-    justify-items-center
-    animate-fadeIn"
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-12 justify-items-center animate-fadeIn">
             {resultados.map((jogo) => (
               <div
-                key={jogo.CodJogo}
+                key={jogo.id || jogo.CodJogo}
                 className="w-full max-w-[260px] transition-all duration-300 transform hover:-translate-y-2 hover:scale-105"
               >
                 <Card jogo={jogo} />

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { CampoLogin } from "./campologin";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { database } from "../../../services/firebase";
+import { ref, get, child } from "firebase/database";
 
 const FormularioLogin = () => {
   const [username, setUsername] = useState("");
@@ -13,30 +14,44 @@ const FormularioLogin = () => {
     e.preventDefault();
     setError("");
 
+    if (!username || !password) {
+      setError("Por favor, preencha todos os campos.");
+      return;
+    }
+
     try {
-      const response = await axios.get(
-        `http://localhost:5000/users?username=${username}`,
-      );
+      const dbRef = ref(database);
+      // Busca diretamente no nó do usuário específico
+      const snapshot = await get(child(dbRef, `users/${username}`));
 
-      const user = response.data[0];
+      if (snapshot.exists()) {
+        const user = snapshot.val();
 
-      if (!user || user.password !== password) {
+        // Verifica se a senha coincide
+        if (user.password === password) {
+          // Salva os dados básicos no localStorage (evite salvar a senha se possível)
+          const userData = {
+            username: user.username,
+            email: user.email,
+            token: user.token,
+          };
+
+          localStorage.setItem("usuario", JSON.stringify(userData));
+
+          navigate("/", { replace: true });
+
+          setTimeout(() => {
+            window.location.reload();
+          }, 100);
+        } else {
+          setError("Usuário ou senha inválidos");
+        }
+      } else {
         setError("Usuário ou senha inválidos");
-        return;
       }
-
-      // Salva usuário no localStorage
-      localStorage.setItem("usuario", JSON.stringify(user));
-
-      // Redireciona para home
-      navigate("/", { replace: true });
-
-      // Força recarregamento da página
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
     } catch (err) {
-      setError("Erro ao fazer login");
+      console.error(err);
+      setError("Erro ao conectar com o servidor");
     }
   };
 
@@ -67,7 +82,9 @@ const FormularioLogin = () => {
         />
 
         {error && (
-          <p className="text-red-500 text-sm text-center mt-2">{error}</p>
+          <p className="text-red-500 text-sm text-center mt-2 font-semibold">
+            {error}
+          </p>
         )}
 
         <p className="text-sm text-lime-400 text-center mt-4">
@@ -82,7 +99,7 @@ const FormularioLogin = () => {
 
         <button
           type="submit"
-          className="w-full mt-6 bg-lime-700 text-white p-3 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:bg-lime-600"
+          className="w-full mt-6 bg-lime-700 text-white p-3 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:bg-lime-600 font-bold uppercase tracking-wider"
         >
           Entrar
         </button>
