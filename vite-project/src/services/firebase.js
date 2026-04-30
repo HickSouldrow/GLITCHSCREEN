@@ -9,7 +9,7 @@ const firebaseConfig = {
   projectId: "glitchscreen-7bc45",
   storageBucket: "glitchscreen-7bc45.firebasestorage.app",
   messagingSenderId: "159016086975",
-  appId: "1:159016086975:web:3a75f540172f891a00050a",
+  appId: "1:159016086975:web:1999b1ac53adfd2600050a",
 };
 
 // Inicializa o Firebase
