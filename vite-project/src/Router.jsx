@@ -12,11 +12,11 @@ import {
   Perfil,
   Resultados,
 } from "./pages";
-import Template_jogo from "./pages/template_jogo/Template_jogo";
-import Classificacao from "./pages/classificacao/Classificacao";
-import Avaliacoes from "./pages/avaliacao/Avaliacao";
-import Descontos from "./pages/descontos/Descontos";
-import Novidades from "./pages/novidades/Novidades";
+import Template_jogo from "./pages/Template_jogo/Template_jogo";
+import Classificacao from "./pages/Classificacao/Classificacao";
+import Avaliacoes from "./pages/Avaliacao/Avaliacao";
+import Descontos from "./pages/Descontos/Descontos";
+import Novidades from "./pages/Novidades/Novidades";
 
 const Router = () => {
   return (
