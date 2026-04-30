@@ -1,13 +1,22 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 
-import { LayoutPadrao } from './layouts';
-import { Erro404, Inicial, SobreNos, Termos, Contato, Login, Cadastro, Perfil, Resultados,  } from './pages';
-import Template_jogo from './pages/Template_jogo/Template_jogo';
-import Classificacao from './pages/Classificacao/Classificacao';
-import Avaliacoes from './pages/Avaliacao/Avaliacao';
-import Descontos from './pages/Descontos/Descontos';
-import Novidades from './pages/Novidades/Novidades';
-
+import { LayoutPadrao } from "./layouts";
+import {
+  Erro404,
+  Inicial,
+  SobreNos,
+  Termos,
+  Contato,
+  Login,
+  Cadastro,
+  Perfil,
+  Resultados,
+} from "./pages";
+import Template_jogo from "./pages/template_jogo/Template_jogo";
+import Classificacao from "./pages/classificacao/Classificacao";
+import Avaliacoes from "./pages/avaliacao/Avaliacao";
+import Descontos from "./pages/descontos/Descontos";
+import Novidades from "./pages/novidades/Novidades";
 
 const Router = () => {
   return (
@@ -15,7 +24,7 @@ const Router = () => {
       <Route path="/" element={<LayoutPadrao />}>
         <Route path="/" element={<Inicial />} />
         <Route path="/SobreNos" element={<SobreNos />} />
-        <Route path="*" element={<Erro404 />}/>
+        <Route path="*" element={<Erro404 />} />
         <Route path="/Contato" element={<Contato />} />
         <Route path="/Termos" element={<Termos />} />
         <Route path="/Login" element={<Login />} />
@@ -27,8 +36,7 @@ const Router = () => {
         <Route path="/Avaliacoes" element={<Avaliacoes />} />
         <Route path="/Descontos" element={<Descontos />} />
         <Route path="/Novidades" element={<Novidades />} />
-
-        </Route>
+      </Route>
     </Routes>
   );
 };

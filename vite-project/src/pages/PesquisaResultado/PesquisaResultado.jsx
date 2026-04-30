@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Card from "../../components/CardsGeral/card/Card";
+import Card from "../../components/cardsGeral/card/Card";
 import { useSearchParams } from "react-router-dom";
 import { FaSadTear, FaSearch } from "react-icons/fa";
 import { ImSpinner8 } from "react-icons/im";
