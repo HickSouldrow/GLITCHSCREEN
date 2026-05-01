@@ -231,7 +231,7 @@ const Descontos = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-stone-950 text-white flex items-center justify-center">
+      <div className="min-h-screen text-white flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="w-10 h-10 border-4 border-lime-500 border-t-transparent rounded-full animate-spin"></div>
           <p className="animate-pulse text-lime-500 font-medium">

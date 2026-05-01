@@ -235,7 +235,7 @@ const Novidades = () => {
   const lancamentosAntigos = [...jogosOrdenados].reverse().slice(0, 12);
 
   return (
-    <div className="bg-stone-950 text-white mt-16 sm:mt-20 min-h-screen py-6 sm:py-10 px-2 sm:px-4">
+    <div className=" text-white mt-16 sm:mt-20 min-h-screen py-6 sm:py-10 px-2 sm:px-4">
       <header className="text-center mb-8 sm:mb-12">
         <h1 className="text-2xl sm:text-3xl font-bold uppercase tracking-tight">
           Novidades

@@ -2,7 +2,16 @@ import React, { useState } from "react";
 import { CampoCadastro } from "./campocadastro";
 import { Link, useNavigate } from "react-router-dom";
 import { database } from "../../../services/firebase";
-import { ref, set, get, child } from "firebase/database"; // Funções do Realtime
+// Importando as funções necessárias para busca e gravação
+import {
+  ref,
+  set,
+  get,
+  query,
+  orderByChild,
+  equalTo,
+  serverTimestamp,
+} from "firebase/database";
 
 const FormularioCadastro = () => {
   const [username, setUsername] = useState("");
@@ -10,54 +19,85 @@ const FormularioCadastro = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
 
-    // Validações básicas
-    if (!username || !password || !email) {
+    // 1. Limpeza e Validações
+    const cleanUsername = username.trim();
+    const cleanEmail = email.trim().toLowerCase();
+
+    if (!cleanUsername || !password || !cleanEmail) {
       setError("Preencha todos os campos!");
+      setLoading(false);
       return;
     }
 
     if (password !== confirmPassword) {
       setError("As senhas não coincidem!");
+      setLoading(false);
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("A senha deve ter no mínimo 6 caracteres.");
+      setLoading(false);
       return;
     }
 
     try {
-      // 1. Verificar se o usuário já existe
-      const dbRef = ref(database);
-      const snapshot = await get(child(dbRef, `users/${username}`));
+      const usersRef = ref(database, "users");
 
-      if (snapshot.exists()) {
+      // 2. VERIFICAÇÃO DUPLA: Primeiro checamos se o USERNAME já existe
+      const userSnapshot = await get(ref(database, `users/${cleanUsername}`));
+      if (userSnapshot.exists()) {
         setError("Este nome de usuário já está em uso.");
+        setLoading(false);
         return;
       }
 
-      // 2. Salvar novo usuário no Realtime Database
-      await set(ref(database, "users/" + username), {
-        username,
-        password,
-        email,
-        token: "newToken" + Math.random().toString(36).substr(2, 9),
-        createdAt: new Date().toISOString(),
-      });
+      // 3. VERIFICAÇÃO DUPLA: Agora checamos se o EMAIL já existe (Essencial para o seu Login)
+      const emailQuery = query(
+        usersRef,
+        orderByChild("email"),
+        equalTo(cleanEmail),
+      );
+      const emailSnapshot = await get(emailQuery);
+      if (emailSnapshot.exists()) {
+        setError("Este e-mail já está cadastrado.");
+        setLoading(false);
+        return;
+      }
 
+      // 4. Salvar novo usuário
+      const novoUsuario = {
+        username: cleanUsername,
+        password: password, // Lembrete: senhas em texto puro são apenas para estudo!
+        email: cleanEmail,
+        token: "newToken" + Math.random().toString(36).substr(2, 9),
+        createdAt: serverTimestamp(), // Usando a função correta do Firebase
+        level: 1,
+        xp: 0,
+      };
+
+      await set(ref(database, "users/" + cleanUsername), novoUsuario);
+
+      alert("Conta criada com sucesso!");
       navigate("/login");
     } catch (err) {
-      console.error(err);
+      console.error("Erro no cadastro:", err);
       setError("Erro ao conectar com o banco de dados.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div
-      className="max-w-sm mx-auto bg-gradient-to-b from-stone-800 to-stone-700 p-8 rounded-xl shadow-lg border-2 border-lime-800 
-      relative before:absolute before:inset-0 before:border before:border-lime-800 before:rounded-xl before:shadow-[0_0_15px_#84cc16] before:animate-pulse mb-30"
-    >
+    <div className="max-w-sm mx-auto bg-gradient-to-b from-stone-800 to-stone-700 p-8 rounded-xl shadow-lg border-2 border-lime-800 relative before:absolute before:inset-0 before:border before:border-lime-800 before:rounded-xl before:shadow-[0_0_15px_#84cc16] before:animate-pulse mb-30">
       <h2 className="text-2xl font-bold text-lime-600 text-center mb-6 animate-fadeIn">
         Cadastro
       </h2>
@@ -68,6 +108,13 @@ const FormularioCadastro = () => {
           name="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+        />
+        <CampoCadastro
+          label="Email:"
+          type="email"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <CampoCadastro
           label="Senha:"
@@ -82,13 +129,6 @@ const FormularioCadastro = () => {
           name="confirmPassword"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-        <CampoCadastro
-          label="Email:"
-          type="email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
         />
 
         {error && (
@@ -109,9 +149,14 @@ const FormularioCadastro = () => {
 
         <button
           type="submit"
-          className="w-full mt-6 bg-lime-700 text-white p-3 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:bg-lime-600 font-bold uppercase tracking-wider"
+          disabled={loading}
+          className={`w-full mt-6 text-white p-3 rounded-lg shadow-md transition-all font-bold uppercase tracking-wider ${
+            loading
+              ? "bg-stone-600 cursor-not-allowed"
+              : "bg-lime-700 hover:scale-105 hover:bg-lime-600"
+          }`}
         >
-          Cadastrar
+          {loading ? "Processando..." : "Cadastrar"}
         </button>
       </form>
     </div>

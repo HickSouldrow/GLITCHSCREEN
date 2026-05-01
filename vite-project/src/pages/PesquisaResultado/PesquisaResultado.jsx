@@ -57,7 +57,7 @@ const Resultados = () => {
   }, [pesquisa]);
 
   return (
-    <div className="min-h-screen text-white pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-stone-900 to-stone-950">
+    <div className="min-h-screen text-white pt-32 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-14">
           <h2 className="text-4xl font-bold text-lime-500 flex justify-center items-center gap-3">

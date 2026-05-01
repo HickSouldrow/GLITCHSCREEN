@@ -2,75 +2,82 @@ import React, { useState } from "react";
 import { CampoLogin } from "./campologin";
 import { Link, useNavigate } from "react-router-dom";
 import { database } from "../../../services/firebase";
-import { ref, get, child } from "firebase/database";
+import { ref, get, query, orderByChild, equalTo } from "firebase/database";
 
 const FormularioLogin = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
 
-    if (!username || !password) {
+    const cleanEmail = email.trim().toLowerCase();
+
+    if (!cleanEmail || !password) {
       setError("Por favor, preencha todos os campos.");
+      setLoading(false);
       return;
     }
 
     try {
-      const dbRef = ref(database);
-      // Busca diretamente no nó do usuário específico
-      const snapshot = await get(child(dbRef, `users/${username}`));
+      const usersRef = ref(database, "users");
+      const userQuery = query(
+        usersRef,
+        orderByChild("email"),
+        equalTo(cleanEmail),
+      );
+
+      const snapshot = await get(userQuery);
 
       if (snapshot.exists()) {
-        const user = snapshot.val();
+        const userDataRaw = snapshot.val();
+        const userId = Object.keys(userDataRaw)[0];
+        const user = userDataRaw[userId];
 
-        // Verifica se a senha coincide
         if (user.password === password) {
-          // Salva os dados básicos no localStorage (evite salvar a senha se possível)
-          const userData = {
+          const sessionData = {
             username: user.username,
             email: user.email,
             token: user.token,
           };
 
-          localStorage.setItem("usuario", JSON.stringify(userData));
+          localStorage.setItem("usuario", JSON.stringify(sessionData));
 
           navigate("/", { replace: true });
-
-          setTimeout(() => {
-            window.location.reload();
-          }, 100);
+          window.location.reload();
         } else {
-          setError("Usuário ou senha inválidos");
+          setError("E-mail ou senha incorretos.");
         }
       } else {
-        setError("Usuário ou senha inválidos");
+        setError("E-mail não cadastrado.");
       }
     } catch (err) {
-      console.error(err);
-      setError("Erro ao conectar com o servidor");
+      console.error("Erro no login:", err);
+      setError("Erro ao conectar com o servidor.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div
-      className="max-w-sm mx-auto bg-gradient-to-b from-stone-800 to-stone-700 p-8 rounded-xl shadow-lg border-2 border-lime-800 
-      relative before:absolute before:inset-0 before:border before:border-lime-800 before:rounded-xl before:shadow-[0_0_15px_#84cc16] before:animate-pulse mb-30"
-    >
+    <div className="max-w-sm mx-auto bg-gradient-to-b from-stone-800 to-stone-700 p-8 rounded-xl shadow-lg border-2 border-lime-800 relative before:absolute before:inset-0 before:border before:border-lime-800 before:rounded-xl before:shadow-[0_0_15px_#84cc16] before:animate-pulse mb-30">
       <h2 className="text-2xl font-bold text-lime-600 text-center mb-6 animate-fadeIn">
         Login
       </h2>
 
       <form onSubmit={handleSubmit} className="animate-fadeIn">
         <CampoLogin
-          label="Usuário:"
-          type="text"
-          name="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          label="E-mail:"
+          type="email"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          disabled={loading}
         />
 
         <CampoLogin
@@ -79,6 +86,7 @@ const FormularioLogin = () => {
           name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          disabled={loading}
         />
 
         {error && (
@@ -87,6 +95,7 @@ const FormularioLogin = () => {
           </p>
         )}
 
+        {/* O link de redirect que eu tinha esquecido: */}
         <p className="text-sm text-lime-400 text-center mt-4">
           Ainda não tem uma conta?{" "}
           <Link
@@ -99,9 +108,14 @@ const FormularioLogin = () => {
 
         <button
           type="submit"
-          className="w-full mt-6 bg-lime-700 text-white p-3 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:bg-lime-600 font-bold uppercase tracking-wider"
+          disabled={loading}
+          className={`w-full mt-6 p-3 rounded-lg shadow-md transition-transform transform font-bold uppercase tracking-wider ${
+            loading
+              ? "bg-stone-600 cursor-not-allowed"
+              : "bg-lime-700 hover:scale-105 hover:bg-lime-600"
+          } text-white`}
         >
-          Entrar
+          {loading ? "Entrando..." : "Entrar"}
         </button>
       </form>
     </div>
